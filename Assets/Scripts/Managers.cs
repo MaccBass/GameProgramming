@@ -9,6 +9,8 @@ public class Managers : MonoBehaviour
     public static Managers Instance { get { Init(); return s_instance; } }
 
     // Each Managers
+    UIManager _ui = new UIManager();
+    public static UIManager UI { get { return Instance._ui; } }
 
     void Start()
     {
