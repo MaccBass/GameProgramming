@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
-  m_Name: 5_FriedJwipo
+  m_Name: 30_FruitsCocktail 1
   m_EditorClassIdentifier: 
-  foodName: "\uD280\uAE40\uC950\uD3EC"
-  toolType: 0
+  foodName: "\uD6C4\uB974\uCE20\uCE75\uD14C\uC77C"
+  toolType: 3
   price: 1000
   cookingTime: 5
   isObtained: 0
   ingredients:
-  - "\uC950\uD3EC"
+  - "\uD30C\uC778\uC560\uD50C"
+  - "\uCF54\uCF54\uB11B"
   icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}

@@ -12,4 +12,17 @@ public class Recipe : ScriptableObject
     public bool isObtained;
     public string[] ingredients;
     public Sprite icon;
+
+    // 갖고있는 재료로 요리 가능한 갯수, 모든 요리는 재료를 1개씩만 사용함.
+    public int CookCount()
+    {
+        int maxQuantity = 9999;
+        foreach (string ingredient in ingredients)
+        {
+            int quantity = Managers.Inventory.Ingredients[ingredient].quantity;
+            maxQuantity = Mathf.Min(maxQuantity, quantity);
+        }
+
+        return maxQuantity;
+    }
 }

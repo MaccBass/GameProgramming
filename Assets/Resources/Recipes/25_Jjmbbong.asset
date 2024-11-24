@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
-  m_Name: 5_FriedJwipo
+  m_Name: 25_Jjmbbong
   m_EditorClassIdentifier: 
-  foodName: "\uD280\uAE40\uC950\uD3EC"
-  toolType: 0
+  foodName: "\uC9EC\uBF55"
+  toolType: 2
   price: 1000
   cookingTime: 5
   isObtained: 0
   ingredients:
-  - "\uC950\uD3EC"
+  - "\uBA74"
+  - "\uC721\uC218"
+  - "\uD64D\uD569"
+  - "\uC2A4\uD504"
   icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}

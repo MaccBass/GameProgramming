@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,10 +23,9 @@ public class IngredientUI : MonoBehaviour
         }
 
         // 버튼 생성
-        foreach (var ingredient in Managers.Inventory.Ingredients.Values)
+        foreach (var ingredient in Managers.Inventory.Ingredients.Values.ToList())
         {
-            // 수량이 0이면 생성하지 않음.
-            // if (ingredient.quantity == 0) continue;
+            if (ingredient.quantity == 0) continue;
 
             // 세로열 위치
             Transform posBase = posBases[(int)ingredient.ingredientType];
