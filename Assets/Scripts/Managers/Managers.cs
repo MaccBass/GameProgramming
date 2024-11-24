@@ -10,7 +10,9 @@ public class Managers : MonoBehaviour
 
     // Each Managers
     UIManager _ui = new UIManager();
+    ItemManager _item = new ItemManager();
     public static UIManager UI { get { return Instance._ui; } }
+    public static ItemManager Item { get { return Instance._item; } }
 
     void Start()
     {
