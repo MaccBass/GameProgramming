@@ -10,9 +10,9 @@ public class Managers : MonoBehaviour
 
     // Each Managers
     UIManager _ui = new UIManager();
-    ItemManager _item = new ItemManager();
+    InventoryManager _inventory = new InventoryManager();
     public static UIManager UI { get { return Instance._ui; } }
-    public static ItemManager Item { get { return Instance._item; } }
+    public static InventoryManager Inventory { get { return Instance._inventory; } }
 
     void Start()
     {
@@ -34,5 +34,9 @@ public class Managers : MonoBehaviour
         }
         DontDestroyOnLoad(go);
         s_instance = go.GetComponent<Managers>();
+
+        // Debug: 게임 시작시 실행(원래는 NewGame/Load시 실행)
+        // Inventory.Init("NewGame");
+        s_instance._inventory.Init("NewGame");
     }
 }

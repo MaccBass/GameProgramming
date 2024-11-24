@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CutScenes/CutScene_NewGame.unity
     guid: 643c42df886849a4b9de25925f1732df
   - enabled: 1
-    path: Assets/Scenes/InGame/InGame_Prepare.unity
+    path: Assets/Scenes/InGame/InGame_Prepare_LIS.unity
     guid: d144d0a6a86953e448f0a568b7eb22c5
   - enabled: 1
     path: Assets/Scenes/InGame/InGame_Open.unity

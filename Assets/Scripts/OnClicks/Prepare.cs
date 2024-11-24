@@ -6,33 +6,45 @@ using UnityEngine.SceneManagement;
 public class Prepare : MonoBehaviour
 {
     public GameObject menuSelectWindow;
-    public GameObject marketWindow;
-    public GameObject staffWindow;
+    public GameObject drinkSelectWindow;
+    public GameObject ingredientWindow;
+    public GameObject employeeWindow;
 
     void Start()
     {
         menuSelectWindow.SetActive(true);
-        marketWindow.SetActive(false);
-        staffWindow.SetActive(false);
+        drinkSelectWindow.SetActive(false);
+        ingredientWindow.SetActive(false);
+        employeeWindow.SetActive(false);
     }
 
     public void OnClickMenuSelectButton()
     {
         menuSelectWindow.SetActive(true);
-        marketWindow.SetActive(false);
-        staffWindow.SetActive(false);
+        drinkSelectWindow.SetActive(false);
+        ingredientWindow.SetActive(false);
+        employeeWindow.SetActive(false);
     }
-    public void OnClickMarKetButton()
+    public void OnClickDrinkSelectButton()
     {
         menuSelectWindow.SetActive(false);
-        marketWindow.SetActive(true);
-        staffWindow.SetActive(false);
+        drinkSelectWindow.SetActive(true);
+        ingredientWindow.SetActive(false);
+        employeeWindow.SetActive(false);
     }
-    public void OnClickEmployeeButton()
+    public void OnClickIngredientButton()
     {
         menuSelectWindow.SetActive(false);
-        marketWindow.SetActive(false);
-        staffWindow.SetActive(true);
+        drinkSelectWindow.SetActive(false);
+        ingredientWindow.SetActive(true);
+        employeeWindow.SetActive(false);
+    }
+    public void OnclickEmployeeButton()
+    {
+        menuSelectWindow.SetActive(false);
+        drinkSelectWindow.SetActive(false);
+        ingredientWindow.SetActive(false);
+        employeeWindow.SetActive(true);
     }
 
     public void OnClickOpenButton()
