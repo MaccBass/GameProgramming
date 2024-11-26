@@ -5,48 +5,102 @@ using UnityEngine.UI;
 
 public class CutSceneController : MonoBehaviour
 {
+    
+
     public GameObject[] cutscenes;      //ÄÆ¾À ÆÐ³Î ¹è¿­
-    private int iCurrentCutsceneIndex = 0;  //ÇöÀç ÄÆ¾À ÀÎµ¦½º
+    
+    //°¢ ÄÆ¾À ´ë»ç ¹è¿­
+    public string[][] dialogList = new string[][]
+    {
+        new string[] {"ÄÆ¾À 1-1", "ÄÆ¾À 1-2", "ÄÆ¾À 1-3"},
+        new string[] {"ÄÆ¾À 2-1", "ÄÆ¾À 2-2"},
+        new string[] {"ÄÆ¾À 3-1"}
+    };
+
+    public Text dialogText;             //´ë»ç Ç¥½Ã ÅØ½ºÆ®
     public Button skipButton;           //½ºÅµ ¹öÆ°
+
+    private int iCurrentCutsceneIndex = 0;  //ÇöÀç ÄÆ¾À ÀÎµ¦½º
+    private int iCurrentDialogIndex = 0;    //ÇöÀç ´ë»ç ÀÎµ¦½º
+
     // Start is called before the first frame update
     void Start()
     {
-        ShowCutScene(0);
-        skipButton.onClick.AddListener(SkipCutscene);
+        ShowCutScene(0);                                    //Ã¹¹øÂ° ÄÆ¾À Ç¥½Ã
+        skipButton.onClick.AddListener(SkipCutscene);       //½ºÅµ ¹öÆ° ÀÌº¥Æ® ÁöÁ¤
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))        //È­¸é Å¬¸¯ °¨Áö
         {
-            NextCutScene();
+            NextDialogOrCutScene();             //´ÙÀ½ ´ë»ç or ÄÆ¾À Ãâ·Â
         }
     }
 
-    void NextCutScene()
+
+    //´ÙÀ½ ´ë»ç or ÄÆ¾À Ãâ·Â
+    void NextDialogOrCutScene()
     {
-        iCurrentCutsceneIndex = iCurrentCutsceneIndex + 1;
-        if(iCurrentCutsceneIndex < cutscenes.Length)
+        if((iCurrentCutsceneIndex >= dialogList.Length) || (iCurrentCutsceneIndex >= cutscenes.Length))
         {
-            ShowCutScene(iCurrentCutsceneIndex);
+            Debug.Log("ÄÆ¾À ÀÎµ¦½º ¹üÀ§ ÃÊ°ú");
+            return;
         }
+        //ÇöÀç ÄÆ¾À ´ë»ç ³²¾ÆÀÖ´Â °æ¿ì
+        if(iCurrentDialogIndex + 1 < dialogList[iCurrentCutsceneIndex].Length)
+        {
+            iCurrentDialogIndex = iCurrentDialogIndex + 1;      //ÄÆ¾À ´ë½Ã ÀÎµ¦½º + 1
+            ShowDialog(iCurrentDialogIndex);                    //´ÙÀ½ ´ë»ç Ãâ·Â
+        }
+        //ÇöÀç ÄÆ¾À ´ë»ç°¡ ³²¾ÆÀÖÁö ¾ÊÀº °æ¿ì
         else
         {
-            EndCutscene();
+            NextCutScene();                                     //´ÙÀ½ ÄÆ¾À Ãâ·Â
         }
     }
+
+    //´ÙÀ½ ÄÆ¾À Ãâ·Â
+    void NextCutScene()
+    {
+        iCurrentCutsceneIndex = iCurrentCutsceneIndex + 1;  //´ÙÀ½ ÄÆ¾ÀÀ¸·Î ÀÎµ¦½º ÀÌµ¿
+        if((iCurrentCutsceneIndex < cutscenes.Length) && (iCurrentCutsceneIndex < dialogList.Length))
+        {
+            ShowCutScene(iCurrentCutsceneIndex);            //´ÙÀ½ ÄÆ¾À Ç¥½Ã
+        }
+        //´ÙÀ½ ÄÆ¾ÀÀÌ ¾ø´Â °æ¿ì
+        else
+        {
+            EndCutscene();                                  //ÄÆ¾À Á¾·á
+        }
+    }
+    //ÄÆ¾À Ãâ·Â
     void ShowCutScene(int index)
     {
+        //¸ðµç ÄÆ¾À ºñÈ°¼ºÈ­
         foreach(GameObject cutscene in cutscenes)
         {
             cutscene.SetActive(false);
         }
-        if(index < cutscenes.Length)
+        //index°¡ ÄÆ¾À ¹è¿­ ±æÀÌº¸´Ù ÀÛÀ» °æ¿ì
+        if((index < cutscenes.Length) && (index < dialogList.Length))
         {
-            cutscenes[index].SetActive(true);
+            cutscenes[index].SetActive(true);       //index ÄÆ¾À È°¼ºÈ­
+            iCurrentDialogIndex = 0;                //´ë»ç ÀÎµ¦½º ÃÊ±âÈ­
+            ShowDialog(iCurrentDialogIndex);        //Ã¹¹øÂ° ´ë»ç Ç¥½Ã
         }
     }
+    //´ë»ç Ãâ·Â
+    void ShowDialog(int index)
+    {
+        //ÇöÀç ÄÆ¾ÀÀÇ ¸ðµç ´ë»ç ¾÷µ¥ÀÌÆ®
+        if(index < dialogList[iCurrentCutsceneIndex].Length)
+        {
+            dialogText.text = dialogList[iCurrentCutsceneIndex][index]; 
+        }
+    }
+
     void SkipCutscene()
     {
         Debug.Log("ÄÆ¾À ½ºÅµ");
@@ -54,6 +108,23 @@ public class CutSceneController : MonoBehaviour
     }
     void EndCutscene()
     {
-        Debug.Log("ÄÆ¾À Á¾·á");
+        Debug.Log("3ÃÊ ÈÄ ÄÆ¾À Á¾·á");
+        
+        dialogText.text = "";                       //ÅØ½ºÆ® Áö¿ì±â
+        skipButton.gameObject.SetActive(false);     //½ºÅµ ¹öÆ° ¼û±â±â
+
+        //ÀÓ½Ã: 3ÃÊ ÈÄ °ÔÀÓ Á¾·á
+        Invoke("QuitGame", 3.0f);
     }
+    void QuitGame()
+    {
+        foreach (GameObject cutscene in cutscenes)
+        {
+            cutscene.SetActive(false);
+        }
+        //ÀÓ½Ã: Å×½ºÆ® ¸ðµå½Ã Á¾·á
+        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
+    }
+
 }
