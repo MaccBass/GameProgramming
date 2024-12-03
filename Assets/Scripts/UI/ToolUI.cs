@@ -6,10 +6,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 재료 목록 UI 화면, Enable 될때마다 갱신함.
-public class DrinkUI : MonoBehaviour
+public class ToolUI : MonoBehaviour
 {
     public Transform posBase;
-    public GameObject drinkObj;
+    public GameObject toolObj;
 
     void OnEnable()
     {
@@ -20,12 +20,10 @@ public class DrinkUI : MonoBehaviour
         }
 
         // 버튼 생성
-        foreach (var drink in Managers.Inventory.Drinks.Values.ToList())
+        foreach (var tool in Managers.Inventory.Tools.ToList())
         {
-            if (drink.quantity == 0) continue;
 
-            // 세로열 위치
-            GameObject obj = Instantiate(drinkObj, posBase);
+            GameObject obj = Instantiate(toolObj, posBase);
             Button button = obj.GetComponent<Button>();
             button.transform.localScale = Vector3.one;
 
@@ -33,27 +31,27 @@ public class DrinkUI : MonoBehaviour
             Image iconImage = button.GetComponent<Image>();
             if (iconImage != null)
             {
-                iconImage.sprite = drink.icon;
+                iconImage.sprite = tool.icon;
             }
 
             // OnClick
-            button.onClick.AddListener(() => OnLeftClick(drink));
-            button.onClick.AddListener(() => OnRightClick(drink));
+            button.onClick.AddListener(() => OnLeftClick(tool));
+            button.onClick.AddListener(() => OnRightClick(tool));
 
             // 수량 표시
-            Text quantity = obj.GetComponentInChildren<Text>();
-            quantity.text = drink.quantity.ToString();
+            Text toolLevel = obj.GetComponentInChildren<Text>();
+            toolLevel.text = "Lv" + tool.level.ToString();
         }
     }
 
-    void OnLeftClick(Drink drink)
+    void OnLeftClick(Tool tool)
     {
         // 좌클릭시
     }
 
-    void OnRightClick(Drink drink)
+    void OnRightClick(Tool tool)
     {
         // 우클릭시
-        Debug.Log("주류 " + drink.drinkName + " 클릭됨.");
+        Debug.Log("도구 " + tool.toolName + " 클릭됨.");
     }
 }

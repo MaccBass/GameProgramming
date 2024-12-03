@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 재료 목록 UI 화면, Enable 될때마다 갱신함.
-public class MenuUI : MonoBehaviour
+public class FoodUI : MonoBehaviour
 {
     public Transform posBase;
     public GameObject menuObj;
@@ -47,7 +47,7 @@ public class MenuUI : MonoBehaviour
 
     void OnLeftClick(Recipe recipe)
     {
-        // 좌클릭시
+        Managers.InGame.addFood(recipe);
     }
 
     void OnRightClick(Recipe recipe)
