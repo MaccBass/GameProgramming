@@ -2,57 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CustomerStatus {
+    PREORDER,
+    WAITING,
+    ANGRY,
+    EATING,
+    DEPARTED
+}
+
 public class Customer : MonoBehaviour
 {
-    public GameObject speechBubble;
-    public GameObject angryAnimation;
-    // public Animator angryAnimator;
-    public int payment = 10000;
-    public int satisfaction = 3;
+    private CustomerType type;
+    private Table table;
+    private float stayDuration;
+    private CustomerStatus status;
+    private int totalPayment;
+    private int totalCS;
 
-    void Start() {
-        // angryEffect.Stop();
-        StartCoroutine(CustomerRoutine());
+    public void Initialize(CustomerType type, Table table, int groupSize, float stayDuration) {
+        this.type = type;
+        this.table = table;
+        this.stayDuration = stayDuration;
+        this.status = CustomerStatus.PREORDER;
+        this.totalPayment = 0;
+        this.totalCS = 5;
+
+        for (int i = 0; i < groupSize; i++) { // 손님을 의자에 앉히고 리스트에 추가
+            GameObject customerPrefab = type.prefabs[Random.Range(0, type.prefabs.Count)];
+            GameObject customerObj = Instantiate(customerPrefab, table.chairs[i].position, Quaternion.identity);
+            if (i % 2 == 1) { // 홀수 의자일 경우 좌우 반전
+                Vector3 scale = customerObj.transform.localScale;
+                scale.x *= -1;
+                customerObj.transform.localScale = scale;
+            }
+        }
     }
-
-    private IEnumerator CustomerRoutine() {
-        yield return new WaitForSeconds(3f);
-        Order();
-
-        yield return new WaitForSeconds(5f);
-        AngryEffect();
-
-        yield return new WaitForSeconds(5f);
-        Leave();
+    
+    public void GetDish(int payment, int cs) { // 플레이어가 서빙할 때 직접 호출
+        totalPayment += payment;
+        totalCS += cs;
     }
 
     private void Order() {
-        Debug.Log("order");
+        // 랜덤 주문
+        // table 상태 변환 필요
 
-        Temp_OrderManager.Instance.AddOrder("ramen", 2, 6f);
-        speechBubble.SetActive(true);
-        StartCoroutine(HideSpeechBubble());
-    }
-    private IEnumerator HideSpeechBubble() {
-        yield return new WaitForSeconds(3f);
-        speechBubble.SetActive(false); // 말풍선을 비활성화
+        // Temp_OrderManager.Instance.addOrder(table, this, menu);
     }
 
-    private void AngryEffect() {
-        Debug.Log("angry");
-        angryAnimation.SetActive(true);
-        // angryAnimator.SetTrigger("PlayAngry");
-
-        StartCoroutine(DisableAngryAnimation());
-    }
-    private IEnumerator DisableAngryAnimation() {
-        yield return new WaitForSeconds(3f);
-        angryAnimation.SetActive(false);
-    }
     private void Leave() {
+        // table 상태 변환 필요
+        Temp_UIManager.Instance.ShowPaymentSatisfaction(table.transform.position, totalPayment, totalCS);
         Destroy(gameObject);
-        // 손님이 아닌 테이블 위치로 수정해야 함
-        Temp_UIManager.Instance.ShowPaymentSatisfaction(transform.position, payment, satisfaction);
-        Debug.Log("Leave");
     }
 }

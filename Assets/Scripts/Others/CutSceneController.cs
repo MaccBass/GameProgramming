@@ -12,9 +12,11 @@ public class CutSceneController : MonoBehaviour
     //각 컷씬 대사 배열
     public string[][] dialogList = new string[][]
     {
-        new string[] {"컷씬 1-1", "컷씬 1-2", "컷씬 1-3"},
-        new string[] {"컷씬 2-1", "컷씬 2-2"},
-        new string[] {"컷씬 3-1"}
+        //현재 시점 컷씬, 주인공 얼굴
+        new string[] {"지금은 2024년...", "나는 충무로의 작은 술집에서 일하던 평범한 알바생", "그러나..."},
+        new string[] {"...", "얼마전 나는 사장님이 가게를 접으신다는 소식을 듣고 대출을 받아 가게를 인수했다."},
+        //임시: 대출금 써넣기
+        new string[] {"갑작스럽지만 어쩌면 내 꿈을 이룰 수 있는 기회...", "하지만! 그 전에 대출금을 갚아야한다!", "내게 남은 시간은 7일. 그 안에 대출금 n만원을 갚자!"}
     };
 
     public Text dialogText;             //대사 표시 텍스트
