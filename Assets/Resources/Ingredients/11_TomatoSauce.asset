@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 11_TomatoSauce
   m_EditorClassIdentifier: 
-  ingredientName: "\uD1A0\uB9C8\uD1A0\uC18C\uC2A4"
+  icon: {fileID: 21300000, guid: 2efcd6a79993add41a8142a515d57572, type: 3}
+  itemName: "\uD1A0\uB9C8\uD1A0\uC18C\uC2A4"
   ingredientType: 1
   price: 700
   quantity: 20
-  icon: {fileID: 21300000, guid: 2efcd6a79993add41a8142a515d57572, type: 3}

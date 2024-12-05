@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 53_Noodle
   m_EditorClassIdentifier: 
-  ingredientName: "\uBA74"
+  icon: {fileID: 21300000, guid: 7471c900763e9544b8ba1310389032db, type: 3}
+  itemName: "\uBA74"
   ingredientType: 5
   price: 500
   quantity: 20
-  icon: {fileID: 21300000, guid: 7471c900763e9544b8ba1310389032db, type: 3}

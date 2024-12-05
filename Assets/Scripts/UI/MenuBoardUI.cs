@@ -63,8 +63,8 @@ public class MenuBoardUI : MonoBehaviour
             foreach (Text text in texts)
             {
                 if (text.name == "Quantity") text.text = food.CookCount().ToString();
-                else if (text.name == "Name") text.text = food.foodName;
-                else if (text.name == "Price") text.text = food.price.ToString();
+                else if (text.name == "Name") text.text = food.itemName;
+                else if (text.name == "Price") text.text = food.sellPrice.ToString();
             }
         }
     }
@@ -99,7 +99,7 @@ public class MenuBoardUI : MonoBehaviour
             foreach (Text text in texts)
             {
                 if (text.name == "Quantity") text.text = drink.quantity.ToString();
-                else if (text.name == "Name") text.text = drink.drinkName;
+                else if (text.name == "Name") text.text = drink.itemName;
                 else if (text.name == "Price") text.text = drink.sellPrice.ToString();
             }
         }

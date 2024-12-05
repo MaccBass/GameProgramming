@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862fa179986365045ac0d380d4569bdd, type: 3}
   m_Name: 9_Cider
   m_EditorClassIdentifier: 
-  drinkName: "\uC0AC\uC774\uB2E4"
+  icon: {fileID: 21300000, guid: e992fbc07bb0cf0408c242ba330463e2, type: 3}
+  itemName: "\uC0AC\uC774\uB2E4"
   purchasePrice: 1000
   sellPrice: 2000
   quantity: 10
-  icon: {fileID: 21300000, guid: e992fbc07bb0cf0408c242ba330463e2, type: 3}

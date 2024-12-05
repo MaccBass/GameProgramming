@@ -53,6 +53,6 @@ public class FoodUI : MonoBehaviour
     void OnRightClick(Recipe recipe)
     {
         // 우클릭시
-        Debug.Log("메뉴 " + recipe.foodName + " 클릭됨.");
+        Debug.Log("메뉴 " + recipe.itemName + " 클릭됨.");
     }
 }

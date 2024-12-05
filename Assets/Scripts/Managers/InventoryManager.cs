@@ -26,20 +26,20 @@ public class InventoryManager
             Drink[] drinks = Resources.LoadAll<Drink>("Drinks");
             foreach (var drink in drinks)
             {
-                Drinks.Add(drink.drinkName, drink);
+                Drinks.Add(drink.itemName, drink);
             }
             // 식재료 불러오기
             Ingredient[] ingredients = Resources.LoadAll<Ingredient>("Ingredients");
             foreach (var ingredient in ingredients)
             {
-                Ingredients.Add(ingredient.ingredientName, ingredient);
+                Ingredients.Add(ingredient.itemName, ingredient);
             }
 
             // 음식 불러오기
             Recipe[] recipes = Resources.LoadAll<Recipe>("Recipes");
             foreach (var recipe in recipes)
             {
-                Recipes.Add(recipe.foodName, recipe);
+                Recipes.Add(recipe.itemName, recipe);
             }
 
             Tool[] tools = Resources.LoadAll<Tool>("Tools");

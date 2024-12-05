@@ -6,6 +6,7 @@ public class InGameManager
 {
     public List<Recipe> Foods = new List<Recipe>();
     public List<Drink> Drinks = new List<Drink>();
+    public List<Tool> Tools = new List<Tool>();
     public bool foodUpdated = false;
     public bool drinkUpdated = false;
 

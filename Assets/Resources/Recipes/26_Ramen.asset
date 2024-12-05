@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
   m_Name: 26_Ramen
   m_EditorClassIdentifier: 
-  foodName: "\uB77C\uBA74"
+  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  itemName: "\uB77C\uBA74"
+  foodName: 
   toolType: 2
-  price: 5500
+  purchasePrice: 30000
+  sellPrice: 5500
   cookingTime: 5
   isObtained: 1
   ingredients:
   - "\uBA74"
   - "\uB77C\uBA74\uC2A4\uD504"
   - "\uACC4\uB780"
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}

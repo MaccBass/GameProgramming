@@ -5,19 +5,39 @@ using UnityEngine.SceneManagement;
 
 public class Prepare : MonoBehaviour
 {
+    // ÃÑ°ý
+    public GameObject prepareWindow;
+    public GameObject marketWindow;
+
+    // PrepareScreen
     public GameObject menuSelectWindow;
     public GameObject drinkSelectWindow;
     public GameObject ingredientWindow;
     public GameObject toolWindow;
     public GameObject employeeWindow;
 
+    // MarketScreen
+
     void Start()
     {
+        prepareWindow.SetActive(true);
+        marketWindow.SetActive(false);
+
         menuSelectWindow.SetActive(true);
         drinkSelectWindow.SetActive(false);
         ingredientWindow.SetActive(false);
         toolWindow.SetActive(false);
         employeeWindow.SetActive(false);
+    }
+    public void OnClickMarketButton()
+    {
+        prepareWindow.SetActive(false);
+        marketWindow.SetActive(true);
+    }
+    public void OnClickPrepareButton()
+    {
+        prepareWindow.SetActive(true);
+        marketWindow.SetActive(false);
     }
 
     public void OnClickMenuSelectButton()

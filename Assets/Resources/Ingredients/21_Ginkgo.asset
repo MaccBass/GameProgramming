@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 21_Ginkgo
   m_EditorClassIdentifier: 
-  ingredientName: "\uC740\uD589"
+  icon: {fileID: 21300000, guid: 5e20f2a2874156a478793640328d24c2, type: 3}
+  itemName: "\uC740\uD589"
   ingredientType: 2
   price: 800
   quantity: 20
-  icon: {fileID: 21300000, guid: 5e20f2a2874156a478793640328d24c2, type: 3}

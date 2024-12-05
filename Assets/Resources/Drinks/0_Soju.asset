@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862fa179986365045ac0d380d4569bdd, type: 3}
   m_Name: 0_Soju
   m_EditorClassIdentifier: 
-  drinkName: "\uC18C\uC8FC"
+  icon: {fileID: 21300000, guid: a7cdd41ff28ab0e4785b4aee2fc10b3a, type: 3}
+  itemName: "\uC18C\uC8FC"
   purchasePrice: 1800
   sellPrice: 5000
   quantity: 20
-  icon: {fileID: 21300000, guid: a7cdd41ff28ab0e4785b4aee2fc10b3a, type: 3}

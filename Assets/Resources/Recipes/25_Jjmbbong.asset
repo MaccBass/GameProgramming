@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
   m_Name: 25_Jjmbbong
   m_EditorClassIdentifier: 
-  foodName: "\uC9EC\uBF55"
+  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  itemName: "\uC9EC\uBF55"
+  foodName: 
   toolType: 2
-  price: 18000
+  purchasePrice: 30000
+  sellPrice: 18000
   cookingTime: 5
   isObtained: 1
   ingredients:
@@ -22,4 +25,3 @@ MonoBehaviour:
   - "\uC721\uC218"
   - "\uD64D\uD569"
   - "\uB77C\uBA74\uC2A4\uD504"
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}

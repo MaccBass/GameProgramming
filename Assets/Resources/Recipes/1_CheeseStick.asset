@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
   m_Name: 1_CheeseStick
   m_EditorClassIdentifier: 
-  foodName: "\uCE58\uC988\uC2A4\uD2F1"
+  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  itemName: "\uCE58\uC988\uC2A4\uD2F1"
+  foodName: 
   toolType: 0
-  price: 3500
+  purchasePrice: 30000
+  sellPrice: 4000
   cookingTime: 5
   isObtained: 1
   ingredients:
   - "\uCE58\uC988"
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}

@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
   m_Name: 23_SteamedEgg
   m_EditorClassIdentifier: 
-  foodName: "\uACC4\uB780\uCC1C"
+  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  itemName: "\uACC4\uB780\uCC1C"
+  foodName: 
   toolType: 2
-  price: 7000
+  purchasePrice: 30000
+  sellPrice: 6000
   cookingTime: 5
   isObtained: 1
   ingredients:
   - "\uACC4\uB780"
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
