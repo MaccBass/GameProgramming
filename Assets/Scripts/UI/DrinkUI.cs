@@ -16,7 +16,7 @@ public class DrinkUI : MonoBehaviour
         // 기존 UI 제거
         foreach (Transform child in posBase)
         {
-                Destroy(child.gameObject);
+            Destroy(child.gameObject);
         }
 
         // 버튼 생성
@@ -48,7 +48,7 @@ public class DrinkUI : MonoBehaviour
 
     void OnLeftClick(Drink drink)
     {
-        // 좌클릭시
+        Managers.InGame.AddDrink(drink);
     }
 
     void OnRightClick(Drink drink)

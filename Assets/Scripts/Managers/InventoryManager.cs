@@ -8,6 +8,7 @@ public class InventoryManager
     public Dictionary<string, Ingredient> Ingredients = new Dictionary<string, Ingredient>();
     public Dictionary<string, Recipe> Recipes = new Dictionary<string, Recipe>();
     public Dictionary<string, Drink> Drinks = new Dictionary<string, Drink>();
+    public List<Tool> Tools = new List<Tool>();
 
     // 게임 시작 시 인벤토리 배열 초기화; 인자: "NewGame" or "Load"
     public void Init(string method)
@@ -15,6 +16,7 @@ public class InventoryManager
         Ingredients.Clear();
         Recipes.Clear();
         Drinks.Clear();
+        Tools.Clear();
 
         // 새 게임 시작 시 초기화
         if (method == "NewGame")
@@ -38,6 +40,12 @@ public class InventoryManager
             foreach (var recipe in recipes)
             {
                 Recipes.Add(recipe.foodName, recipe);
+            }
+
+            Tool[] tools = Resources.LoadAll<Tool>("Tools");
+            foreach (var tool in tools)
+            {
+                Tools.Add(tool);
             }
         }
         

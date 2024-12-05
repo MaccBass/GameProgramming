@@ -11,8 +11,10 @@ public class Managers : MonoBehaviour
     // Each Managers
     UIManager _ui = new UIManager();
     InventoryManager _inventory = new InventoryManager();
+    InGameManager _ingame = new InGameManager();
     public static UIManager UI { get { return Instance._ui; } }
     public static InventoryManager Inventory { get { return Instance._inventory; } }
+    public static InGameManager InGame { get { return Instance._ingame; } }
 
     void Start()
     {

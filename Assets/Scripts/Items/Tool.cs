@@ -10,4 +10,5 @@ public class Tool : ScriptableObject
     public int price;
     public int upgradePrice;
     public int level;
+    public Sprite icon;
 }

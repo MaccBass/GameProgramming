@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2_Makgeolli
   m_EditorClassIdentifier: 
   drinkName: "\uB9C9\uAC78\uB9AC"
-  purchasePrice: 500
-  sellPrice: 1000
-  quantity: 0
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  purchasePrice: 1200
+  sellPrice: 4000
+  quantity: 10
+  icon: {fileID: 21300000, guid: d20a55e3238252946a7d63401a7b4f02, type: 3}

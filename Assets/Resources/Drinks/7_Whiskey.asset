@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 7_Whiskey
   m_EditorClassIdentifier: 
   drinkName: "\uC704\uC2A4\uD0A4"
-  purchasePrice: 500
-  sellPrice: 1000
-  quantity: 0
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  purchasePrice: 15000
+  sellPrice: 39000
+  quantity: 10
+  icon: {fileID: 21300000, guid: 04a4e5650df9dc244a41868517fea3a5, type: 3}

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodName: "\uC719\uBD09"
   toolType: 0
-  price: 1000
+  price: 10000
   cookingTime: 5
-  isObtained: 0
+  isObtained: 1
   ingredients:
   - "\uB2ED\uACE0\uAE30"
   icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
