@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
   m_Name: 10_CuttleFish
   m_EditorClassIdentifier: 
-  foodName: "\uD55C\uCE58"
+  foodName: "\uD55C\uCE58\uAD6C\uC774"
   toolType: 1
-  price: 1000
+  price: 8500
   cookingTime: 5
   isObtained: 1
   ingredients:

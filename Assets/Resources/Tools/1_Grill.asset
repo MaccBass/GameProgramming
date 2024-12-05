@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolName: "\uADF8\uB9B4"
   toolType: 1
-  price: 1000
-  upgradePrice: 2000
+  price: 15000
+  upgradePrice: 15000
   level: 1
   icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}

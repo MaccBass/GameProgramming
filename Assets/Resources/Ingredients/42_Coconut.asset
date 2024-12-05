@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientName: "\uCF54\uCF54\uB11B"
   ingredientType: 4
-  price: 500
+  price: 1000
   quantity: 20
   icon: {fileID: 21300000, guid: 7b6bec5340ec680418c878359744bd3a, type: 3}

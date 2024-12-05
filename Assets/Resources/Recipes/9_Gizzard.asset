@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodName: "\uB2ED\uB625\uC9D1"
   toolType: 0
-  price: 1000
+  price: 9000
   cookingTime: 5
   isObtained: 1
   ingredients:
