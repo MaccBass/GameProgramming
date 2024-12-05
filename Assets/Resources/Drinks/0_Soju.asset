@@ -16,4 +16,4 @@ MonoBehaviour:
   purchasePrice: 500
   sellPrice: 1000
   quantity: 20
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  icon: {fileID: 21300000, guid: a7cdd41ff28ab0e4785b4aee2fc10b3a, type: 3}

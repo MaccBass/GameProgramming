@@ -15,5 +15,5 @@ MonoBehaviour:
   drinkName: "\uC0AC\uC774\uB2E4"
   purchasePrice: 500
   sellPrice: 1000
-  quantity: 0
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  quantity: 10
+  icon: {fileID: 21300000, guid: e992fbc07bb0cf0408c242ba330463e2, type: 3}

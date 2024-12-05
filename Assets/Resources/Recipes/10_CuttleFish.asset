@@ -16,7 +16,7 @@ MonoBehaviour:
   toolType: 1
   price: 1000
   cookingTime: 5
-  isObtained: 0
+  isObtained: 1
   ingredients:
-  - "\uD55C\uCE58"
+  - "\uC624\uC9D5\uC5B4"
   icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}

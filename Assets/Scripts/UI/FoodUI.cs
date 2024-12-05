@@ -47,7 +47,7 @@ public class FoodUI : MonoBehaviour
 
     void OnLeftClick(Recipe recipe)
     {
-        Managers.InGame.addFood(recipe);
+        Managers.InGame.AddFood(recipe);
     }
 
     void OnRightClick(Recipe recipe)

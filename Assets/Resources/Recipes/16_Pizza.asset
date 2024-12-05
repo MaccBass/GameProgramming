@@ -16,7 +16,7 @@ MonoBehaviour:
   toolType: 1
   price: 1000
   cookingTime: 5
-  isObtained: 0
+  isObtained: 1
   ingredients:
   - "\uBC00\uAC00\uB8E8"
   - "\uCE58\uC988"
