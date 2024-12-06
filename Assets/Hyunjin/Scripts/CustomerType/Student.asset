@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8465540db9c844fab18024993331a9, type: 3}
   m_Name: Student
   m_EditorClassIdentifier: 
-  name: Student
+  isEvent: 0
+  typeName: Student
   prefabs:
-  - {fileID: 2904507054708367855, guid: 3fa9c56e4defdac47af530cd6f7d8a3e, type: 3}
-  - {fileID: 1036956989463718617, guid: 2592fd8bb34cca44ca7a66f1e873db24, type: 3}
-  - {fileID: 7220817036046874810, guid: 173947749aabae842b44bb67175d60df, type: 3}
-  - {fileID: 7821014696574640987, guid: f0fecd8c057b44e43b41f0240e49f8fb, type: 3}
-  MinGroupSize: 3
-  MaxGroupSize: 4
+  - {fileID: 3407022240842056597, guid: 34348bd7ecdebc048be0dd6dd0cf5e00, type: 3}
+  - {fileID: 361319162940139385, guid: 87df2861c1e98204baa6045176b71a12, type: 3}
+  - {fileID: 2944701230568655927, guid: df5201154bcffae4b92135c5cf0a003d, type: 3}
+  - {fileID: 8841477871262986289, guid: 3dde38a0bbd3ef04c89cfbc4125b4c89, type: 3}
   MinStayDuration: 15
   MaxStayDuration: 20
   MinOrderInterval: 7
