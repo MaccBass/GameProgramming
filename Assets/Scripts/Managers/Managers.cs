@@ -38,7 +38,5 @@ public class Managers : MonoBehaviour
         s_instance = go.GetComponent<Managers>();
 
         // Debug: 게임 시작시 실행(원래는 NewGame/Load시 실행)
-        s_instance._inventory.Init("NewGame");
-        s_instance._market.Init();
     }
 }

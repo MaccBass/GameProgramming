@@ -17,6 +17,7 @@ public class InGameManager
         {
             Foods.Clear();
             Drinks.Clear();
+            Tools.Clear();
         }
 
         else if (method == "Load")

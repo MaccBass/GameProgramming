@@ -7,7 +7,11 @@ public class MainScreen : MonoBehaviour
 {
     public void OnClickGameStartButton()
     {
-        SceneManager.LoadScene("CutScene_NewGame");
+        Managers.Inventory.Init("NewGame");
+        Managers.InGame.Init("NewGame");
+        Managers.Market.Init("NewGame");
+        // SceneManager.LoadScene("CutScene_NewGame");
+        SceneManager.LoadScene("InGame_Prepare_LIS");
     }
     public void OnClickGameLoadButton()
     {
