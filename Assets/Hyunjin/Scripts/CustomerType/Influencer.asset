@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Influencer
   m_EditorClassIdentifier: 
   isEvent: 1
-  name: Influencer
+  typeName: Influencer
   prefabs:
-  - {fileID: 8651569304552919636, guid: 35730b253526d6b418699a86150944b3, type: 3}
+  - {fileID: 7048449260412412248, guid: 8bc678ab250dcf9419177288906628a3, type: 3}
   MinStayDuration: 5
   MaxStayDuration: 6
   MinOrderInterval: 4

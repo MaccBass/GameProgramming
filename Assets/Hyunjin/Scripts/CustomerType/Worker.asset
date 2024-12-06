@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8465540db9c844fab18024993331a9, type: 3}
   m_Name: Worker
   m_EditorClassIdentifier: 
-  name: Worker
+  isEvent: 0
+  typeName: Worker
   prefabs:
-  - {fileID: 1646943319727603628, guid: 413171f5238ccdc4ab75ddf198ea9689, type: 3}
-  - {fileID: 2650356644891532463, guid: 82227cdf19af0a24083a12019236e9f4, type: 3}
-  MinGroupSize: 2
-  MaxGroupSize: 3
+  - {fileID: 7085898089348454664, guid: a126669a92566474e896d06744ee0fce, type: 3}
+  - {fileID: 5653246090099118737, guid: 4f6b4aff4a96e7b4699dc4a4b3efda6a, type: 3}
   MinStayDuration: 8
   MaxStayDuration: 10
   MinOrderInterval: 4

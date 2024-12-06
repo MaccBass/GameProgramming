@@ -47,13 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e9e07b61db57346bee5c187a311bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   chairNum: 2
-  isCleaned: 1
-  isOccupied: 0
-  customerType: 
   chairs: []
-  stayDuration: 0
-  angryAnimationPrefab: {fileID: 0}
+  status: 0
 --- !u!1001 &355052506148406579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,7 +128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5398389351706660620, guid: 00e866791e19829478498e60f649ac3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5756588644627396186, guid: 00e866791e19829478498e60f649ac3c, type: 3}
       propertyPath: m_Sprite
@@ -229,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5398389351706660620, guid: 00e866791e19829478498e60f649ac3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5756588644627396186, guid: 00e866791e19829478498e60f649ac3c, type: 3}
       propertyPath: m_FlipX

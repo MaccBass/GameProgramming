@@ -37,6 +37,7 @@ public class CustomerManager : MonoBehaviour
         GameObject customerGroupObj = new GameObject("CustomerGroup");
         customerGroupObj.transform.SetParent(chosenTable.transform);
         Customer customerGroup = customerGroupObj.AddComponent<Customer>();
+        Debug.Log($"customerManager : {chosenTable.id}, {chosenType.typeName}, {groupSize}, {stayDuration}");
         customerGroup.Initialize(chosenType, chosenTable, groupSize, stayDuration);
 
         chosenTable.status = TableStatus.OCCUPIED;

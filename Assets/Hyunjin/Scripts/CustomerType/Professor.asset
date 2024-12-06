@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8465540db9c844fab18024993331a9, type: 3}
   m_Name: Professor
   m_EditorClassIdentifier: 
-  name: 
+  isEvent: 0
+  typeName: Professor
   prefabs:
-  - {fileID: 8073176881029690192, guid: 44139bfa259492c4880be99cb2edd358, type: 3}
-  - {fileID: 8946018231549787133, guid: ef3599d9d4a62a94db965fdc4c96f063, type: 3}
-  MinGroupSize: 3
-  MaxGroupSize: 4
+  - {fileID: 519789328963630858, guid: 7538fa92cea7e174f91e139d2ca18e76, type: 3}
+  - {fileID: 8446070970885921700, guid: 83ce1c241278e8b428d4eb1765c451fd, type: 3}
   MinStayDuration: 10
   MaxStayDuration: 15
   MinOrderInterval: 4

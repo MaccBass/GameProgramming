@@ -5,7 +5,7 @@ using UnityEngine;
 public enum TableStatus {
     EMPTY,
     OCCUPIED,
-    DIRTY
+    NEEDTOCLEAN
 }
 
 public class Table : MonoBehaviour
