@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
   itemName: "\uC9EC\uBF55"
-  foodName: 
-  toolType: 2
   purchasePrice: 30000
+  toolType: 2
   sellPrice: 18000
   cookingTime: 5
   isObtained: 1

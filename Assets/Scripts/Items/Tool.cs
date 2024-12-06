@@ -6,7 +6,6 @@ using UnityEngine;
 public class Tool : Item
 {
     public ToolType toolType;
-    public int price;
     public int upgradePrice;
     public int level;
     public int amount;

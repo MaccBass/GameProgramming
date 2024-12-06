@@ -6,6 +6,5 @@ using UnityEngine;
 public class Ingredient : Item
 {
     public IngredientType ingredientType;
-    public int price;
     public int quantity;
 }

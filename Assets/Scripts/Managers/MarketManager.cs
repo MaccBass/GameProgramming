@@ -12,10 +12,12 @@ public class MarketManager
 
     public Dictionary<Item, int> Cart = new Dictionary<Item, int>();
 
+    public int totalPrice;
     public bool cartUpdated = false;
 
     public void Init(string method)
     {
+        totalPrice = 0;
         if (method == "NewGame")
         {
             Ingredients.Clear();
@@ -57,18 +59,48 @@ public class MarketManager
     {
         if (Cart.ContainsKey(item))
         {
-            Cart[item]++;
+            if (item is Recipe recipe)
+            {
+                return;
+            }
+            else
+            {
+                Cart[item]++;
+            }
         }
         else
         {
             Cart.Add(item, 1);
         }
+        totalPrice += item.purchasePrice;
 
+        Debug.Log("Cart에 " + item.itemName + " 추가됨.");
+        cartUpdated = true;
+    }
+
+    public void DeleteCart(Item item)
+    {
+        if (Cart[item] == 1)
+        {
+            Cart.Remove(item);
+        }
+        else
+        {
+            Cart[item]--;
+        }
+        totalPrice -= item.purchasePrice;
+
+        Debug.Log("Cart에서 " + item.itemName + " 1개 제거됨.");
         cartUpdated = true;
     }
 
     public void BuyCart()
     {
+        // 현재 돈 부족할 때 들어갈 코드
+        // if (Managers.Status.Money < totalPrice)
+        // {
+        //     return;
+        // }
         foreach (var cart in Cart)
         {
             Item item = cart.Key;
@@ -88,10 +120,15 @@ public class MarketManager
             }
             else if (item is Tool tool)
             {
-                Managers.Inventory.Tools.Add(tool);
+                for (int i = 0; i < quantity; i++)
+                {
+                    Managers.Inventory.Tools.Add(tool);
+                }
             }
         }
 
+        totalPrice = 0;
+        cartUpdated = true;
         Cart.Clear();
     }
 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 3946dfaa657bd0443b207ce42dbe0010, type: 3}
   itemName: "\uC721\uC218"
+  purchasePrice: 500
   ingredientType: 1
-  price: 500
+  price: 0
   quantity: 20

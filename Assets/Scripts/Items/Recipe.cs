@@ -6,7 +6,6 @@ using UnityEngine;
 public class Recipe : Item
 {
     public ToolType toolType;
-    public int purchasePrice;
     public int sellPrice;
     public int cookingTime;
     public bool isObtained;
