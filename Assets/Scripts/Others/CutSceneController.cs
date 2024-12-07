@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CutSceneController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class CutSceneController : MonoBehaviour
         new string[] {"지금은 2024년...", "나는 충무로의 작은 술집에서 일하던 평범한 알바생", "그러나..."},
         new string[] {"...", "얼마전 나는 사장님이 가게를 접으신다는 소식을 듣고 대출을 받아 가게를 인수했다."},
         //임시: 대출금 써넣기
-        new string[] {"갑작스럽지만 어쩌면 내 꿈을 이룰 수 있는 기회...", "하지만! 그 전에 대출금을 갚아야한다!", "내게 남은 시간은 7일. 그 안에 대출금 n만원을 갚자!"}
+        new string[] {"갑작스럽지만 어쩌면 내 꿈을 이룰 수 있는 기회...", "하지만! 그 전에 대출금을 갚아야한다!", "내게 남은 시간은 7일. 그 안에 대출금 100만원을 갚자!"}
     };
 
     public Text dialogText;             //대사 표시 텍스트

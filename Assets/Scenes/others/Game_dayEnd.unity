@@ -370,6 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 275110065}
   - component: {fileID: 275110064}
+  - component: {fileID: 275110066}
   m_Layer: 0
   m_Name: dailyResultManager
   m_TagString: Untagged
@@ -401,7 +402,33 @@ MonoBehaviour:
   EffectText: {fileID: 1882655141}
   loanText: {fileID: 795411850}
   TotalMoneyText: {fileID: 327367485}
-  nextButton: {fileID: 990496233}
+  iOfficerCount: 0
+  iStudentCount: 0
+  iProfessorCount: 0
+  iObnoxiousCount: 0
+  iOfficerIncome: 0
+  iStudentIncome: 0
+  iProfessorIncome: 0
+  iObnoxiousIncome: 0
+  iOfficerSatisfactionIncrease: 0
+  iStudentSatisfactionIncrease: 0
+  iProfessorSatisfactionIncrease: 0
+  iObnoxiousSatisfactionIncrease: 0
+  iOfficerSatisLevel: 0
+  iStudentSatisLevel: 0
+  iProfessorSatisLevel: 0
+  iObnoxiousSatisLevel: 0
+  iOfficerSatisUpLv: 0
+  iStudentSatisUpLv: 0
+  iProfessorSatisUpLv: 0
+  iObnoxiousSatisUpLv: 0
+  iSatisfiedCustomers: 0
+  iUnsatisfiedCustomers: 0
+  iIngredientsCost: 0
+  iPartTimerPay: 0
+  iWastedFoodCost: 0
+  iPrevMoney: 0
+  iLoan: 0
 --- !u!4 &275110065
 Transform:
   m_ObjectHideFlags: 0
@@ -417,6 +444,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &275110066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275110063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6de59e141f99144834280cb89464bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextButton: {fileID: 990496233}
+  sNextScene: 
 --- !u!1 &327367483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1353,7 @@ RectTransform:
   m_GameObject: {fileID: 990496231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 262144555}
@@ -1321,7 +1362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 782.7656, y: -485.15}
+  m_AnchoredPosition: {x: 782.7657, y: -485.15002}
   m_SizeDelta: {x: 294.5725, y: 83.492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &990496233
@@ -1788,7 +1829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -454.36, y: -33.774}
+  m_AnchoredPosition: {x: -454.3601, y: -33.774048}
   m_SizeDelta: {x: -1027.8, y: -147.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187919352
