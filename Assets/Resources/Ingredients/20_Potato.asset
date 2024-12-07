@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 20_Potato
   m_EditorClassIdentifier: 
-  ingredientName: "\uAC10\uC790"
-  ingredientType: 2
-  price: 440
-  quantity: 20
   icon: {fileID: 21300000, guid: 5fc764ae371dca348a4cb161b15e3022, type: 3}
+  itemName: "\uAC10\uC790"
+  purchasePrice: 440
+  ingredientType: 2
+  price: 0
+  quantity: 20

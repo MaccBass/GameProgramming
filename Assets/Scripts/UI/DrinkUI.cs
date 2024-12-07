@@ -54,6 +54,6 @@ public class DrinkUI : MonoBehaviour
     void OnRightClick(Drink drink)
     {
         // 우클릭시
-        Debug.Log("주류 " + drink.drinkName + " 클릭됨.");
+        Debug.Log("주류 " + drink.itemName + " 클릭됨.");
     }
 }

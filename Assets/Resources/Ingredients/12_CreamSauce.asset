@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 12_CreamSauce
   m_EditorClassIdentifier: 
-  ingredientName: "\uD06C\uB9BC\uC18C\uC2A4"
-  ingredientType: 1
-  price: 700
-  quantity: 20
   icon: {fileID: 21300000, guid: 7fbb187526d92364fb435dd5d9eda938, type: 3}
+  itemName: "\uD06C\uB9BC\uC18C\uC2A4"
+  purchasePrice: 700
+  ingredientType: 1
+  price: 0
+  quantity: 20

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862fa179986365045ac0d380d4569bdd, type: 3}
   m_Name: 8_Cola
   m_EditorClassIdentifier: 
-  drinkName: "\uCF5C\uB77C"
+  icon: {fileID: 21300000, guid: 6c148dddec121384297ed7a584c4f42f, type: 3}
+  itemName: "\uCF5C\uB77C"
   purchasePrice: 1000
   sellPrice: 2000
   quantity: 10
-  icon: {fileID: 21300000, guid: 6c148dddec121384297ed7a584c4f42f, type: 3}

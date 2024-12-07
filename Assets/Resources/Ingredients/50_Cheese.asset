@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 50_Cheese
   m_EditorClassIdentifier: 
-  ingredientName: "\uCE58\uC988"
-  ingredientType: 5
-  price: 400
-  quantity: 20
   icon: {fileID: 21300000, guid: 8fb6cbae324bde8419f393afb48cb740, type: 3}
+  itemName: "\uCE58\uC988"
+  purchasePrice: 400
+  ingredientType: 5
+  price: 0
+  quantity: 20

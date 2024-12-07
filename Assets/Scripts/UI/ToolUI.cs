@@ -52,6 +52,6 @@ public class ToolUI : MonoBehaviour
     void OnRightClick(Tool tool)
     {
         // 우클릭시
-        Debug.Log("도구 " + tool.toolName + " 클릭됨.");
+        Debug.Log("도구 " + tool.itemName + " 클릭됨.");
     }
 }

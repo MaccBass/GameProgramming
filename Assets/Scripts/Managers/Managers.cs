@@ -9,12 +9,12 @@ public class Managers : MonoBehaviour
     public static Managers Instance { get { Init(); return s_instance; } }
 
     // Each Managers
-    UIManager _ui = new UIManager();
     InventoryManager _inventory = new InventoryManager();
     InGameManager _ingame = new InGameManager();
-    public static UIManager UI { get { return Instance._ui; } }
+    MarketManager _market = new MarketManager();
     public static InventoryManager Inventory { get { return Instance._inventory; } }
     public static InGameManager InGame { get { return Instance._ingame; } }
+    public static MarketManager Market { get { return Instance._market; } }
 
     void Start()
     {
@@ -38,7 +38,5 @@ public class Managers : MonoBehaviour
         s_instance = go.GetComponent<Managers>();
 
         // Debug: 게임 시작시 실행(원래는 NewGame/Load시 실행)
-        // Inventory.Init("NewGame");
-        s_instance._inventory.Init("NewGame");
     }
 }

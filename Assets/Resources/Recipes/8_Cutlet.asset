@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
   m_Name: 8_Cutlet
   m_EditorClassIdentifier: 
-  foodName: "\uB3C8\uAE4C\uC2A4"
+  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  itemName: "\uB3C8\uAE4C\uC2A4"
+  purchasePrice: 30000
   toolType: 0
-  price: 15000
+  sellPrice: 15000
   cookingTime: 5
   isObtained: 1
   ingredients:
   - "\uB3FC\uC9C0\uACE0\uAE30"
   - "\uD280\uAE40\uAC00\uB8E8"
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}

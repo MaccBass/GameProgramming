@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 13_Stock
   m_EditorClassIdentifier: 
-  ingredientName: "\uC721\uC218"
-  ingredientType: 1
-  price: 500
-  quantity: 20
   icon: {fileID: 21300000, guid: 3946dfaa657bd0443b207ce42dbe0010, type: 3}
+  itemName: "\uC721\uC218"
+  purchasePrice: 500
+  ingredientType: 1
+  price: 0
+  quantity: 20

@@ -58,6 +58,6 @@ public class IngredientUI : MonoBehaviour
     void OnRightClick(Ingredient ingredient)
     {
         // 우클릭시
-        Debug.Log("재료 " + ingredient.ingredientName + " 클릭됨.");
+        Debug.Log("재료 " + ingredient.itemName + " 클릭됨.");
     }
 }

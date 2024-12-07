@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 41_Pineapple
   m_EditorClassIdentifier: 
-  ingredientName: "\uD30C\uC778\uC560\uD50C"
-  ingredientType: 4
-  price: 1500
-  quantity: 20
   icon: {fileID: 21300000, guid: b95a01658595e9d45a5c02262a2d7aa9, type: 3}
+  itemName: "\uD30C\uC778\uC560\uD50C"
+  purchasePrice: 1500
+  ingredientType: 4
+  price: 0
+  quantity: 20
