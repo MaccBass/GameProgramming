@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class DailyResults : MonoBehaviour
 {
@@ -74,7 +75,7 @@ public class DailyResults : MonoBehaviour
     public int iPrevMoney = 0;
 
 
-    public int iLoan= 1000000;                   //빚
+    public int iLoan= 1000000;              //빚
 
     private int iDay = 0;                   //몇일차인지 기록
 
@@ -83,7 +84,7 @@ public class DailyResults : MonoBehaviour
     private int fExpGet = 0;                //얻은 경험치
 
     private int iTotalMoney = 0;            //현재 총 소지금(기존 돈 + )
-    private int iMoneyToPayLoan;            //현재 대출 상환까지 모아야하는 돈
+    private int iMoneyToPayLoan;            //현재 대출 상환까지 모아야하는 돈(대출금 - 현재 총 소지금)
     
 
     private DailyDataManager dataManager;       //스크립트 참조 선언
@@ -105,9 +106,13 @@ public class DailyResults : MonoBehaviour
     
     
     //수익(지출 미반영) 반환 함수
-    public int getIncome()
+    public int getiMoneyToPayLoan()
     {
-        return iIncome;
+        return iMoneyToPayLoan;
+    }
+    public int getiDay()
+    {
+        return iDay;
     }
 
     //DailyDataManager에서 각 변수들 가져와서 사용
@@ -193,6 +198,12 @@ public class DailyResults : MonoBehaviour
     private void calLoan()
     {
         this.iMoneyToPayLoan = iLoan - iTotalMoney;
+        if(iMoneyToPayLoan < 0)
+        {
+            iMoneyToPayLoan = 0;
+        }
+        else
+        {}
     }
     //평점 세팅 함수
     private void SetRate()
@@ -386,6 +397,7 @@ public class DailyResults : MonoBehaviour
     {
         
     }
+    //임시
     private void setEffectText()
     {
         EffectText.text = string.Format
