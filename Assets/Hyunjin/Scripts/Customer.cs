@@ -68,15 +68,21 @@ public class Customer : MonoBehaviour
         }
     }
     
-    public void CompleteOrder(int payment, int cs, bool isTrash) { // 플레이어가 서빙 시 호출
-        // Debug.Log($"complete Order : {table.id} ({payment}, {cs})");
+    public void RecieveServedOrder(Item servedItem) {
+        Debug.Log($"Serve Order : {table.id} - {servedItem}");
         ordersPending--;
         isEating = true;
         eatTimer = 0;
 
-        totalPayment += payment;
-        if (isTrash)
-            decreaseCS(1);
+        SetAngryEffect(false);
+        if (servedItem is Recipe recipe) { // 서빙받은 게 음식이라면
+            totalPayment += recipe.sellPrice;
+            if (recipe.isTrash) // 쓰레기면
+                decreaseCS(1);
+        }
+        else if (servedItem is Drink drink) { // 서빙받은 게 주류라면
+            totalPayment += drink.sellPrice;
+        }
     }
 
     public void DelayOrder(string menu) { // OrderManager가 호출
@@ -109,8 +115,12 @@ public class Customer : MonoBehaviour
 
     private void Order() {
         // 랜덤 주문
-        // table 상태 변환 필요
-        Recipe random = Managers.Prepare.Foods[(Random.Range(0, Managers.Prepare.Foods.Count))];
+        Item random;
+        if (Random.Range(0,2) == 0)
+            random = Managers.Prepare.Drinks[(Random.Range(0, Managers.Prepare.Drinks.Count))];
+        else
+            random = Managers.Prepare.Foods[(Random.Range(0, Managers.Prepare.Foods.Count))];
+
         Temp_OrderManager.Instance.AddOrder(table, this, random);
         ordersPending++;
         // Debug.Log($"Order : {table.id} - {random.name}");
@@ -134,9 +144,9 @@ public class Customer : MonoBehaviour
         Temp_UIManager.Instance.ShowPaymentSatisfaction(table.transform.position, totalPayment, totalCS);
         table.status = TableStatus.NEEDTOCLEAN;
 
-        Managers.InGame.DailyRevenue[type.typeName] += totalPayment;
-        Managers.InGame.DailyCS[type.typeName] += totalCS;
-        Managers.InGame.DailyCount[type.typeName]++;
+        // Managers.InGame.DailyRevenue[type.typeName] += totalPayment;
+        // Managers.InGame.DailyCS[type.typeName] += totalCS;
+        // Managers.InGame.DailyCount[type.typeName]++;
         Destroy(gameObject);
     }
 }

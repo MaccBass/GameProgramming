@@ -39,9 +39,11 @@ public class Fridge : MonoBehaviour
             if (iconImage != null) {
                 iconImage.sprite = recipe.icon;
             }
-            Text label = button.GetComponentInChildren<Text>();
-            if (label != null)
-                label.text = recipe.itemName;
+            Text[] texts = obj.GetComponentsInChildren<Text>();
+            foreach (Text text in texts) {
+                if (text.gameObject.name == "Name")
+                    text.text = recipe.itemName;
+            }
 
             button.onClick.AddListener(() => DeleteItem(recipe));
         }

@@ -8,10 +8,8 @@ public class HeldItemsManager : MonoBehaviour
     public static HeldItemsManager Instance { get; private set; }
     
     public GameObject Fridge;
-    public GameObject Recipe;
-    public GameObject FridgePopup;
-    public GameObject RecipePopup;
-    // public GameObject DrinkPopup;
+    public GameObject DrinkFridge;
+    // public GameObject Recipe; // cooker????
     private List<(Item item, bool isSelected)> HeldItemList;
     public GameObject HeldItemPrefab;
     public GameObject[] heldItemUI;
@@ -60,7 +58,7 @@ public class HeldItemsManager : MonoBehaviour
             Collider2D collider = Temp_PlayerController.Instance.getRay();
             // 콜라이더가 테이블이면 서빙
             if (collider.gameObject.layer == 9) {
-
+                ServeItem(index, collider.gameObject.GetComponentInChildren<Customer>());
             }
             // Fridge면 item==Recipe일 때 보관
             else if (collider.name == "Fridge" && item is Recipe recipe) {
@@ -68,15 +66,23 @@ public class HeldItemsManager : MonoBehaviour
             }
             // DrinkFridge면 item==Drink일 때 보관
             else if (collider.name == "DrinkFridge" && item is Drink drink) {
-                // ReleaseDrink(index);
+                ReleaseDrink(index);
             }            
         }
     }
     
     public void HoldItem(Item item) {
         if (HeldItemList.Count >= 5) return;
+
         HeldItemList.Add((item, false));
         UpdateUI();
+    }
+
+    public void ServeItem(int index, Customer customer) {
+        if (Temp_OrderManager.Instance.ServeOrder(HeldItemList[index].item, customer)) {
+            HeldItemList.RemoveAt(index);
+            UpdateUI();
+        }
     }
 
     public void ReleaseRecipe(int index) {
@@ -87,13 +93,13 @@ public class HeldItemsManager : MonoBehaviour
         UpdateUI();
     }
 
-    // public void ReleaseDrink(int index) {
-    //     if (HeldItemList[index].item is Drink drink) {
-    //         DrinkFridge.GetComponent<DrinkFridge>().AddItem(drink);
-    //     }
-    //     HeldItemList.RemoveAt(index);
-    //     UpdateUI();
-    // }
+    public void ReleaseDrink(int index) {
+        if (HeldItemList[index].item is Drink drink) {
+            DrinkFridge.GetComponent<DrinkFridge>().AddItem(drink);
+        }
+        HeldItemList.RemoveAt(index);
+        UpdateUI();
+    }
 
     public bool canHold() {
         return(HeldItemList.Count < 5);
