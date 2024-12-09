@@ -48,12 +48,16 @@ public class DailyDataManager : MonoBehaviour
     //버린 음식으로 내야하는 돈
     public int iWastedFoodCost = 0;
 
+
+
     //이전일 소지금
     public int iPrevMoney;
 
     public int iLoan;                   //빚
 
     public int iDay;                   //몇일차인지 기록
+
+    public int iPlayerLv = 0;
 
     //임시: 스크립트 참조 선언 
     //private OtherScript1 script1;
