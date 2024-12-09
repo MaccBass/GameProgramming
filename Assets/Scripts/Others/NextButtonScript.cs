@@ -17,11 +17,16 @@ public class NextButtonScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(Managers.Status == null)
+        {
+            Debug.Log("Managers.Status가 null입니다.");
+            return;
+        }
         if (nextButton == null)
         { }
         else
         {
-            iDay = dailyResults.getiDay();
+            iDay = Managers.Status.day;
             nextButton.onClick.AddListener(OnNextButtonClick);
         }
     }
