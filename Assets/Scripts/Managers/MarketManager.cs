@@ -96,11 +96,11 @@ public class MarketManager
 
     public void BuyCart()
     {
-        // 현재 돈 부족할 때 들어갈 코드
-        // if (Managers.Status.Money < totalPrice)
-        // {
-        //     return;
-        // }
+        if (Managers.Status.totalMoney < totalPrice)
+        {
+            Debug.Log("소지금 부족");
+            return;
+        }
         foreach (var cart in Cart)
         {
             Item item = cart.Key;
@@ -127,6 +127,7 @@ public class MarketManager
             }
         }
 
+        Managers.InGame.shoppingCost += totalPrice;
         totalPrice = 0;
         cartUpdated = true;
         Cart.Clear();

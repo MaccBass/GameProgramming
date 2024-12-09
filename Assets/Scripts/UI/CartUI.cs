@@ -11,6 +11,7 @@ public class CartUI : MonoBehaviour
     public Transform posBase;
     public GameObject cartObj;
     public Text totalPrice;
+    public Text totalMoney;
 
     void OnEnable()
     {
@@ -57,6 +58,7 @@ public class CartUI : MonoBehaviour
         }
 
         totalPrice.text = Managers.Market.totalPrice.ToString();
+        totalMoney.text = Managers.Status.totalMoney.ToString();
     }
 
     void OnFoodLeftClick(Item item)

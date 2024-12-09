@@ -10,6 +10,17 @@ public class Recipe : Item
     public int cookingTime;
     public bool isObtained;
     public string[] ingredients;
+    public bool isTrash;
+
+    public Recipe(Recipe origin)
+    {
+        toolType = origin.toolType;
+        sellPrice = origin.sellPrice;
+        cookingTime = origin.cookingTime;
+        isObtained = origin.isObtained;
+        ingredients = origin.ingredients;
+        isTrash = origin.isTrash;
+    }
 
     // 갖고있는 재료로 요리 가능한 갯수, 모든 요리는 재료를 1개씩만 사용함.
     public int CookCount()
