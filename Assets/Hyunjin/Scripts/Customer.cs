@@ -7,19 +7,25 @@ public class Customer : MonoBehaviour
     private CustomerType type;
     private Table table;
     private float stayDuration;
+    private float orderInterval;
     private float timeSpent = 0;
+    private float orderTimer = 0;
     private float eatTimer = 0;
     private bool isEating = false;
     private int ordersPending = 0; // 대기 중인 주문 수
 
-    private int totalPayment;
-    private int totalCS;
+    public int totalPayment;
+    public int totalCS;
 
-    public void Initialize(CustomerType type, Table table, int groupSize, float stayDuration) {
+    private List<GameObject> customerObjList = new List<GameObject>();
+
+    public void Initialize(CustomerType type, Table table, int groupSize, float stayDuration, float orderInterval) {
         this.type = type;
         this.table = table;
         this.stayDuration = stayDuration;
+        this.orderInterval = orderInterval;
         this.timeSpent = 0;
+        this.orderTimer = 0;
         this.isEating = false;
         this.eatTimer = 0;
         this.totalPayment = 0;
@@ -34,12 +40,19 @@ public class Customer : MonoBehaviour
                 customerObj.transform.localScale = scale;
                 customerObj.transform.position += new Vector3(-0.448f, 0, 0);
             }
+            customerObjList.Add(customerObj);
         }
-        Debug.Log($"INITIALIZED  :  {this.table.id}, {timeSpent}, {this.stayDuration}, {ordersPending}, {isEating}");
+        // Debug.Log($"INITIALIZED  :  {this.table.id}, {timeSpent}, {this.stayDuration}, {ordersPending}, {isEating}");
     }
 
     public void Update() {
         timeSpent += Time.deltaTime;
+        orderTimer += Time.deltaTime;
+
+        if (orderTimer >= orderInterval && stayDuration > timeSpent && totalCS > 0) {
+            Order();
+            orderTimer = 0;
+        }
 
         if (isEating) {
             eatTimer += Time.deltaTime;
@@ -55,27 +68,56 @@ public class Customer : MonoBehaviour
         }
     }
     
-    public void CompleteOrder(int payment, int cs) { // 플레이어가 서빙할 때 직접 호출
-        Debug.Log($"completeOrder : {table.id} ({payment}, {cs})");
+    public void CompleteOrder(int payment, int cs, bool isTrash) { // 플레이어가 서빙 시 호출
+        // Debug.Log($"complete Order : {table.id} ({payment}, {cs})");
         ordersPending--;
         isEating = true;
         eatTimer = 0;
 
         totalPayment += payment;
-        totalCS += cs;
+        if (isTrash)
+            decreaseCS(1);
+    }
+
+    public void DelayOrder(string menu) { // OrderManager가 호출
+        // Debug.Log($"delay Order : {table.id} - {menu}");
+
+        decreaseCS(1);
+    }
+
+    public void CancleOrder(string menu) { // OrderManager가 호출
+        // Debug.Log($"cancel Order : {table.id} - {menu}");
+        ordersPending--;
+
+        decreaseCS(2);
+    }
+
+    private void decreaseCS(int amount) {
+        totalCS = Mathf.Max(0, totalCS - amount);
+        SetAngryEffect(true);
+    }
+
+    public void SetAngryEffect(bool isActive) { 
+        foreach (GameObject c in customerObjList) {
+            if (c != null) {
+                Transform effect = c.transform.Find("AngryEffect");
+                if (effect != null)
+                    effect.gameObject.SetActive(isActive);
+            }
+        }
     }
 
     private void Order() {
-        Debug.Log($"Order : {table.id}");
         // 랜덤 주문
         // table 상태 변환 필요
-        
+        Recipe random = Managers.InGame.Foods[(Random.Range(0, Managers.InGame.Foods.Count))];
+        Temp_OrderManager.Instance.AddOrder(table, this, random);
         ordersPending++;
-        // Temp_OrderManager.Instance.addOrder(table, this, menu);
+        // Debug.Log($"Order : {table.id} - {random.name}");
     }
 
     private void Leave() {
-        Debug.Log($"Leave : {table.id}");
+        // Debug.Log($"Leave : {table.id}");
 
         // table 상태 변환 필요
         Temp_UIManager.Instance.ShowPaymentSatisfaction(table.transform.position, totalPayment, totalCS);

@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class Temp_PlayerController : MonoBehaviour
 {
+    public static Temp_PlayerController Instance { get; private set; }
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+            Destroy(gameObject);
+    }
+
     public float speed = 5.0f;
 
     private Vector2 lookDirection = Vector2.zero;
     private Rigidbody2D rigidbody2d;
     private Animator animator;
+    private int mask;
 
     void Start() {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        mask = LayerMask.GetMask("Cooker", "Table", "Fridge");
     }
 
     void Update() {
+        if (Temp_UIManager.Instance.isPopupActive()) return;
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector2 move = new Vector2(horizontal, vertical);
@@ -34,10 +47,23 @@ public class Temp_PlayerController : MonoBehaviour
         rigidbody2d.MovePosition(position);
 
         if (Input.GetKeyDown(KeyCode.Z)) {
-            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("Cooker"));
-            if (hit.collider != null) {
-                Debug.Log(hit.collider.name);
-            }
+            getRay();
         }
+    }
+
+    public void getRay() { // 냉장고, 쿠커, 테이블, 쓰레기통 (냉장고,쿠너 -> popManager)
+        RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, mask);
+        if (hit.collider == null) return;
+
+        if (hit.collider.gameObject.layer == 10) {
+            hit.collider.GetComponent<Fridge>().showPopup();
+        }
+        else if (hit.collider.gameObject.layer == 8) { // cooker가 이용중이 아니라면
+            Debug.Log(hit.collider);
+            hit.collider.GetComponent<Cooker>().prepareCooking();
+        }
+        // else if (hit.collider.gameObject.layer == "Trash") {
+            
+        // }
     }
 }

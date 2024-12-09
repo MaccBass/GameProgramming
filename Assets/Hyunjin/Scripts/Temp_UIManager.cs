@@ -16,11 +16,9 @@ public class Temp_UIManager : MonoBehaviour
     public GameObject PauseMenu;
     // customer UI
     public GameObject reviewUIPrefab;
-    // order list UI
-    // public Transform orderUIBox;
-    // public GameObject orderUIPrefab;
-    // private Dictionary<int, GameObject> orderUIObjects = new Dictionary<int, GameObject>(); // 주문 UI 관리
-    // public ScrollRect scrollRect;
+    // popup
+    public GameObject FridgePopup;
+    public GameObject RecipePopup;
 
     void Awake() {
         if (Instance == null) {
@@ -66,27 +64,8 @@ public class Temp_UIManager : MonoBehaviour
         Destroy(reviewUI, 3f);
     }
 
-    // // order list UI
-    // public void AddOrderToUI(Order order) {
-    //     if (OrderUIObjects.ContainsKey(order.orderId)) {
-    //         Debug.LogWarning($"Order {order.orderId} already exists in UI");
-    //         return;
-    //     }
-    //     GameObject newOrder = Instantiate(orderUIPrefab, orderUIBox);
-    //     OrderUI orderUI = newOrder.GetComponent<OrderUI>(); //????
-
-    //     if (orderUI != null) {
-    //         OrderUI.Initialize(order);
-    //         OrderUIObjects[order.orderId] = newOrder;
-    //     }
-    // }
-    // public void RemoveOrderFromUI(int orderId) {
-    //     if (orderUIDict.TryGetValue(orderId, out GameObject orderUIObject)) {
-    //         Destroy(orderUIObject); // UI 오브젝트 삭제
-    //         orderUIDict.Remove(orderId); // 딕셔너리에서 제거
-    //         Debug.Log($"Order UI {orderId} removed");
-    //     }
-    //     else
-    //         Debug.LogWarning($"Order {orderId} not found in UI");
-    // }
+    // popop
+    public bool isPopupActive() {
+        return (FridgePopup.activeSelf || RecipePopup.activeSelf);
+    }
 }
