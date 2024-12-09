@@ -59,7 +59,6 @@ public class KitchenUI : MonoBehaviour
 
     void UpdateEmployeeUI()
     {
-        /*
         if (Managers.Prepare.isWaiterEmployed)
         {
             waiterObj.SetActive(true);
@@ -76,18 +75,17 @@ public class KitchenUI : MonoBehaviour
         {
             cookObj.SetActive(false);
         }
-        */
     }
-    void OnWaiterLeftClick()
+    public void OnWaiterLeftClick()
     {
         Managers.Prepare.DeleteWaiter();
     }
-    void OnCookLeftClick()
+    public void OnCookLeftClick()
     {
         Managers.Prepare.DeleteCook();
     }
     void OnToolLeftClick(Tool tool)
     {
-            Managers.Prepare.DeleteTool(tool);
+        Managers.Prepare.DeleteTool(tool);
     }
 }
