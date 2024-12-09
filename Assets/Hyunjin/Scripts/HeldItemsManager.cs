@@ -57,19 +57,20 @@ public class HeldItemsManager : MonoBehaviour
         HeldItemList[index] = (item, isSelected);
         UpdateUI();
         if (isSelected) {
-            if (item is Ingredient ingredient) {
-                if (FridgePopup.activeSelf) {
-                    ReleaseItem(index);
-                }
-                if (RecipePopup.activeSelf) {
-                    CookerManager.Instance.AddIngredient(ingredient);
-                    HeldItemList.RemoveAt(index);
-                    UpdateUI();
-                }
-            } else {
-                Debug.Log("Selected item is not an ingredient");
+            Collider2D collider = Temp_PlayerController.Instance.getRay();
+            // 콜라이더가 테이블이면 서빙
+            if (collider.gameObject.layer == 9) {
+
+            }
+            // Fridge면 item==Recipe일 때 보관
+            else if (collider.name == "Fridge" && item is Recipe recipe) {
+                ReleaseRecipe(index);
+            }
+            // DrinkFridge면 item==Drink일 때 보관
+            else if (collider.name == "DrinkFridge" && item is Drink drink) {
+                // ReleaseDrink(index);
+            }            
         }
-    }
     }
     
     public void HoldItem(Item item) {
@@ -78,14 +79,21 @@ public class HeldItemsManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void ReleaseItem( int index) {
-        if (HeldItemList[index].item is Ingredient ingredient) {
-            ingredient.quantity++;
-            Fridge.GetComponent<Fridge>().UpdateIngredients();
+    public void ReleaseRecipe(int index) {
+        if (HeldItemList[index].item is Recipe recipe) {
+            Fridge.GetComponent<Fridge>().AddItem(recipe);
         }
         HeldItemList.RemoveAt(index);
         UpdateUI();
     }
+
+    // public void ReleaseDrink(int index) {
+    //     if (HeldItemList[index].item is Drink drink) {
+    //         DrinkFridge.GetComponent<DrinkFridge>().AddItem(drink);
+    //     }
+    //     HeldItemList.RemoveAt(index);
+    //     UpdateUI();
+    // }
 
     public bool canHold() {
         return(HeldItemList.Count < 5);

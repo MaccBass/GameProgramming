@@ -14,6 +14,9 @@ public class Recipe : Item
 
     public Recipe(Recipe origin)
     {
+        icon = origin.icon;
+        itemName = origin.itemName;
+        purchasePrice = origin.purchasePrice;
         toolType = origin.toolType;
         sellPrice = origin.sellPrice;
         cookingTime = origin.cookingTime;
@@ -22,7 +25,7 @@ public class Recipe : Item
         isTrash = origin.isTrash;
     }
 
-    // °®°íÀÖ´Â Àç·á·Î ¿ä¸® °¡´ÉÇÑ °¹¼ö, ¸ðµç ¿ä¸®´Â Àç·á¸¦ 1°³¾¿¸¸ »ç¿ëÇÔ.
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½á¸¦ 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
     public int CookCount()
     {
         int maxQuantity = 9999;

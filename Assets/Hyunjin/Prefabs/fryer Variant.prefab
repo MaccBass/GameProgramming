@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5148427856973026279, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
       propertyPath: m_Name
-      value: Fryer
+      value: fryer Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5586018414986815980, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -75,7 +75,8 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 2.1333334
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8682576785087883157, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
 --- !u!1 &2417893327918082217 stripped
 GameObject:
@@ -94,6 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33140510b205f964981000ba2ad31b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RecipePopup: {fileID: 0}
-  tooltype: {fileID: 0}
+  toolType: 0
   status: 0
+  cookingSlider: {fileID: 0}
+  recipe: {fileID: 0}
+  ingredients: []
+  resultFood: {fileID: 0}

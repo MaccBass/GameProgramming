@@ -18,7 +18,7 @@ public class Temp_UIManager : MonoBehaviour
     public GameObject reviewUIPrefab;
     // popup
     public GameObject FridgePopup;
-    public GameObject RecipePopup;
+    public GameObject CookerPopup;
 
     void Awake() {
         if (Instance == null) {
@@ -66,6 +66,6 @@ public class Temp_UIManager : MonoBehaviour
 
     // popop
     public bool isPopupActive() {
-        return (FridgePopup.activeSelf || RecipePopup.activeSelf);
+        return (FridgePopup.activeSelf || CookerPopup.activeSelf);
     }
 }

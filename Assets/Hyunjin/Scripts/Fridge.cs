@@ -10,50 +10,51 @@ public class Fridge : MonoBehaviour
     public Transform FridgeContainer;
     public GameObject itemPrefab;
     public bool isActive = false;
+    public List<Recipe> FridgeRecipe;
 
-    public void showPopup() {
-        isActive = true;
-        UpdateIngredients();
-        FridgePopup.SetActive(true);
+    public void AddItem(Recipe recipe) {
+        FridgeRecipe.Add(recipe);
+        UpdateUI();
     }
     
-    public void UpdateIngredients() {
+    public void DeleteItem(Recipe recipe) {
+        if (!HeldItemsManager.Instance.canHold())
+            return;
+        FridgeRecipe.Remove(recipe);
+        UpdateUI();
+        HeldItemsManager.Instance.HoldItem(recipe);
+    }
+
+    public void UpdateUI() {
         foreach (Transform child in FridgeContainer) {
             Destroy(child.gameObject);
         }
-
-        foreach (var ingredient in Managers.Inventory.Ingredients.Values.ToList())
+        foreach (Recipe recipe in FridgeRecipe)
         {
-            // Debug.Log(ingredient);
-            if (ingredient.quantity == 0) {
-                continue;
-            }
-
             GameObject obj = Instantiate(itemPrefab, FridgeContainer);
             Button button = obj.GetComponent<Button>();
             button.transform.localScale = Vector3.one;
 
             Image iconImage = button.GetComponent<Image>();
             if (iconImage != null) {
-                iconImage.sprite = ingredient.icon;
+                iconImage.sprite = recipe.icon;
             }
+            Text label = button.GetComponentInChildren<Text>();
+            if (label != null)
+                label.text = recipe.itemName;
 
-            Text quantity = obj.GetComponentInChildren<Text>();
-            quantity.text = ingredient.quantity.ToString();
-            button.onClick.AddListener(() => OnLeftClick(ingredient));
+            button.onClick.AddListener(() => DeleteItem(recipe));
         }
     }
-   
+    
+    public void showPopup() {
+        isActive = true;
+        UpdateUI();
+        FridgePopup.SetActive(true);
+    }
+    
     public void hidePopup() {
         isActive = false;
         FridgePopup.SetActive(false);
-    }
-
-    void OnLeftClick(Ingredient ingredient) {
-        if (ingredient.quantity <= 0 || !HeldItemsManager.Instance.canHold())
-            return;
-        ingredient.quantity--;
-        UpdateIngredients();
-        HeldItemsManager.Instance.HoldItem(ingredient);
     }
 }

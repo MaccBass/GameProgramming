@@ -24,15 +24,11 @@ public class Temp_FoodManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    public void Start()
-    {
         // "Recipe" 폴더에서 모든 ScriptableObject를 로드
         Recipe[] foods = Resources.LoadAll<Recipe>("Recipes");
         foreach(Recipe f in foods) {
             Managers.Prepare.Foods.Add(f);
-            // Debug.Log(Managers.InGame.Foods[Managers.InGame.Foods.Count-1]);
         }
 
         Drink[] drinks = Resources.LoadAll<Drink>("Drinks");

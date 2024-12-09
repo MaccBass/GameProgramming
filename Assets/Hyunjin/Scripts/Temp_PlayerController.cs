@@ -47,23 +47,19 @@ public class Temp_PlayerController : MonoBehaviour
         rigidbody2d.MovePosition(position);
 
         if (Input.GetKeyDown(KeyCode.Z)) {
-            getRay();
+            Collider2D collider = getRay();
+            if (collider.gameObject.layer == 8) {  // cooker
+                collider.GetComponent<Cooker>().prepareCooking();
+            }
+            if (collider.name == "Fridge") {
+                Debug.Log(collider.name);
+                collider.GetComponent<Fridge>().showPopup();
+            }
         }
     }
 
-    public void getRay() { // 냉장고, 쿠커, 테이블, 쓰레기통 (냉장고,쿠너 -> popManager)
+    public Collider2D getRay() { // 냉장고, 쿠커, 테이블, 쓰레기통 (냉장고,쿠너 -> popManager)
         RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, mask);
-        if (hit.collider == null) return;
-
-        if (hit.collider.gameObject.layer == 10) {
-            hit.collider.GetComponent<Fridge>().showPopup();
-        }
-        else if (hit.collider.gameObject.layer == 8) { // cooker가 이용중이 아니라면
-            Debug.Log(hit.collider);
-            hit.collider.GetComponent<Cooker>().prepareCooking();
-        }
-        // else if (hit.collider.gameObject.layer == "Trash") {
-            
-        // }
+        return (hit.collider);
     }
 }
