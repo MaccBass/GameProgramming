@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 지워야됨
+
 public class Temp_FoodManager : MonoBehaviour
 {
     public static Temp_FoodManager Instance { get; private set; }
 
     // 모든 Food ScriptableObject를 저장할 리스트
-    public List<Food> foodList = new List<Food>();
+    public List<Recipe> foodList = new List<Recipe>();
+    public List<Drink> drinkList = new List<Drink>();
+    public List<Ingredient> ingredientList = new List<Ingredient>();
 
     private void Awake()
     {
@@ -20,22 +24,27 @@ public class Temp_FoodManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        LoadAllFoods();
     }
 
-    // Food 리스트를 불러오는 메서드
-    private void LoadAllFoods()
+    public void Start()
     {
-        // "Foods" 폴더에서 모든 Food ScriptableObject를 로드
-        Food[] foods = Resources.LoadAll<Food>("InGameFood");
-        foodList.AddRange(foods);
+        // "Recipe" 폴더에서 모든 ScriptableObject를 로드
+        Recipe[] foods = Resources.LoadAll<Recipe>("Recipes");
+        foreach(Recipe f in foods) {
+            Managers.InGame.Foods.Add(f);
+            // Debug.Log(Managers.InGame.Foods[Managers.InGame.Foods.Count-1]);
+        }
+
+        Drink[] drinks = Resources.LoadAll<Drink>("Drinks");
+        foreach(Drink d in drinks) {
+            Managers.InGame.Drinks.Add(d);
+        }
+
+        Ingredient[] ingredients = Resources.LoadAll<Ingredient>("Ingredients");
+        foreach(Ingredient i in ingredients) {
+            Managers.Inventory.Ingredients.Add(i.itemName, i);
+        }
     }
 
-    // 전체 메뉴 리스트 가져오기
-    public List<Food> GetAllFoods()
-    {
-        return new List<Food>(foodList);
-    }
 }
 

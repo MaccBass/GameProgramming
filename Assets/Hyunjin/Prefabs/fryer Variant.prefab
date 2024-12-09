@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5148427856973026273, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8573908
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 5148427856973026273, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55297077
+      value: 2.2000003
       objectReference: {fileID: 0}
     - target: {fileID: 5148427856973026273, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
       propertyPath: m_LocalPosition.z
@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5148427856973026279, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
       propertyPath: m_Name
-      value: fryer
+      value: Fryer
       objectReference: {fileID: 0}
     - target: {fileID: 5586018414986815980, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5586018414986815980, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 5586018414986815980, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -77,3 +77,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
+--- !u!1 &2417893327918082217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5148427856973026279, guid: c404b61a63a4e7048a73b810a04c3858, type: 3}
+  m_PrefabInstance: {fileID: 7421077798493780814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2126213910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2417893327918082217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33140510b205f964981000ba2ad31b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecipePopup: {fileID: 0}
+  tooltype: {fileID: 0}
+  status: 0

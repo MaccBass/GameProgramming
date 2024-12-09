@@ -12,7 +12,9 @@ public class CustomerManager : MonoBehaviour
 
     void Start() {
         tableList = new List<Table>(FindObjectsOfType<Table>());
-        Debug.Log(customerTypeList.Count);
+        // foreach(Recipe f in Managers.InGame.Foods) {
+        //     Debug.Log(f.name);
+        // }
         StartCoroutine(SpawnCustomers());
     }
 
@@ -32,13 +34,13 @@ public class CustomerManager : MonoBehaviour
         CustomerType chosenType = customerTypeList[Random.Range(0, customerTypeList.Count)];
         int groupSize = chosenType.isEvent ? 1 : Random.Range(1, chosenTable.chairNum + 1);
         float stayDuration = Random.Range(chosenType.MinStayDuration, chosenType.MaxStayDuration);
+        float orderInterval = Random.Range(chosenType.MinOrderInterval, chosenType.MaxOrderInterval);
 
         // 고객 그룹 관리자 객체 생성 및 초기화
         GameObject customerGroupObj = new GameObject("CustomerGroup");
         customerGroupObj.transform.SetParent(chosenTable.transform);
         Customer customerGroup = customerGroupObj.AddComponent<Customer>();
-        Debug.Log($"customerManager : {chosenTable.id}, {chosenType.typeName}, {groupSize}, {stayDuration}");
-        customerGroup.Initialize(chosenType, chosenTable, groupSize, stayDuration);
+        customerGroup.Initialize(chosenType, chosenTable, groupSize, stayDuration, orderInterval);
 
         chosenTable.status = TableStatus.OCCUPIED;
     }
