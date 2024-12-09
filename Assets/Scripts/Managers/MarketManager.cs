@@ -128,6 +128,7 @@ public class MarketManager
         }
 
         Managers.InGame.shoppingCost += totalPrice;
+        Managers.Status.totalMoney -= totalPrice;
         totalPrice = 0;
         cartUpdated = true;
         Cart.Clear();
