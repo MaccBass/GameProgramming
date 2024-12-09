@@ -14,6 +14,9 @@ public class Recipe : Item
 
     public Recipe(Recipe origin)
     {
+        icon = origin.icon;
+        itemName = origin.itemName;
+        purchasePrice = origin.purchasePrice;
         toolType = origin.toolType;
         sellPrice = origin.sellPrice;
         cookingTime = origin.cookingTime;

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,7 @@ public class EmployeeManager
      * 요리가 끝나면 그 요리를 집어서 보관함(Fridge?)에 넣음.
      */
     // 주방알바가 음식을 만들 때 사용할 큐
-    public Queue<Order> cookOrders = new Queue<Order>();
-
-
+    public Queue<Order> CookOrders = new Queue<Order>();
 
     /* 홀 알바 작동원리
      * 큐 top에 있는 Order의 주문을 처리함.
@@ -33,5 +32,23 @@ public class EmployeeManager
      * 음식의 경우: 냉장고 내에 해당 음식이 있으면 들고 손님한테 감.
      * 냉장고 내에 없으면 해당 음식이 보관함에 들어올 때까지 기다림.
      */
-    public Queue<Order> waiterOrders = new Queue<Order>();
+    public Queue<Order> WaiterOrders = new Queue<Order>();
+
+
+    public void Init()
+    {
+        CookOrders.Clear();
+        WaiterOrders.Clear();
+    }
+    public void AddOrder(Order order)
+    {
+        if (Managers.Prepare.isCookEmployed)
+        {
+            CookOrders.Enqueue(order);
+        }
+        if (Managers.Prepare.isWaiterEmployed)
+        {
+            WaiterOrders.Enqueue(order);
+        }
+    }
 }

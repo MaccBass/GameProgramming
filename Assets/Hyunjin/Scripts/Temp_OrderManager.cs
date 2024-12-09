@@ -61,5 +61,6 @@ public class Temp_OrderManager : MonoBehaviour
 
         Order newOrder = new Order(nextOrderId++, table, customer, menu, Time.time, orderUI);
         orderList.Add(newOrder);
+        Managers.Employee.AddOrder(newOrder);
     }
 }
