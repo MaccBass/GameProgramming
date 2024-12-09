@@ -53,7 +53,7 @@ public class CookerManager : MonoBehaviour
         foreach (Transform child in Body) {
             Destroy(child.gameObject);
         }
-        foreach (var recipe in Managers.InGame.Foods)
+        foreach (var recipe in Managers.Prepare.Foods)
         {
             GameObject obj = Instantiate(itemPrefab, Body);
             Button button = obj.GetComponent<Button>();

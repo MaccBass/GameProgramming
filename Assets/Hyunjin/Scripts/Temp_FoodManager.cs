@@ -31,13 +31,13 @@ public class Temp_FoodManager : MonoBehaviour
         // "Recipe" 폴더에서 모든 ScriptableObject를 로드
         Recipe[] foods = Resources.LoadAll<Recipe>("Recipes");
         foreach(Recipe f in foods) {
-            Managers.InGame.Foods.Add(f);
+            Managers.Prepare.Foods.Add(f);
             // Debug.Log(Managers.InGame.Foods[Managers.InGame.Foods.Count-1]);
         }
 
         Drink[] drinks = Resources.LoadAll<Drink>("Drinks");
         foreach(Drink d in drinks) {
-            Managers.InGame.Drinks.Add(d);
+            Managers.Prepare.Drinks.Add(d);
         }
 
         Ingredient[] ingredients = Resources.LoadAll<Ingredient>("Ingredients");
