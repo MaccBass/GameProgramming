@@ -9,7 +9,7 @@ public class BadEndingCutSceneController : MonoBehaviour
     
 
     public GameObject[] cutscenes;      //컷씬 패널 배열
-    //임시: 메인 화면 씬 이름
+
     public string sNextScene = "MainScreen";
 
     //각 컷씬 대사 배열
@@ -18,7 +18,7 @@ public class BadEndingCutSceneController : MonoBehaviour
         //배드 엔딩 컷씬
         new string[] {"...", "", "..."},
         new string[] {"...나는 7일 안에 대출금을 모두 갚지 못했다.", "결국 가게를 처분하고 꿈을 접어야했다.", "...", "그래도 다른 꿈을 찾을 수 있겠지...?"},
-        new string[] {"엔딩 2. 이룰 수 없는 꿈", "Bad Ending"}
+        new string[] {"Bad Ending"}
     };
 
     public Text dialogText;             //대사 표시 텍스트
@@ -116,9 +116,8 @@ public class BadEndingCutSceneController : MonoBehaviour
         
         dialogText.text = "";                       //텍스트 지우기
         skipButton.gameObject.SetActive(false);     //스킵 버튼 숨기기
-
-        //임시: 3초 후 게임 종료
-        Invoke("Load", 3.0f);
+        //3초 후 메인으로 이동
+        Invoke("LoadMain", 3.0f);
     }
     void QuitGame()
     {
@@ -130,7 +129,7 @@ public class BadEndingCutSceneController : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
-    void Load()
+    void LoadMain()
     {
         SceneManager.LoadScene(sNextScene);
     }

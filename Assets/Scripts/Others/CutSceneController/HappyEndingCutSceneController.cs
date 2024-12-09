@@ -10,7 +10,6 @@ public class HappyEndingCutSceneController : MonoBehaviour
 
     public GameObject[] cutscenes;      //컷씬 패널 배열
 
-    //임시: 메인 화면 씬 이름
     public string sNextScene = "MainScreen";
 
     //각 컷씬 대사 배열
@@ -19,7 +18,7 @@ public class HappyEndingCutSceneController : MonoBehaviour
         //해피 엔딩 컷씬
         new string[] {"지옥 같던 7일이 지났다..." },
         new string[] {"나는 대출금을 모두 갚았다!", "이제 치솟는 물가와 싸우며 돈을 벌면 돼...!"},
-        new string[] {"엔딩 1. 대출금을 모두 갚다.", "Happy Ending"}
+        new string[] {"Happy Ending"}
     };
 
     public Text dialogText;             //대사 표시 텍스트
@@ -117,10 +116,9 @@ public class HappyEndingCutSceneController : MonoBehaviour
         
         dialogText.text = "";                       //텍스트 지우기
         skipButton.gameObject.SetActive(false);     //스킵 버튼 숨기기
+        //3초 후 메인으로 이동
+        Invoke("LoadMain", 3.0f);
 
-        //임시: 3초 후 게임 종료
-        Invoke("Load", 3.0f);
-        //MainScreen
     }
     void QuitGame()
     {
@@ -128,11 +126,10 @@ public class HappyEndingCutSceneController : MonoBehaviour
         {
             cutscene.SetActive(false);
         }
-        //임시: 테스트 모드시 종료
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
-    void Load()
+    void LoadMain()
     {
         SceneManager.LoadScene(sNextScene);
     }
