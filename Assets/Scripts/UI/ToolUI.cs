@@ -11,7 +11,22 @@ public class ToolUI : MonoBehaviour
     public Transform posBase;
     public GameObject toolObj;
 
+
     void OnEnable()
+    {
+        UpdateToolUI();
+    }
+
+    private void LateUpdate()
+    {
+        if (Managers.Prepare.toolUpdated2)
+        {
+            UpdateToolUI();
+            Managers.Prepare.toolUpdated2 = false;
+        }
+    }
+
+    void UpdateToolUI()
     {
         // 기존 UI 제거
         foreach (Transform child in posBase)
@@ -43,10 +58,9 @@ public class ToolUI : MonoBehaviour
             toolLevel.text = "Lv" + tool.level.ToString();
         }
     }
-
     void OnLeftClick(Tool tool)
     {
-        // 좌클릭시
+        Managers.Prepare.AddTool(tool);
     }
 
     void OnRightClick(Tool tool)

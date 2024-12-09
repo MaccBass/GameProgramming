@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InGameManager
+public class StatusManager
 {
+    public int Money;
+
 
 }
