@@ -48,7 +48,7 @@ public class DrinkUI : MonoBehaviour
 
     void OnLeftClick(Drink drink)
     {
-        Managers.InGame.AddDrink(drink);
+        Managers.Prepare.AddDrink(drink);
     }
 
     void OnRightClick(Drink drink)

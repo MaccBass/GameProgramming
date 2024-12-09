@@ -10,9 +10,13 @@ public class Managers : MonoBehaviour
 
     // Each Managers
     InventoryManager _inventory = new InventoryManager();
+    StatusManager _status = new StatusManager();
+    PrepareManager _prepare = new PrepareManager();
     InGameManager _ingame = new InGameManager();
     MarketManager _market = new MarketManager();
     public static InventoryManager Inventory { get { return Instance._inventory; } }
+    public static StatusManager Status { get { return Instance._status; } }
+    public static PrepareManager Prepare { get { return Instance._prepare; } }
     public static InGameManager InGame { get { return Instance._ingame; } }
     public static MarketManager Market { get { return Instance._market; } }
 

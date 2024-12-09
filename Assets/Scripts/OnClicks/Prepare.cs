@@ -83,6 +83,6 @@ public class Prepare : MonoBehaviour
 
     public void OnClickOpenButton()
     {
-        SceneManager.LoadScene("InGame_Open");
+        SceneManager.LoadScene("Open_Customer");
     }
 }

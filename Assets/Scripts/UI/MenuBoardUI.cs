@@ -20,16 +20,16 @@ public class MenuBoardUI : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Managers.InGame.foodUpdated)
+        if (Managers.Prepare.foodUpdated)
         {
             UpdateFoodUI();
-            Managers.InGame.foodUpdated = false;
+            Managers.Prepare.foodUpdated = false;
         }
 
-        if (Managers.InGame.drinkUpdated)
+        if (Managers.Prepare.drinkUpdated)
         {
             UpdateDrinkUI();
-            Managers.InGame.drinkUpdated = false;
+            Managers.Prepare.drinkUpdated = false;
         }
     }
 
@@ -42,7 +42,7 @@ public class MenuBoardUI : MonoBehaviour
         }
 
         // 獄動 持失
-        foreach (var food in Managers.InGame.Foods.ToList())
+        foreach (var food in Managers.Prepare.Foods.ToList())
         {
             GameObject obj = Instantiate(foodMenuObj, foodPosBase);
             Button button = obj.GetComponent<Button>();
@@ -78,7 +78,7 @@ public class MenuBoardUI : MonoBehaviour
         }
 
         // 獄動 持失
-        foreach (var drink in Managers.InGame.Drinks.ToList())
+        foreach (var drink in Managers.Prepare.Drinks.ToList())
         {
             GameObject obj = Instantiate(foodMenuObj, drinkPosBase);
             Button button = obj.GetComponent<Button>();
@@ -107,10 +107,10 @@ public class MenuBoardUI : MonoBehaviour
 
     void OnFoodLeftClick(Recipe food)
     {
-        Managers.InGame.DeleteFood(food);
+        Managers.Prepare.DeleteFood(food);
     }
     void OnDrinkLeftClick(Drink drink)
     {
-        Managers.InGame.DeleteDrink(drink);
+        Managers.Prepare.DeleteDrink(drink);
     }
 }
