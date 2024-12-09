@@ -43,7 +43,7 @@ public class Temp_OrderManager : MonoBehaviour
 
             if(remainingTime <= 0) { // 시간 초과 시
                 o.status = OrderStatus.CANCELED;
-                o.customer.CancleOrder(o.menu.itemName);
+                o.customer.CancelOrder(o.menu.itemName);
                 Destroy(o.orderUI, 1.5f);
             }
         }
@@ -61,5 +61,6 @@ public class Temp_OrderManager : MonoBehaviour
 
         Order newOrder = new Order(nextOrderId++, table, customer, menu, Time.time, orderUI);
         orderList.Add(newOrder);
+        Managers.Employee.AddOrder(newOrder);
     }
 }

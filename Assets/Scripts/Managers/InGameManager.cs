@@ -9,11 +9,11 @@ public class InGameManager
     // 그날 얻은 총 수익/만족도
     public int dailyTotalRevenue;
     public int dailyTotalCS;
-
+    
     // 손님 타입 별 일일 수익금
-    Dictionary<string, int> DailyRevenue = new Dictionary<string, int>();
+    public Dictionary<string, int> DailyRevenue = new Dictionary<string, int>();
     // 손님 타입 별 일일 만족도
-    Dictionary<string, int> DailyCS = new Dictionary<string, int>();
+    public Dictionary<string, int> DailyCS = new Dictionary<string, int>();
     // 손님 타입 별 방문 숫자
     public Dictionary<string, int> DailyCount = new Dictionary<string, int>();
 

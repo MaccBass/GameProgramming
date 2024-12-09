@@ -85,7 +85,7 @@ public class Customer : MonoBehaviour
         decreaseCS(1);
     }
 
-    public void CancleOrder(string menu) { // OrderManager가 호출
+    public void CancelOrder(string menu) { // OrderManager가 호출
         // Debug.Log($"cancel Order : {table.id} - {menu}");
         ordersPending--;
 
@@ -133,6 +133,10 @@ public class Customer : MonoBehaviour
         // table 상태 변환 필요
         Temp_UIManager.Instance.ShowPaymentSatisfaction(table.transform.position, totalPayment, totalCS);
         table.status = TableStatus.NEEDTOCLEAN;
+
+        Managers.InGame.DailyRevenue[type.typeName] += totalPayment;
+        Managers.InGame.DailyCS[type.typeName] += totalCS;
+        Managers.InGame.DailyCount[type.typeName]++;
         Destroy(gameObject);
     }
 }
