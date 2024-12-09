@@ -118,7 +118,18 @@ public class Customer : MonoBehaviour
 
     private void Leave() {
         // Debug.Log($"Leave : {table.id}");
-
+        if (Managers.InGame != null)
+        {
+            string customerTypeName = type.typeName;
+            if (Managers.InGame.DailyCount.ContainsKey(customerTypeName))
+            {
+                Managers.InGame.DailyCount[customerTypeName] = Managers.InGame.DailyCount[customerTypeName] + 1;
+            }
+            else
+            {
+                Managers.InGame.DailyCount[customerTypeName] = 1;
+            }
+        }
         // table 상태 변환 필요
         Temp_UIManager.Instance.ShowPaymentSatisfaction(table.transform.position, totalPayment, totalCS);
         table.status = TableStatus.NEEDTOCLEAN;

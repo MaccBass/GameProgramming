@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class CutSceneController : MonoBehaviour
+public class HappyEndingCutSceneController : MonoBehaviour
 {
     
 
     public GameObject[] cutscenes;      //컷씬 패널 배열
-    
+
+    public string sNextScene = "MainScreen";
+
     //각 컷씬 대사 배열
     public string[][] dialogList = new string[][]
     {
-        //현재 시점 컷씬, 주인공 얼굴
-        new string[] {"지금은 2024년...", "나는 충무로의 작은 술집에서 일하던 평범한 알바생", "그러나..."},
-        new string[] {"...", "얼마전 나는 사장님이 가게를 접으신다는 소식을 듣고 대출을 받아 가게를 인수했다."},
-        //임시: 대출금 써넣기
-        new string[] {"갑작스럽지만 어쩌면 내 꿈을 이룰 수 있는 기회...", "하지만! 그 전에 대출금을 갚아야한다!", "내게 남은 시간은 7일. 그 안에 대출금 n만원을 갚자!"}
+        //해피 엔딩 컷씬
+        new string[] {"지옥 같던 7일이 지났다..." },
+        new string[] {"나는 대출금을 모두 갚았다!", "이제 치솟는 물가와 싸우며 돈을 벌면 돼...!"},
+        new string[] {"Happy Ending"}
     };
 
     public Text dialogText;             //대사 표시 텍스트
@@ -114,9 +116,9 @@ public class CutSceneController : MonoBehaviour
         
         dialogText.text = "";                       //텍스트 지우기
         skipButton.gameObject.SetActive(false);     //스킵 버튼 숨기기
+        //3초 후 메인으로 이동
+        Invoke("LoadMain", 3.0f);
 
-        //임시: 3초 후 게임 종료
-        Invoke("QuitGame", 3.0f);
     }
     void QuitGame()
     {
@@ -124,9 +126,11 @@ public class CutSceneController : MonoBehaviour
         {
             cutscene.SetActive(false);
         }
-        //임시: 테스트 모드시 종료
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
-
+    void LoadMain()
+    {
+        SceneManager.LoadScene(sNextScene);
+    }
 }
