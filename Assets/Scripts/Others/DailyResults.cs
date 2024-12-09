@@ -15,22 +15,24 @@ public class DailyResults : MonoBehaviour
     public Text ResultText4;             //Result4 텍스트
     public Text TotalGainText;           //오늘 얻은 돈&경험치 텍스트
     public Text CustomerSatisfiedResultText; //만족&불만족 손님 수 텍스트
-    public Text RateText;                 //평점 텍스트
+    public Text RateText;                //평점 텍스트
 
     public Text IngredientsCostText;    //재료비 텍스트
     public Text PartTimerPayText;       //알바 급여 텍스트
-    public Text WastedFoodText;         //버린 음식값 텍스트;
     public Text TotalCostText;          //총 지출 계산 텍스트
 
     public Text GainText;               //손님들에게 얻은 것 목록 텍스트
-    public Text EffectText;             //적용 효과 텍스트
+    private string currentGainText = "";
 
+    public Text EffectText;             //적용 효과 텍스트
     public Text loanText;               //대출 상환까지 남은 돈 텍스트
+    
+
     public Text TotalMoneyText;         //총 소지금 텍스트
 
 
     //이 아래로 다른 스크립트에서 받아와야함
-    public int iOfficerCount = 0;        //직장인 수
+    public int iOfficerCount = 0;       //직장인 수
     public int iStudentCount = 0;       //대학생 수
     public int iProfessorCount = 0;     //교수님 수
     public int iObnoxiousCount = 0;     //진상 수
@@ -47,19 +49,6 @@ public class DailyResults : MonoBehaviour
     public int iProfessorSatisfactionIncrease = 0;
     public int iObnoxiousSatisfactionIncrease = 0;
 
-
-    //직장인, 대학생, 교수님, 진상 종류별 만족도 현재 몇 레벨
-    public int iOfficerSatisLevel = 0;
-    public int iStudentSatisLevel = 0;
-    public int iProfessorSatisLevel = 0;
-    public int iObnoxiousSatisLevel = 0;
-
-    //직장인, 대학생, 교수님, 진상 종류별 만족도 몇 레벨 증가했는가
-    public int iOfficerSatisUpLv = 0;
-    public int iStudentSatisUpLv = 0;
-    public int iProfessorSatisUpLv = 0;
-    public int iObnoxiousSatisUpLv = 0;
-
     //만족한 손님/불만족한 손님 몇 명
     public int iSatisfiedCustomers = 0;
     public int iUnsatisfiedCustomers = 0;
@@ -68,11 +57,20 @@ public class DailyResults : MonoBehaviour
     public int iIngredientsCost = 0;
     //알바 급여
     public int iPartTimerPay = 0;
-    //버린 음식으로 내야하는 돈
-    public int iWastedFoodCost = 0;
 
     //이전일 소지금
     public int iPrevMoney = 0;
+
+    //플레이어 레벨 보상 플래그
+    public bool bIsLv3RewardAwarded = false;
+    public bool bIsLv5RewardAwarded = false;
+    public bool bIsLv7RewardAwarded = false;
+    public bool bIsLv9RewardAwarded = false;
+
+
+
+
+
 
 
     public int iLoan= 1000000;              //빚
@@ -81,10 +79,11 @@ public class DailyResults : MonoBehaviour
 
     private int iIncome = 0;                //총 얻은돈
     private int iTotalCost = 0;             //총 지출금
-    private int fExpGet = 0;                //얻은 경험치
+    private int iExpGet = 0;                //얻은 경험치
+    public int iPlayerLv = 0;               //플레이어 레벨
 
     private int iTotalMoney = 0;            //현재 총 소지금(기존 돈 + )
-    private int iMoneyToPayLoan;            //현재 대출 상환까지 모아야하는 돈(대출금 - 현재 총 소지금)
+    private int iMoneyToPayLoan = 0;        //현재 대출 상환까지 모아야하는 돈(대출금 - 현재 총 소지금)
     
 
     private DailyDataManager dataManager;       //스크립트 참조 선언
@@ -93,6 +92,7 @@ public class DailyResults : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentGainText = "";
         dataManager = GameObject.FindObjectOfType<DailyDataManager>();
         setVals();
     }
@@ -134,23 +134,15 @@ public class DailyResults : MonoBehaviour
         this.iProfessorSatisfactionIncrease = dataManager.iProfessorSatisfactionIncrease;
         this.iObnoxiousSatisfactionIncrease = dataManager.iObnoxiousSatisfactionIncrease;
 
-        this.iOfficerSatisLevel = dataManager.iOfficerSatisLevel;
-        this.iStudentSatisLevel = dataManager.iStudentSatisLevel;
-        this.iProfessorSatisLevel = dataManager.iProfessorSatisLevel;
-        this.iObnoxiousSatisLevel = dataManager.iObnoxiousSatisLevel;
 
-        this.iOfficerSatisUpLv = dataManager.iOfficerSatisUpLv;
-        this.iStudentSatisUpLv = dataManager.iStudentSatisUpLv;
-        this.iProfessorSatisUpLv = dataManager.iProfessorSatisUpLv;
-        this.iObnoxiousSatisUpLv = dataManager.iObnoxiousSatisUpLv;
 
         this.iSatisfiedCustomers = dataManager.iSatisfiedCustomers;
         this.iUnsatisfiedCustomers = dataManager.iUnsatisfiedCustomers;
 
         this.iIngredientsCost = dataManager.iIngredientsCost;
         this.iPartTimerPay = dataManager.iPartTimerPay;
-        this.iWastedFoodCost = dataManager.iWastedFoodCost;
 
+        this.iPlayerLv = dataManager.iPlayerLv;
         this.iPrevMoney = dataManager.iPrevMoney;
         this.iLoan = dataManager.iLoan;
         this.iDay = dataManager.iDay;
@@ -181,12 +173,12 @@ public class DailyResults : MonoBehaviour
     //지출 계산 함수
     private void calCost()
     {
-        iTotalCost = iIngredientsCost + iPartTimerPay + iWastedFoodCost;
+        iTotalCost = iIngredientsCost + iPartTimerPay;
     }
     //경험치 계산 함수
     private void calExp()
     {
-        fExpGet = iOfficerSatisfactionIncrease + iStudentSatisfactionIncrease + iProfessorSatisfactionIncrease + iObnoxiousSatisfactionIncrease;
+        iExpGet = iOfficerSatisfactionIncrease + iStudentSatisfactionIncrease + iProfessorSatisfactionIncrease + iObnoxiousSatisfactionIncrease;
     }
     //현재 소지금 계산 함수
     private void calMoney()
@@ -211,24 +203,24 @@ public class DailyResults : MonoBehaviour
         //만족한 손님 수와 얻은 수익에 따라 그날그날 평가가 달라짐
         //임시: 수치는 나중에 바꿀 수 있게 변수 처리함
 
-        //S급
+        //S
         int iSscoreCustomer     = 60;
         int iSscoreIncome       = 250000;
 
-        //A급
+        //A
         int iAPlusscoreCustomer = 45;
         int iAscoreCustomer     = 40;
         int iAPlusscoreIncome   = 200000;
         int iAscoreIncome       = 180000;
 
 
-        //B급
+        //B
         int iBPlusscoreCustomer = 35;
         int iBscoreCustomer     = 30;
         int iBPlusscoreIncome   = 150000;
         int iBscoreIncome       = 130000;
 
-        //C급
+        //C
         int iCPlusscoreCustomer = 25;
         int iCscoreCustomer     = 20;
         int iCPlusscoreIncome   = 100000;
@@ -237,7 +229,7 @@ public class DailyResults : MonoBehaviour
         if ((iSatisfiedCustomers >= iSscoreCustomer) && (iIncome >= iSscoreIncome))
         {
             RateText.text = "S";
-            RateText.color = Color.red;         //글씨 빨간색
+            RateText.color = Color.red;         
             AddTextOutline(RateText, Color.black);
         }
         else if ((iSatisfiedCustomers >= iAPlusscoreCustomer) && (iIncome >= iAPlusscoreIncome))
@@ -304,7 +296,6 @@ public class DailyResults : MonoBehaviour
         setCustomerSatisfiedText();
         setIngredientCostText();
         setPartTimerPayText();
-        setWastedFoodCostText();
         setTotalCostText();
         setEarnedText();
         setEffectText();
@@ -318,23 +309,23 @@ public class DailyResults : MonoBehaviour
     {
         ResultText1.text = string.Format
             (
-                "직장인      x  {0}명: 수익 {1}원/만족도 {2} 증가/만족도 현재 {3}레벨({4} up)",
-                iOfficerCount, iOfficerIncome, iOfficerSatisfactionIncrease, iOfficerSatisLevel, iOfficerSatisUpLv
+                "직장인      x  {0}명: 수익 {1}원/만족도 {2} 증가",
+                iOfficerCount, iOfficerIncome, iOfficerSatisfactionIncrease
             );
         ResultText1.text = string.Format
             (
-                "대학생      x  {0}명: 수익 {1}원/만족도 {2} 증가/만족도 현재 {3}레벨({4} up)",
-                iStudentCount, iStudentIncome, iStudentSatisfactionIncrease, iStudentSatisLevel, iStudentSatisUpLv
+                "대학생      x  {0}명: 수익 {1}원/만족도 {2} 증가",
+                iStudentCount, iStudentIncome, iStudentSatisfactionIncrease
             );
         ResultText1.text = string.Format
             (
-                "교수님      x  {0}명: 수익 {1}원/만족도 {2} 증가/만족도 현재 {3}레벨({4} up)",
-                iProfessorCount, iProfessorIncome, iProfessorSatisfactionIncrease, iProfessorSatisLevel, iProfessorSatisUpLv
+                "교수님      x  {0}명: 수익 {1}원/만족도 {2} 증가",
+                iProfessorCount, iProfessorIncome, iProfessorSatisfactionIncrease
             );
         ResultText1.text = string.Format
             (
-                "진  상      x  {0}명: 수익 {1}원/만족도 {2} 증가/만족도 현재 {3}레벨({4} up)",
-                iObnoxiousCount, iObnoxiousIncome, iObnoxiousSatisfactionIncrease, iObnoxiousSatisLevel, iObnoxiousSatisUpLv
+                "진  상      x  {0}명: 수익 {1}원/만족도 {2} 증가",
+                iObnoxiousCount, iObnoxiousIncome, iObnoxiousSatisfactionIncrease
             );
     }
     //TotalGainText
@@ -343,7 +334,7 @@ public class DailyResults : MonoBehaviour
         TotalGainText.text = string.Format
         (
             "총 {0}원 획득/경험치 {1} 증가",
-            iIncome, fExpGet
+            iIncome, iExpGet
         );
     }
     //CustomerSatisFied
@@ -365,6 +356,58 @@ public class DailyResults : MonoBehaviour
             iIngredientsCost
         );
     }
+
+
+    //미완성: 레벨별 레시피 보상 할당 해줘야함
+    public void giveLvAwards()
+    {
+
+        if((iPlayerLv >= 3) && (bIsLv3RewardAwarded == false))
+        {
+            AddTextLine("레벨 3 달성 보상: ");
+            bIsLv3RewardAwarded = true;
+        }
+        if ((iPlayerLv >= 5) && (bIsLv5RewardAwarded == false))
+        {
+            AddTextLine("레벨 5 달성 보상: ");
+            bIsLv5RewardAwarded = true;
+        }
+        if ((iPlayerLv >= 7) && (bIsLv7RewardAwarded == false))
+        {
+            AddTextLine("레벨 7 달성 보상: ");
+            bIsLv7RewardAwarded = true;
+        }
+        if ((iPlayerLv >= 9) && (bIsLv9RewardAwarded == false))
+        {
+            AddTextLine("레벨 9 달성 보상: ");
+            bIsLv9RewardAwarded = true;
+        }
+    }
+
+    private void AddTextLine(string content)
+    {
+        if(string.IsNullOrEmpty(content))
+        {
+        }
+        else
+        {
+            currentGainText = currentGainText + "\n";
+        }
+        currentGainText = currentGainText + content;
+        UpdateGainTextUI();
+    }
+    private void UpdateGainTextUI()
+    {
+        if(GainText != null)
+        {
+            GainText.text = currentGainText;
+        }
+        else
+        {
+            Debug.Log("GainText가 할당되지 않음");
+        }
+    }
+
     //PartTimerPay
     private void setPartTimerPayText()
     {
@@ -374,15 +417,7 @@ public class DailyResults : MonoBehaviour
             iPartTimerPay
         );
     }
-    //WastedFoodCost
-    private void setWastedFoodCostText()
-    {
-        WastedFoodText.text = string.Format
-        (
-            "버린 음식: -{0}원",
-            iWastedFoodCost
-        );
-    }
+    
     private void setTotalCostText()
     {
         TotalCostText.text = string.Format
@@ -395,7 +430,7 @@ public class DailyResults : MonoBehaviour
     //임시: 구현 조건, 레시피 등 도움
     private void setEarnedText()
     {
-        
+        giveLvAwards();
     }
     //임시
     private void setEffectText()

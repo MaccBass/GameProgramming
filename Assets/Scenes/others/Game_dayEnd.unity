@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 223051352}
   - component: {fileID: 223051351}
   m_Layer: 5
-  m_Name: Earned from customers Window
+  m_Name: PlayerLvGain Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,7 +399,6 @@ MonoBehaviour:
   RateText: {fileID: 1098932916}
   IngredientsCostText: {fileID: 1899771602}
   PartTimerPayText: {fileID: 1270425641}
-  WastedFoodText: {fileID: 585112619}
   TotalCostText: {fileID: 1268070849}
   GainText: {fileID: 1687924966}
   EffectText: {fileID: 1882655141}
@@ -417,21 +416,13 @@ MonoBehaviour:
   iStudentSatisfactionIncrease: 0
   iProfessorSatisfactionIncrease: 0
   iObnoxiousSatisfactionIncrease: 0
-  iOfficerSatisLevel: 0
-  iStudentSatisLevel: 0
-  iProfessorSatisLevel: 0
-  iObnoxiousSatisLevel: 0
-  iOfficerSatisUpLv: 0
-  iStudentSatisUpLv: 0
-  iProfessorSatisUpLv: 0
-  iObnoxiousSatisUpLv: 0
   iSatisfiedCustomers: 0
   iUnsatisfiedCustomers: 0
   iIngredientsCost: 0
   iPartTimerPay: 0
-  iWastedFoodCost: 0
   iPrevMoney: 0
   iLoan: 0
+  iPlayerLv: 0
 --- !u!4 &275110065
 Transform:
   m_ObjectHideFlags: 0
@@ -613,7 +604,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uC9C1\uC7A5\uC778\t  x n\uBA85: \uC218\uC775 n\uC6D0/\uB9CC\uC871\uB3C4
-    n\uC99D\uAC00/\uB9CC\uC871\uB3C4 \uD604\uC7AC n\uB808\uBCA8(n up)\n"
+    n\uC99D\uAC00"
 --- !u!222 &352167494
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -960,8 +951,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC9C4\uC0C1\t\t  x n\uBA85: \uC218\uC775 n\uC6D0/\uB9CC\uC871\uB3C4 n\uC99D\uAC00/\uB9CC\uC871\uB3C4
-    \uD604\uC7AC n\uB808\uBCA8(n up)"
+  m_Text: "\uC9C4\uC0C1\t\t  x n\uBA85: \uC218\uC775 n\uC6D0/\uB9CC\uC871\uB3C4 n\uC99D\uAC00"
 --- !u!222 &470988448
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1000,7 +990,6 @@ RectTransform:
   m_Children:
   - {fileID: 1899771601}
   - {fileID: 1270425640}
-  - {fileID: 585112618}
   m_Father: {fileID: 958934540}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1009,86 +998,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &585112617
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 585112618}
-  - component: {fileID: 585112620}
-  - component: {fileID: 585112619}
-  m_Layer: 5
-  m_Name: WastedFoodText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &585112618
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585112617}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 542735317}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.42173, y: 12.600002}
-  m_SizeDelta: {x: 850, y: 40}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &585112619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585112617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: c115c756fe26f1b41a0d5ac1fcd567b0, type: 3}
-    m_FontSize: 25
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uBC84\uB9B0 \uC74C\uC2DD: -n\uC6D0"
---- !u!222 &585112620
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585112617}
-  m_CullTransparentMesh: 1
 --- !u!1 &778182753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,7 +2170,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uB300\uD559\uC0DD\t  x n\uBA85: \uC218\uC775 n\uC6D0/\uB9CC\uC871\uB3C4
-    n\uC99D\uAC00/\uB9CC\uC871\uB3C4 \uD604\uC7AC n\uB808\uBCA8(n up)"
+    n\uC99D\uAC00"
 --- !u!222 &1396535117
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2650,7 +2559,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC190\uB2D8\uB4E4\uC5D0\uAC8C \uC5BB\uC740\uAC83"
+  m_Text: "\uBC84\uD504 \uBC0F \uB808\uBCA8 \uBCF4\uC0C1"
 --- !u!222 &1751760811
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2811,7 +2720,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uAD50\uC218\uB2D8\t  x n\uBA85: \uC218\uC775 n\uC6D0/\uB9CC\uC871\uB3C4
-    n\uC99D\uAC00/\uB9CC\uC871\uB3C4 \uD604\uC7AC n\uB808\uBCA8(n up)"
+    n\uC99D\uAC00"
 --- !u!222 &1864272673
 CanvasRenderer:
   m_ObjectHideFlags: 0
