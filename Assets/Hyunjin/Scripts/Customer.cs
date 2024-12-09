@@ -110,7 +110,7 @@ public class Customer : MonoBehaviour
     private void Order() {
         // 랜덤 주문
         // table 상태 변환 필요
-        Recipe random = Managers.InGame.Foods[(Random.Range(0, Managers.InGame.Foods.Count))];
+        Recipe random = Managers.Prepare.Foods[(Random.Range(0, Managers.Prepare.Foods.Count))];
         Temp_OrderManager.Instance.AddOrder(table, this, random);
         ordersPending++;
         // Debug.Log($"Order : {table.id} - {random.name}");
