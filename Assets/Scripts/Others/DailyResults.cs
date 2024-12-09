@@ -87,17 +87,15 @@ public class DailyResults : MonoBehaviour
 
     private int iTotalMoney;            //현재 총 소지금(기존 돈 + )
     private int iMoneyToPayLoan = 0;        //현재 대출 상환까지 모아야하는 돈(대출금 - 현재 총 소지금)
-    
-
-    private DailyDataManager dataManager;       //스크립트 참조 선언
 
 
     // Start is called before the first frame update
     void Start()
     {
+        
         recipes = Resources.LoadAll<Recipe>("Recipes");
         currentGainText = "";
-        dataManager = GameObject.FindObjectOfType<DailyDataManager>();
+        
         setVals();
     }
 
@@ -122,23 +120,21 @@ public class DailyResults : MonoBehaviour
     //DailyDataManager에서 각 변수들 가져와서 사용
     private void setVals()
     {
-        
-        //임시: 타스크립트 가져와서 변수 설정
-        //임시: DataManager은 error을 방지하기 위해 만든 임시 스크립트이므로 모든 변수를 가져온 뒤에는 삭제
-        this.iOfficerCount = dataManager.iOfficerCount;
-        this.iStudentCount = dataManager.iStudentCount;
-        this.iProfessorCount = dataManager.iProfessorCount;
-        this.iObnoxiousCount = dataManager.iObnoxiousCount;
+        //임시: 진상은 작성 당시 설정되어 있지 않아서 Obnoxiout로 임시 설정함
+        this.iOfficerCount = Managers.InGame.getDailyCount("Worker");
+        this.iStudentCount = Managers.InGame.getDailyCount("Student");
+        this.iProfessorCount = Managers.InGame.getDailyCount("Professor");
+        this.iObnoxiousCount = Managers.InGame.getDailyCount("Obnoxious");
 
-        this.iOfficerIncome = dataManager.iOfficerIncome;
-        this.iStudentIncome = dataManager.iStudentIncome;
-        this.iProfessorIncome = dataManager.iProfessorIncome;
-        this.iObnoxiousIncome = dataManager.iObnoxiousIncome;
+        this.iOfficerIncome = Managers.InGame.getDailyRevenue("Worker");
+        this.iStudentIncome = Managers.InGame.getDailyRevenue("Student");
+        this.iProfessorIncome = Managers.InGame.getDailyRevenue("Professor");
+        this.iObnoxiousIncome = Managers.InGame.getDailyRevenue("Obnoxious");
 
-        this.iOfficerSatisfactionIncrease = dataManager.iOfficerSatisfactionIncrease;
-        this.iStudentSatisfactionIncrease = dataManager.iStudentSatisfactionIncrease;
-        this.iProfessorSatisfactionIncrease = dataManager.iProfessorSatisfactionIncrease;
-        this.iObnoxiousSatisfactionIncrease = dataManager.iObnoxiousSatisfactionIncrease;
+        this.iOfficerSatisfactionIncrease = Managers.InGame.getDailyCs("Worker");
+        this.iStudentSatisfactionIncrease = Managers.InGame.getDailyCs("Student");
+        this.iProfessorSatisfactionIncrease = Managers.InGame.getDailyCs("Professor");
+        this.iObnoxiousSatisfactionIncrease = Managers.InGame.getDailyCs("Obnoxious");
 
         this.iIncome = Managers.InGame.dailyTotalRevenue;
         this.iExpGet = Managers.InGame.dailyTotalCS;
