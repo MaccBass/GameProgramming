@@ -24,6 +24,7 @@ public class CookBehaviour : MonoBehaviour
     void Start()
     {
         nma = GetComponent<NavMeshAgent>();
+        nma.speed = 5.0f;
     }
 
     void Update()
