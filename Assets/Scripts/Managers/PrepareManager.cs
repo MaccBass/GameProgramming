@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PrepareManager
 {
+
     // 가게 준비 관련 부분
     public List<Recipe> Foods = new List<Recipe>();
     public List<Drink> Drinks = new List<Drink>();
     public List<Tool> Tools = new List<Tool>();
     public bool foodUpdated = false;
     public bool drinkUpdated = false;
-    public bool toolUpdated = false;
+
     // LateUpdate가 2번 사용되서 어쩔수없이 하드코딩(수정 가능하나 작업량이 많아짐.)
+    public bool toolUpdated = false;
     public bool toolUpdated2 = false;
+
+    public bool isWaiterEmployed = false;
+    public bool isCookEmployed = false;
     public bool employeeUpdated = false;
 
     // 게임 시작 시 1회만 호출, (NewGame 시 완전 초기화, Load 시 마지막으로 편성한거 불러옴.)
@@ -118,5 +123,51 @@ public class PrepareManager
         }
         toolUpdated = true;
         toolUpdated2 = true;
+    }
+    public void AddWaiter()
+    {
+        if (isWaiterEmployed)
+        {
+            Debug.Log("홀 직원 이미 고용됨");
+            return;
+        }
+        else
+        {
+            isWaiterEmployed = true;
+        }
+        employeeUpdated = true;
+    }
+    public void AddCook()
+    {
+        if (isCookEmployed)
+        {
+            Debug.Log("주방 직원 이미 고용됨");
+            return;
+        }
+        else
+        {
+            isCookEmployed = true;
+        }
+        employeeUpdated = true;
+    }
+    public void DeleteWaiter()
+    {
+        if (isWaiterEmployed) isWaiterEmployed = false;
+        else
+        {
+            Debug.Log("홀 직원이 편성되지 않음: 오류");
+            return;
+        }
+        employeeUpdated = true;
+    }
+    public void DeleteCook()
+    {
+        if (isCookEmployed) isCookEmployed = false;
+        else
+        {
+            Debug.Log("주방 직원이 편성되지 않음: 오류");
+            return;
+        }
+        employeeUpdated = true;
     }
 }

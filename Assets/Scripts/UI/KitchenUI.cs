@@ -9,7 +9,8 @@ public class KitchenUI : MonoBehaviour
 {
     public Transform toolPosBase;
     public GameObject toolObj;
-    public GameObject employeeObj;
+    public GameObject waiterObj;
+    public GameObject cookObj;
 
     private void OnEnable()
     {
@@ -58,9 +59,33 @@ public class KitchenUI : MonoBehaviour
 
     void UpdateEmployeeUI()
     {
-
+        /*
+        if (Managers.Prepare.isWaiterEmployed)
+        {
+            waiterObj.SetActive(true);
+        }
+        else
+        {
+            waiterObj.SetActive(false);
+        }
+        if (Managers.Prepare.isCookEmployed)
+        {
+            cookObj.SetActive(true);
+        }
+        else
+        {
+            cookObj.SetActive(false);
+        }
+        */
     }
-
+    void OnWaiterLeftClick()
+    {
+        Managers.Prepare.DeleteWaiter();
+    }
+    void OnCookLeftClick()
+    {
+        Managers.Prepare.DeleteCook();
+    }
     void OnToolLeftClick(Tool tool)
     {
             Managers.Prepare.DeleteTool(tool);

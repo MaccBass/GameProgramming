@@ -10,14 +10,10 @@ public class MainScreen : MonoBehaviour
         Managers.Inventory.Init("NewGame");
         Managers.Prepare.Init("NewGame");
         Managers.Market.Init("NewGame");
+        Managers.Status.Init();
+        Managers.InGame.Init();
         // SceneManager.LoadScene("CutScene_NewGame");
-        SceneManager.LoadScene("InGame_Prepare_LIS");
-    }
-    public void OnClickGameLoadButton()
-    {
-        // 저장된 데이터 로드하는 부분
-        // SceneManager.LoadScene("InGame_Prepare");
-        SceneManager.LoadScene("InGame_Prepare_LIS");
+        SceneManager.LoadScene("InGame_Prepare");
     }
     public void OnClickExitButton() { 
         Application.Quit();
