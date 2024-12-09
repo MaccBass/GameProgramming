@@ -13197,6 +13197,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 269683040}
     m_Modifications:
+    - target: {fileID: 3155471680820793567, guid: b35c186b5ce3bd7448606293467dd4bd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264062955550565434, guid: b35c186b5ce3bd7448606293467dd4bd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8292062369356877595, guid: b35c186b5ce3bd7448606293467dd4bd, type: 3}
       propertyPath: m_Name
       value: Pot
@@ -14080,6 +14088,10 @@ PrefabInstance:
       propertyPath: RecipePopup
       value: 
       objectReference: {fileID: 3574956252398904877}
+    - target: {fileID: 1986354339221652360, guid: d28aa1a42e6b567408aed82dd340afb0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2417893327918082217, guid: d28aa1a42e6b567408aed82dd340afb0, type: 3}
       propertyPath: m_Name
       value: Fryer
@@ -14126,6 +14138,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417893327918082223, guid: d28aa1a42e6b567408aed82dd340afb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743522240347141997, guid: d28aa1a42e6b567408aed82dd340afb0, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14533,6 +14549,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 269683040}
     m_Modifications:
+    - target: {fileID: 3155471680820793567, guid: b35c186b5ce3bd7448606293467dd4bd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264062955550565434, guid: b35c186b5ce3bd7448606293467dd4bd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8292062369356877595, guid: b35c186b5ce3bd7448606293467dd4bd, type: 3}
       propertyPath: m_Name
       value: Pot
@@ -14595,6 +14619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 269683040}
     m_Modifications:
+    - target: {fileID: 1986354339221652360, guid: d28aa1a42e6b567408aed82dd340afb0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2417893327918082217, guid: d28aa1a42e6b567408aed82dd340afb0, type: 3}
       propertyPath: m_Name
       value: Fryer
@@ -14641,6 +14669,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417893327918082223, guid: d28aa1a42e6b567408aed82dd340afb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743522240347141997, guid: d28aa1a42e6b567408aed82dd340afb0, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14737,6 +14769,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 269683040}
     m_Modifications:
+    - target: {fileID: 314720616345962316, guid: 2a0347d0431ae3e4d9ca951e3b9eec7d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6667353536953407624, guid: 2a0347d0431ae3e4d9ca951e3b9eec7d, type: 3}
       propertyPath: m_Name
       value: CuttingBoard
@@ -14783,6 +14819,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6667353536953407630, guid: 2a0347d0431ae3e4d9ca951e3b9eec7d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393174613800891305, guid: 2a0347d0431ae3e4d9ca951e3b9eec7d, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14984,6 +15024,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1937081072125581502, guid: 0abfff7a6384ae347a9a4c04a28b6f4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377622892095042457, guid: 0abfff7a6384ae347a9a4c04a28b6f4c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771786954585655164, guid: 0abfff7a6384ae347a9a4c04a28b6f4c, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
