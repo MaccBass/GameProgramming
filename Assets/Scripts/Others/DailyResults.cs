@@ -50,13 +50,13 @@ public class DailyResults : MonoBehaviour
     public int iObnoxiousSatisfactionIncrease = 0;
 
     //만족한 손님/불만족한 손님 몇 명
-    public int iSatisfiedCustomers = 0;
-    public int iUnsatisfiedCustomers = 0;
+    public int iSatisfiedCustomers;
+    public int iDissatisfiedCustomers;
 
     //재료비
-    public int iIngredientsCost = 0;
+    public int iIngredientsCost;
     //알바 급여
-    public int iPartTimerPay = 0;
+    public int iPartTimerPay;
 
     //이전일 소지금
     public int iPrevMoney = 0;
@@ -67,7 +67,8 @@ public class DailyResults : MonoBehaviour
     public bool bIsLv7RewardAwarded = false;
     public bool bIsLv9RewardAwarded = false;
 
-
+    //인플루언서 관련 변수
+    public bool bIsInfluSatisfied = false;          //인플루언서 만족 여부
 
 
 
@@ -75,25 +76,26 @@ public class DailyResults : MonoBehaviour
 
     public int iLoan= 1000000;              //빚
 
-    private int iDay = 0;                   //몇일차인지 기록
+    private int iDay;                   //몇일차인지 기록
 
-    private int iIncome = 0;                //총 얻은돈
-    private int iTotalCost = 0;             //총 지출금
-    private int iExpGet = 0;                //얻은 경험치
-    public int iPlayerLv = 0;               //플레이어 레벨
+    private int iIncome;                    //하루 얻은돈
+    private int iTotalCost = 0;             //하루 지출금
+    private int iExpGet;                //얻은 경험치
+    public int iPlayerLv;               //플레이어 레벨
+    public Recipe[] recipes;            
 
-    private int iTotalMoney = 0;            //현재 총 소지금(기존 돈 + )
+
+    private int iTotalMoney;            //현재 총 소지금(기존 돈 + )
     private int iMoneyToPayLoan = 0;        //현재 대출 상환까지 모아야하는 돈(대출금 - 현재 총 소지금)
-    
-
-    private DailyDataManager dataManager;       //스크립트 참조 선언
 
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        recipes = Resources.LoadAll<Recipe>("Recipes");
         currentGainText = "";
-        dataManager = GameObject.FindObjectOfType<DailyDataManager>();
+        
         setVals();
     }
 
@@ -118,43 +120,45 @@ public class DailyResults : MonoBehaviour
     //DailyDataManager에서 각 변수들 가져와서 사용
     private void setVals()
     {
-        //임시: 타스크립트 가져와서 변수 설정
-        this.iOfficerCount = dataManager.iOfficerCount;
-        this.iStudentCount = dataManager.iStudentCount;
-        this.iProfessorCount = dataManager.iProfessorCount;
-        this.iObnoxiousCount = dataManager.iObnoxiousCount;
+        //임시: 진상은 작성 당시 설정되어 있지 않아서 Obnoxiout로 임시 설정함
+        this.iOfficerCount = Managers.InGame.getDailyCount("Worker");
+        this.iStudentCount = Managers.InGame.getDailyCount("Student");
+        this.iProfessorCount = Managers.InGame.getDailyCount("Professor");
+        this.iObnoxiousCount = Managers.InGame.getDailyCount("Obnoxious");
 
-        this.iOfficerIncome = dataManager.iOfficerIncome;
-        this.iStudentIncome = dataManager.iStudentIncome;
-        this.iProfessorIncome = dataManager.iProfessorIncome;
-        this.iObnoxiousIncome = dataManager.iObnoxiousIncome;
+        this.iOfficerIncome = Managers.InGame.getDailyRevenue("Worker");
+        this.iStudentIncome = Managers.InGame.getDailyRevenue("Student");
+        this.iProfessorIncome = Managers.InGame.getDailyRevenue("Professor");
+        this.iObnoxiousIncome = Managers.InGame.getDailyRevenue("Obnoxious");
 
-        this.iOfficerSatisfactionIncrease = dataManager.iOfficerSatisfactionIncrease;
-        this.iStudentSatisfactionIncrease = dataManager.iStudentSatisfactionIncrease;
-        this.iProfessorSatisfactionIncrease = dataManager.iProfessorSatisfactionIncrease;
-        this.iObnoxiousSatisfactionIncrease = dataManager.iObnoxiousSatisfactionIncrease;
+        this.iOfficerSatisfactionIncrease = Managers.InGame.getDailyCs("Worker");
+        this.iStudentSatisfactionIncrease = Managers.InGame.getDailyCs("Student");
+        this.iProfessorSatisfactionIncrease = Managers.InGame.getDailyCs("Professor");
+        this.iObnoxiousSatisfactionIncrease = Managers.InGame.getDailyCs("Obnoxious");
 
+        this.iIncome = Managers.InGame.dailyTotalRevenue;
+        this.iExpGet = Managers.InGame.dailyTotalCS;
 
+        this.iSatisfiedCustomers = Managers.InGame.isSatisfied;
+        this.iDissatisfiedCustomers = Managers.InGame.isDissatisfied;
 
-        this.iSatisfiedCustomers = dataManager.iSatisfiedCustomers;
-        this.iUnsatisfiedCustomers = dataManager.iUnsatisfiedCustomers;
+        this.iIngredientsCost = Managers.InGame.shoppingCost;
+        this.iPartTimerPay = Managers.InGame.wages;
 
-        this.iIngredientsCost = dataManager.iIngredientsCost;
-        this.iPartTimerPay = dataManager.iPartTimerPay;
+        this.iPlayerLv = Managers.Status.playerLevel;
+        //this.iPrevMoney = dataManager.iPrevMoney;
+        this.iDay = Managers.Status.day;
+        this.iTotalMoney = Managers.Status.totalMoney;
 
-        this.iPlayerLv = dataManager.iPlayerLv;
-        this.iPrevMoney = dataManager.iPrevMoney;
-        this.iLoan = dataManager.iLoan;
-        this.iDay = dataManager.iDay;
 
         //수익 계산
         calIncome();
         //지출 계산
         calCost();
         //경험치 계산
-        calExp();
+        //calExp();
         //현재 소지금 계산
-        calMoney();
+        //calMoney();
         //남은 대출금 계산
         calLoan();
 
@@ -165,22 +169,29 @@ public class DailyResults : MonoBehaviour
         //Text 세팅
         setTexts();
     }
-    //수익 계산 함수
+    //수익 계산 함수 - 안 씀
     private void calIncome()
     {
-        iIncome = iOfficerIncome + iStudentIncome + iProfessorIncome + iObnoxiousIncome;
+        if(bIsInfluSatisfied == true)
+        {
+            //iTotalMoney는 이미 오늘의 수익금이 더해진 상태로 로딩되기 때문에 인플루언서 부가 효과는 iIncome을 한 번만 더 더하도록 함
+            iTotalMoney = iTotalMoney + iIncome;
+            setEffectText();
+            bIsInfluSatisfied = false;
+        }
+        
     }
     //지출 계산 함수
     private void calCost()
     {
         iTotalCost = iIngredientsCost + iPartTimerPay;
     }
-    //경험치 계산 함수
+    //경험치 계산 함수 - 안 씀
     private void calExp()
     {
         iExpGet = iOfficerSatisfactionIncrease + iStudentSatisfactionIncrease + iProfessorSatisfactionIncrease + iObnoxiousSatisfactionIncrease;
     }
-    //현재 소지금 계산 함수
+    //현재 소지금 계산 함수 - 안 씀
     private void calMoney()
     {
         int iGap = iIncome - iTotalCost;
@@ -298,7 +309,7 @@ public class DailyResults : MonoBehaviour
         setPartTimerPayText();
         setTotalCostText();
         setEarnedText();
-        setEffectText();
+        
         setMoneyLeftToPayText();
         setTotalMoney();
     }
@@ -344,7 +355,7 @@ public class DailyResults : MonoBehaviour
         (
             "만족한 손님     x {0}명\n" +
             "불만족한 손님     x {1}명",
-            iSatisfiedCustomers, iUnsatisfiedCustomers
+            iSatisfiedCustomers, iDissatisfiedCustomers
         );
     }
     //IngredientCost
@@ -357,29 +368,31 @@ public class DailyResults : MonoBehaviour
         );
     }
 
-
-    //미완성: 레벨별 레시피 보상 할당 해줘야함
     public void giveLvAwards()
     {
 
         if((iPlayerLv >= 3) && (bIsLv3RewardAwarded == false))
         {
-            AddTextLine("레벨 3 달성 보상: ");
+            AddTextLine("레벨 3 달성 보상: 라면 레시피");
+            UnlockRecipe("라면");
             bIsLv3RewardAwarded = true;
         }
         if ((iPlayerLv >= 5) && (bIsLv5RewardAwarded == false))
         {
-            AddTextLine("레벨 5 달성 보상: ");
+            AddTextLine("레벨 5 달성 보상: 윙봉 레시피");
+            UnlockRecipe("윙봉");
             bIsLv5RewardAwarded = true;
         }
         if ((iPlayerLv >= 7) && (bIsLv7RewardAwarded == false))
         {
-            AddTextLine("레벨 7 달성 보상: ");
+            AddTextLine("레벨 7 달성 보상: 두부김치 레시피");
+            UnlockRecipe("두부김치");
             bIsLv7RewardAwarded = true;
         }
         if ((iPlayerLv >= 9) && (bIsLv9RewardAwarded == false))
         {
-            AddTextLine("레벨 9 달성 보상: ");
+            AddTextLine("레벨 9 달성 보상: 피자 레시피");
+            UnlockRecipe("피자");
             bIsLv9RewardAwarded = true;
         }
     }
@@ -427,20 +440,23 @@ public class DailyResults : MonoBehaviour
         );
     }
 
-    //임시: 구현 조건, 레시피 등 도움
     private void setEarnedText()
     {
         giveLvAwards();
     }
-    //임시
+    private void UnlockRecipe(string recipeName)
+    {
+        foreach (var recipe in recipes)
+        {
+            if(recipe.itemName == recipeName)
+            {
+                recipe.isObtained = true;
+            }
+        }
+    }
     private void setEffectText()
     {
-        EffectText.text = string.Format
-        (
-            ""
-        //"적용 효과: \n" + 
-        //임시: 구현 필요
-        );
+        EffectText.text = "오늘 수익금 두배!";
     }
     private void setMoneyLeftToPayText()
     {

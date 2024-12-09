@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class NextButtonScript : MonoBehaviour
 {
     public Button nextButton;           //다음날로 넘어가는 버튼
-    public string sNextScene = "Open_Customer";            //임시: 다음 씬 이름 지정하기
+    public string sNextScene = "Open_Customer";            
     private string sHappyEnding = "2. HappyEnding CutScene";    //해피 엔딩 컷씬
     private string sBadEnding = "3. BadEnding CutScene";        //배드 엔딩 컷씬
 
@@ -17,11 +17,16 @@ public class NextButtonScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(Managers.Status == null)
+        {
+            Debug.Log("Managers.Status가 null입니다.");
+            return;
+        }
         if (nextButton == null)
         { }
         else
         {
-            iDay = dailyResults.getiDay();
+            iDay = Managers.Status.day;
             nextButton.onClick.AddListener(OnNextButtonClick);
         }
     }
@@ -40,7 +45,7 @@ public class NextButtonScript : MonoBehaviour
             //다음 씬으로 이동
             SceneManager.LoadScene(sNextScene);
         }
-        //임시. day count를 1부터 시작할건지 0부터 시작할건지 확인 필요. 일단 1부터 시작한다고 가정하고 작성함
+        
         else if (iDay > 7)
         {
             //해피 엔딩
