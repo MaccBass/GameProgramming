@@ -14,6 +14,8 @@ public class InGameManager
     Dictionary<string, int> DailyRevenue = new Dictionary<string, int>();
     // 손님 타입 별 일일 만족도
     Dictionary<string, int> DailyCS = new Dictionary<string, int>();
+    // 손님 타입 별 방문 숫자
+    public Dictionary<string, int> DailyCount = new Dictionary<string, int>();
 
     // 만족/불만족한 손님 수
     public int isSatisfied;
@@ -29,6 +31,7 @@ public class InGameManager
     {
         dailyTotalRevenue = 0;
         dailyTotalCS = 0;
+        DailyCount.Clear();
         DailyRevenue.Clear();
         DailyCS.Clear();
         isSatisfied = 0;
@@ -53,7 +56,36 @@ public class InGameManager
         Managers.Status.LevelCheck();
         Managers.Status.totalMoney -= wages;
     }
-
+    //손님 타입별 수 반환 함수
+    public int getDailyCount(string customerType)
+    {
+        int iReturn = 0;
+        if (DailyCount.ContainsKey(customerType))
+        {
+            iReturn = DailyCount[customerType];
+        }
+        return iReturn;
+    }
+    //손님 타입별 수익금 반환 함수
+    public int getDailyRevenue(string customerType)
+    {
+        int iReturn = 0;
+        if(DailyRevenue.ContainsKey(customerType))
+        {
+            iReturn = DailyRevenue[customerType];
+        }
+        return iReturn;
+    }
+    //손님 타입별 만족도 반환 함수
+    public int getDailyCs(string customerType)
+    {
+        int iReturn = 0;
+        if(DailyCS.ContainsKey(customerType))
+        {
+            iReturn = DailyCS[customerType];
+        }
+        return iReturn;
+    }
     // 다음날 넘어갈 때 실행
     public void NextDay()
     {
