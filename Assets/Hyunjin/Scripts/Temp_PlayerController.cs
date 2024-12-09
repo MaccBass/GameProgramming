@@ -58,7 +58,7 @@ public class Temp_PlayerController : MonoBehaviour
         if (hit.collider.gameObject.layer == 10) {
             hit.collider.GetComponent<Fridge>().showPopup();
         }
-        else if (hit.collider.gameObject.layer == 8) { // cooker가 이용중이 아니라면
+        else if (hit.collider.gameObject.layer == 8) {
             Debug.Log(hit.collider);
             hit.collider.GetComponent<Cooker>().prepareCooking();
         }
