@@ -82,7 +82,7 @@ public class DailyResults : MonoBehaviour
     private int iTotalCost = 0;             //하루 지출금
     private int iExpGet;                //얻은 경험치
     public int iPlayerLv;               //플레이어 레벨
-    public Recipe[] recipes;            //임시: 작성 당시 recipe-item업데이트가 제 컴퓨터에 반영되어 있지 않았음
+    public Recipe[] recipes;            
 
 
     private int iTotalMoney;            //현재 총 소지금(기존 돈 + )
@@ -313,9 +313,9 @@ public class DailyResults : MonoBehaviour
     private void setResultText()
     {
         ResultText1.text = $"직장인      x  {iOfficerCount}명: 수익 {iOfficerIncome}원/만족도 {iOfficerSatisfactionIncrease} 증가";
-        ResultText1.text = $"대학생      x  {iStudentCount}명: 수익 {iStudentIncome}원/만족도 {iStudentSatisfactionIncrease} 증가";
-        ResultText1.text = $"교수님      x  {iProfessorCount}명: 수익 {iProfessorIncome}원/만족도 {iProfessorSatisfactionIncrease} 증가";
-        ResultText1.text = $"진  상      x  {iObnoxiousCount}명: 수익 {iObnoxiousIncome}원/만족도 {iObnoxiousSatisfactionIncrease} 증가";
+        ResultText2.text = $"대학생      x  {iStudentCount}명: 수익 {iStudentIncome}원/만족도 {iStudentSatisfactionIncrease} 증가";
+        ResultText3.text = $"교수님      x  {iProfessorCount}명: 수익 {iProfessorIncome}원/만족도 {iProfessorSatisfactionIncrease} 증가";
+        ResultText4.text = $"진  상      x  {iObnoxiousCount}명: 수익 {iObnoxiousIncome}원/만족도 {iObnoxiousSatisfactionIncrease} 증가";
     }
     //TotalGainText
     private void setTotalGainText()

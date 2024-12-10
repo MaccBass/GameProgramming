@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class NextButtonScript : MonoBehaviour
 {
     public Button nextButton;           //다음날로 넘어가는 버튼
-    public string sNextScene = "Open_Customer";            
+    public string sNextScene = "InGame_Prepare";            
     private string sHappyEnding = "2. HappyEnding CutScene";    //해피 엔딩 컷씬
     private string sBadEnding = "3. BadEnding CutScene";        //배드 엔딩 컷씬
 
