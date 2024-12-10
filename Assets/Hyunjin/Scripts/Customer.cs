@@ -142,7 +142,7 @@ public class Customer : MonoBehaviour
         }
         // table 상태 변환 필요
         Temp_UIManager.Instance.ShowPaymentSatisfaction(table.transform.position, totalPayment, totalCS);
-        table.status = TableStatus.NEEDTOCLEAN;
+        table.makeDirty();
 
         // Managers.InGame.DailyRevenue[type.typeName] += totalPayment;
         // Managers.InGame.DailyCS[type.typeName] += totalCS;
