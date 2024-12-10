@@ -3497,18 +3497,18 @@ Transform:
   - {fileID: 176415114}
   - {fileID: 421063415}
   - {fileID: 1973397096}
-  - {fileID: 840305766}
+  - {fileID: 1746574945}
   - {fileID: 1678700749}
   - {fileID: 2011394316}
   - {fileID: 1012888099}
   - {fileID: 104468119}
   - {fileID: 317731291}
   - {fileID: 615377730}
-  - {fileID: 331690817}
+  - {fileID: 1658996181}
   - {fileID: 990243698}
   - {fileID: 84307388}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &888765123 stripped
 Transform:
@@ -9024,6 +9024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dc821bc607cbf4aab54f82a1b22b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sNextScene: 
   currentDay: 0
   totalRevenue: 0
   dailyRevenue: 0
@@ -13218,14 +13219,14 @@ MonoBehaviour:
   - {fileID: 176415114}
   - {fileID: 421063415}
   - {fileID: 1973397096}
-  - {fileID: 840305766}
+  - {fileID: 1746574945}
   - {fileID: 1678700749}
   - {fileID: 2011394316}
   - {fileID: 1012888099}
   - {fileID: 104468119}
   - {fileID: 317731291}
   - {fileID: 615377730}
-  fridgeLocation: {fileID: 331690817}
+  fridgeLocation: {fileID: 1658996181}
   drinkLocation: {fileID: 990243698}
   idleLocation: {fileID: 84307388}
   fridge: {fileID: 319131417}
@@ -13365,7 +13366,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1266282666
 PrefabInstance:
@@ -15188,6 +15189,37 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1658996180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1658996181}
+  m_Layer: 0
+  m_Name: Fridge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1658996181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658996180}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.1, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 879781373}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1678700748
 GameObject:
   m_ObjectHideFlags: 0
@@ -15567,6 +15599,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1746574944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1746574945}
+  m_Layer: 0
+  m_Name: Table (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1746574945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746574944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.52, y: -6.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 879781373}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763863395
 GameObject:
   m_ObjectHideFlags: 0
@@ -15761,7 +15824,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 739519959}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999998
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
