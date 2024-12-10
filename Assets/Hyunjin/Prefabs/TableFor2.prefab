@@ -52,6 +52,7 @@ MonoBehaviour:
   chairNum: 2
   chairs: []
   status: 0
+  dirty: {fileID: 0}
 --- !u!61 &-3418814719482010107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -289,9 +290,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6092059997561811189}
     m_Modifications:
+    - target: {fileID: 2173948668173762370, guid: 90713fc0b1f92de448a387adb63040a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2173948668173762370, guid: 90713fc0b1f92de448a387adb63040a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2895929049592246391, guid: 90713fc0b1f92de448a387adb63040a8, type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492227011332800569, guid: 90713fc0b1f92de448a387adb63040a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3880527843273670129, guid: 90713fc0b1f92de448a387adb63040a8, type: 3}
       propertyPath: m_RootOrder

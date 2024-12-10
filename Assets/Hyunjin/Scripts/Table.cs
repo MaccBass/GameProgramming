@@ -22,7 +22,14 @@ public class Table : MonoBehaviour
         for (int i = 0; i < chairNum; i++) {
             chairs[i] = transform.Find($"Chair_{i+1}");
         }
-        dirty = transform.Find("Table/dirty").gameObject;
+        if (chairNum == 2)
+        {
+            dirty = transform.Find("Table/dirty").gameObject;
+        }
+        else if (chairNum == 4)
+        {
+            dirty = transform.Find("dirty").gameObject;
+        }
     }
 
     public void occupy() {
