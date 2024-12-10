@@ -21,7 +21,7 @@ public class CookerManager : MonoBehaviour
     public GameObject itemPrefab;
     public List<Recipe> CookerRecipe;
 
-    public Recipe currentRecipe;
+    private Cooker currentCooker;
 
     public void Start() {
         foreach (Recipe recipe in Managers.Prepare.Foods)
@@ -34,17 +34,25 @@ public class CookerManager : MonoBehaviour
             if (iconImage != null) {
                 iconImage.sprite = recipe.icon;
             }
+            Text[] texts = obj.GetComponentsInChildren<Text>();
+            foreach (Text text in texts) {
+                if (text.gameObject.name == "Name")
+                    text.text = recipe.itemName;
+            }
 
             button.onClick.AddListener(() => OnLeftClick(recipe));
         }
     }
 
     void OnLeftClick(Recipe recipe) {
-        currentRecipe = recipe;
+        currentCooker.startCooking(recipe);
+        currentCooker = null;
+        hidePopup();
     }
 
     // popup
-    public void showPopup() {
+    public void showPopup(Cooker target) {
+        currentCooker = target;
         CookerPopup.SetActive(true);
     }
 

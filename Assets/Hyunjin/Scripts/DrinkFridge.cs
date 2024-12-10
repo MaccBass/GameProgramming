@@ -1,58 +1,62 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-// public class DrinkFridge : MonoBehaviour
-// {
-//     public GameObject DrinkFridgePopup;
-//     public Transform DrinkFridgeContainer;
-//     public GameObject itemPrefab;
-//     public bool isActive = false;
-//     public List<Drink> FridgeDrink;
+public class DrinkFridge : MonoBehaviour
+{
+    public GameObject DrinkFridgePopup;
+    public Transform DrinkFridgeContainer;
+    public GameObject itemPrefab;
+    public bool isActive = false;
 
-//     public void AddItem(Drink drink) {
-//         FridgeDrink.Add(drink);
-//         UpdateUI();
-//     }
+    public void AddItem(Drink drink) {
+        drink.quantity++;
+        UpdateUI();
+    }
     
-//     public void DeleteItem(Drink drink) {
-//         if (!HeldItemsManager.Instance.canHold())
-//             return;
-//         FridgeDrink.Remove(drink);
-//         UpdateUI();
-//         HeldItemsManager.Instance.HoldItem(drink);
-//     }
+    public void DeleteItem(Drink drink) {
+        if (drink.quantity <= 0 || !HeldItemsManager.Instance.canHold())
+            return;
+        drink.quantity--; // 수량 줄어드는거맞나?
+        UpdateUI();
+        HeldItemsManager.Instance.HoldItem(drink);
+    }
 
-//     public void UpdateUI() {
-//         foreach (Transform child in FridgeContainer) {
-//             Destroy(child.gameObject);
-//         }
-//         foreach (Recipe recipe in FridgeRecipe)
-//         {
-//             GameObject obj = Instantiate(itemPrefab, FridgeContainer);
-//             Button button = obj.GetComponent<Button>();
-//             button.transform.localScale = Vector3.one;
+    public void UpdateUI() {
+        foreach (Transform child in DrinkFridgeContainer) {
+            Destroy(child.gameObject);
+        }
+        foreach (Drink drink in Managers.Prepare.Drinks)
+        {
+            GameObject obj = Instantiate(itemPrefab, DrinkFridgeContainer);
+            Button button = obj.GetComponent<Button>();
+            button.transform.localScale = Vector3.one;
 
-//             Image iconImage = button.GetComponent<Image>();
-//             if (iconImage != null) {
-//                 iconImage.sprite = recipe.icon;
-//             }
-//             Text label = button.GetComponentInChildren<Text>();
-//             if (label != null)
-//                 label.text = recipe.itemName;
+            Image iconImage = button.GetComponent<Image>();
+            if (iconImage != null) {
+                iconImage.sprite = drink.icon;
+            }
+            Text[] texts = obj.GetComponentsInChildren<Text>();
+            foreach (Text text in texts) {
+                if (text.gameObject.name == "Name")
+                    text.text = drink.itemName;
+                else if (text.gameObject.name == "Quantity")
+                    text.text = drink.quantity.ToString();
+            }
 
-//             button.onClick.AddListener(() => DeleteItem(recipe));
-//         }
-//     }
+            button.onClick.AddListener(() => DeleteItem(drink));
+        }
+    }
     
-//     public void showPopup() {
-//         isActive = true;
-//         UpdateUI();
-//         FridgePopup.SetActive(true);
-//     }
+    public void showPopup() {
+        isActive = true;
+        UpdateUI();
+        DrinkFridgePopup.SetActive(true);
+    }
     
-//     public void hidePopup() {
-//         isActive = false;
-//         FridgePopup.SetActive(false);
-//     }
-// }
+    public void hidePopup() {
+        isActive = false;
+        DrinkFridgePopup.SetActive(false);
+    }
+}

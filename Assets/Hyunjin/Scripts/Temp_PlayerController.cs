@@ -48,12 +48,18 @@ public class Temp_PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z)) {
             Collider2D collider = getRay();
+            if (collider == null) return;
+            
             if (collider.gameObject.layer == 8) {  // cooker
                 collider.GetComponent<Cooker>().prepareCooking();
             }
             if (collider.name == "Fridge") {
                 Debug.Log(collider.name);
                 collider.GetComponent<Fridge>().showPopup();
+            }
+            if (collider.name == "DrinkFridge") {
+                Debug.Log(collider.name);
+                collider.GetComponent<DrinkFridge>().showPopup();
             }
         }
     }

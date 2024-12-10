@@ -17,11 +17,12 @@ public class Cooker : MonoBehaviour
     public Slider cookingSlider;
     private float cookingTimer = 0;
 
-    public Recipe recipe;
-    public Recipe resultFood;
+    public Recipe targetRecipe;
+    public Recipe resultRecipe;
 
     private void Awake() {
         cookingSlider = GetComponentInChildren<Slider>(true);
+        cookingSlider.gameObject.SetActive(false);
         status = CookerStatus.AVAILABLE;
         if (gameObject.name == "Fryer") toolType = ToolType.Fryer;
         else if (gameObject.name == "FryingPan") toolType = ToolType.Grill;
@@ -29,15 +30,11 @@ public class Cooker : MonoBehaviour
         else if (gameObject.name == "CuttingBoard") toolType = ToolType.Board;
     }
 
-    private void Start() {
-        cookingSlider.gameObject.SetActive(false);
-    }
-
     public void Update() {
         if (status == CookerStatus.COOKING) {
             cookingTimer += Time.deltaTime;
-            cookingSlider.value = cookingTimer / recipe.cookingTime;
-            if (cookingTimer >= recipe.cookingTime) {
+            cookingSlider.value = cookingTimer / targetRecipe.cookingTime;
+            if (cookingTimer >= targetRecipe.cookingTime) {
                 cookingTimer = 0;
                 status = CookerStatus.COMPLETED;
 
@@ -45,14 +42,7 @@ public class Cooker : MonoBehaviour
                 completeFood();
             }
         }
-
-        if (status == CookerStatus.PREPARING && Input.GetKeyDown(KeyCode.X)) {
-            if (CookerManager.Instance.CookerPopup.activeSelf && CookerManager.Instance.currentRecipe != null) {
-                Debug.Log(toolType + " will start cooking");
-                this.startCooking();
-            }
-        }
-
+        
         if (status == CookerStatus.COMPLETED && Input.GetKeyDown(KeyCode.X)) {
             HoldFood();
         }
@@ -62,31 +52,32 @@ public class Cooker : MonoBehaviour
         if (status != CookerStatus.AVAILABLE) return;
         Debug.Log(toolType + " is preparing");
         status = CookerStatus.PREPARING;
-        CookerManager.Instance.showPopup();
+
+        CookerManager.Instance.showPopup(this);
     }
 
-    public void startCooking() {
-        recipe = new Recipe(CookerManager.Instance.currentRecipe);
-        // cooking
+    public void startCooking(Recipe recipe) {
+        targetRecipe = recipe;
 
         status = CookerStatus.COOKING;
         cookingTimer += Time.deltaTime;
-        CookerManager.Instance.hidePopup();
         cookingSlider.gameObject.SetActive(true);
     }
 
     public void completeFood() {
-        resultFood = new Recipe(recipe);
-        if (recipe.toolType != this.toolType)
-            resultFood.isTrash = true;
+        resultRecipe = new Recipe(targetRecipe);
+        if (targetRecipe.toolType != this.toolType) {
+            resultRecipe.isTrash = true;
+            Debug.Log("TRASH!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
     }
 
     public void HoldFood() {
         status = CookerStatus.AVAILABLE;
         cookingTimer = 0;
         cookingSlider.gameObject.SetActive(false);
-        Debug.Log(resultFood.itemName);
-        HeldItemsManager.Instance.HoldItem(resultFood);
-        resultFood = null;
+        Debug.Log(resultRecipe.itemName);
+        HeldItemsManager.Instance.HoldItem(resultRecipe);
+        resultRecipe = null;
     }
 }
