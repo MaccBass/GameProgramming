@@ -99,11 +99,6 @@ public class DailyResults : MonoBehaviour
         setVals();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     
     
@@ -309,7 +304,6 @@ public class DailyResults : MonoBehaviour
         setPartTimerPayText();
         setTotalCostText();
         setEarnedText();
-        
         setMoneyLeftToPayText();
         setTotalMoney();
     }
@@ -318,54 +312,25 @@ public class DailyResults : MonoBehaviour
     //ResultText
     private void setResultText()
     {
-        ResultText1.text = string.Format
-            (
-                "직장인      x  {0}명: 수익 {1}원/만족도 {2} 증가",
-                iOfficerCount, iOfficerIncome, iOfficerSatisfactionIncrease
-            );
-        ResultText1.text = string.Format
-            (
-                "대학생      x  {0}명: 수익 {1}원/만족도 {2} 증가",
-                iStudentCount, iStudentIncome, iStudentSatisfactionIncrease
-            );
-        ResultText1.text = string.Format
-            (
-                "교수님      x  {0}명: 수익 {1}원/만족도 {2} 증가",
-                iProfessorCount, iProfessorIncome, iProfessorSatisfactionIncrease
-            );
-        ResultText1.text = string.Format
-            (
-                "진  상      x  {0}명: 수익 {1}원/만족도 {2} 증가",
-                iObnoxiousCount, iObnoxiousIncome, iObnoxiousSatisfactionIncrease
-            );
+        ResultText1.text = $"직장인      x  {iOfficerCount}명: 수익 {iOfficerIncome}원/만족도 {iOfficerSatisfactionIncrease} 증가";
+        ResultText2.text = $"대학생      x  {iStudentCount}명: 수익 {iStudentIncome}원/만족도 {iStudentSatisfactionIncrease} 증가";
+        ResultText3.text = $"교수님      x  {iProfessorCount}명: 수익 {iProfessorIncome}원/만족도 {iProfessorSatisfactionIncrease} 증가";
+        ResultText4.text = $"진  상      x  {iObnoxiousCount}명: 수익 {iObnoxiousIncome}원/만족도 {iObnoxiousSatisfactionIncrease} 증가";
     }
     //TotalGainText
     private void setTotalGainText()
     {
-        TotalGainText.text = string.Format
-        (
-            "총 {0}원 획득/경험치 {1} 증가",
-            iIncome, iExpGet
-        );
+        TotalGainText.text = $"총 {iIncome}원 획득/경험치 {iExpGet} 증가";
     }
     //CustomerSatisFied
     private void setCustomerSatisfiedText()
     {
-        CustomerSatisfiedResultText.text = string.Format
-        (
-            "만족한 손님     x {0}명\n" +
-            "불만족한 손님     x {1}명",
-            iSatisfiedCustomers, iDissatisfiedCustomers
-        );
+        CustomerSatisfiedResultText.text = $"만족한 손님     x {iSatisfiedCustomers}명\n불만족한 손님     x {iDissatisfiedCustomers}명";
     }
     //IngredientCost
     private void setIngredientCostText()
     {
-        IngredientsCostText.text = string.Format
-        (
-            "재료비: -{0}원",
-            iIngredientsCost
-        );
+        IngredientsCostText.text = $"재료비: -{iIngredientsCost}원";
     }
 
     public void giveLvAwards()
@@ -424,20 +389,12 @@ public class DailyResults : MonoBehaviour
     //PartTimerPay
     private void setPartTimerPayText()
     {
-        PartTimerPayText.text = string.Format
-        (
-            "알바 급여: -{0}원",
-            iPartTimerPay
-        );
+        PartTimerPayText.text = $"알바 급여: -{iPartTimerPay}원";
     }
     
     private void setTotalCostText()
     {
-        TotalCostText.text = string.Format
-        (
-            "총 {0}원 지출",
-            iTotalCost
-        );
+        TotalCostText.text = $"총 {0}원 지출";
     }
 
     private void setEarnedText()
@@ -460,18 +417,10 @@ public class DailyResults : MonoBehaviour
     }
     private void setMoneyLeftToPayText()
     {
-        loanText.text = string.Format
-        (
-            "대출 상환까지 더 모아야 하는 돈: {0}원",
-            iMoneyToPayLoan
-        );
+        loanText.text = $"대출 상환까지 더 모아야 하는 돈: {iMoneyToPayLoan}원";
     }
     private void setTotalMoney()
     {
-        TotalMoneyText.text = string.Format
-        (
-            "현재 총 소지금: {0}원",
-            iTotalMoney
-        );
+        TotalMoneyText.text = $"현재 총 소지금: {iTotalMoney}원";
     }
 }

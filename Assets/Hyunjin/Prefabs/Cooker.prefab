@@ -448,6 +448,12 @@ MonoBehaviour:
   targetRecipe: {fileID: 0}
   resultRecipe: {fileID: 0}
   trashSprite: {fileID: 21300000, guid: 2a104a94232e2ea46b4e19c130e428fa, type: 3}
+  cookingCompleteSound: {fileID: 8300000, guid: 96793903e45813b489f3e69a2ccde27b, type: 3}
+  potSound: {fileID: 8300000, guid: 6db20c2a55a6238419060ae9b42466aa, type: 3}
+  fryerAndPanSound: {fileID: 8300000, guid: 5c56597a1026e44498ec6b6c2b2efe46, type: 3}
+  cuttingboardSound: {fileID: 8300000, guid: f90641facd208c34ab149f397218d3a6, type: 3}
+  CompleteAudioSource: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &6186333225133605405
 GameObject:
   m_ObjectHideFlags: 0
