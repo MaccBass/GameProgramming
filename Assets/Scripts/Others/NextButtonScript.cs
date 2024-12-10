@@ -42,6 +42,7 @@ public class NextButtonScript : MonoBehaviour
     {
         if ((iDay < 7) && (iDay > 0))
         {
+            Managers.Status.day = iDay + 1;
             //다음 씬으로 이동
             SceneManager.LoadScene(sNextScene);
         }
