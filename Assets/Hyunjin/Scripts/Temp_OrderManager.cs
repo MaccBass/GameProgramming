@@ -79,7 +79,7 @@ public class Temp_OrderManager : MonoBehaviour
         Managers.Employee.AddOrder(newOrder);
 
         //사운드 재생
-        PlaySound(BellSource, Bellclip);
+        PlayBellSound(Bellclip);
 
     }
 
@@ -92,7 +92,7 @@ public class Temp_OrderManager : MonoBehaviour
                 customer.RecieveServedOrder(servedItem); // 고객에게 서빙
 
                 //사운드 재생
-                PlaySound(restaurantSource, restaurantClip);
+                PlayRestaurantSound(restaurantClip);
                 return true; // 성공적으로 서빙
             }
         }
@@ -100,21 +100,32 @@ public class Temp_OrderManager : MonoBehaviour
         return false; // 서빙 실패 (주문 목록에 없거나, 이미 서빙됐거나, 다른 고객의 주문)
     }
 
-    private void PlaySound(AudioSource source, AudioClip clip)
+    private void PlayRestaurantSound(AudioClip clip)
     {
         if (clip != null)
         {
-            source.clip = clip;
-            source.Play();
-            Invoke("StopSound", 1.0f);
+            restaurantSource.clip = clip;
+            restaurantSource.Play();
+            Invoke("StopRestaurantSound", 1.0f);
         }
+    }
+    private void PlayBellSound(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            restaurantSource.clip = clip;
+            restaurantSource.Play();
+            Invoke("StopBellSound", 1.0f);
+        }
+    }
+    private void StopRestaurantSound()
+    {
+        BellSource.Stop();
+        restaurantSource.Stop();
     }
     private void StopBellSound()
     {
         BellSource.Stop();
-    }
-    private void StopRestaurantSound()
-    {
         restaurantSource.Stop();
     }
 }
