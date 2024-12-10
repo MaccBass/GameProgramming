@@ -82,7 +82,7 @@ public class DailyResults : MonoBehaviour
     private int iTotalCost = 0;             //하루 지출금
     private int iExpGet;                //얻은 경험치
     public int iPlayerLv;               //플레이어 레벨
-    public Recipe[] recipes;            
+    public Recipe[] recipes;            //임시: 작성 당시 recipe-item업데이트가 제 컴퓨터에 반영되어 있지 않았음
 
 
     private int iTotalMoney;            //현재 총 소지금(기존 돈 + )
