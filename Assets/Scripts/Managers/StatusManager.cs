@@ -10,6 +10,8 @@ public class StatusManager
     public int playerLevel;
     public int playerExp;
 
+    public AudioClip LevelUpClip;
+
     public void Init()
     {
         day = 1;
@@ -24,7 +26,9 @@ public class StatusManager
         int tempLevel = playerExp / 30 + 1;
         if (tempLevel > playerLevel)
         {
+
             Debug.Log("·¹º§ " + tempLevel + "·Î »ó½Â");
+            PlaySound();
             playerLevel = tempLevel;
             return;
         }
@@ -32,6 +36,14 @@ public class StatusManager
         {
             playerExp = (playerLevel - 1) * 30;
             return;
+        }
+    }
+    private void PlaySound()
+    {
+        LevelUpClip = Resources.Load<AudioClip>("BGM/05-6. levelUp");
+        if (LevelUpClip != null)
+        {
+            AudioSource.PlayClipAtPoint(LevelUpClip, Vector3.zero);
         }
     }
 }

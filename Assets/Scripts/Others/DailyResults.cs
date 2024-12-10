@@ -92,7 +92,7 @@ public class DailyResults : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Managers.InGame.Settlement();
         recipes = Resources.LoadAll<Recipe>("Recipes");
         currentGainText = "";
         

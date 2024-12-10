@@ -100,7 +100,7 @@ public class Cooker : MonoBehaviour
         {
             audioSource.clip = cookingCompleteSound;
             audioSource.Play();
-            Invoke("StopCompleteMusic", 2.5f);
+            Invoke("StopCompleteMusic", 1f);
         }
     }
 
@@ -135,7 +135,7 @@ public class Cooker : MonoBehaviour
         {
             audioSource.clip = clip;
             audioSource.Play();
-            Invoke("StopSound", 7.0f);
+            Invoke("StopSound", 2f);
         }
     }
     private void StopSound()

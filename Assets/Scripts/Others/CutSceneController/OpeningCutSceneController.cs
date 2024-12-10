@@ -21,6 +21,7 @@ public class OpeningCutSceneController : MonoBehaviour
     public Text dialogText;             //대사 표시 텍스트
     public Button skipButton;           //스킵 버튼
 
+    private string sNextScene = "InGame_Prepare";
     private int iCurrentCutsceneIndex = 0;  //현재 컷씬 인덱스
     private int iCurrentDialogIndex = 0;    //현재 대사 인덱스
 
@@ -114,8 +115,7 @@ public class OpeningCutSceneController : MonoBehaviour
         dialogText.text = "";                       //텍스트 지우기
         skipButton.gameObject.SetActive(false);     //스킵 버튼 숨기기
 
-        //임시: 3초 후 게임 종료
-        Invoke("QuitGame", 3.0f);
+        SceneManager.LoadScene(sNextScene);
     }
     void QuitGame()
     {
