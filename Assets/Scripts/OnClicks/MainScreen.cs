@@ -13,9 +13,10 @@ public class MainScreen : MonoBehaviour
         Managers.Status.Init();
         Managers.InGame.Init();
         // SceneManager.LoadScene("CutScene_NewGame");
-        SceneManager.LoadScene("InGame_Prepare");
+        SceneManager.LoadScene("1. Opening CutScene");
     }
-    public void OnClickExitButton() { 
+    public void OnClickExitButton() 
+    { 
         Application.Quit();
     }
 }
