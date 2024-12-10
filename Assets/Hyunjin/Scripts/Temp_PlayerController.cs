@@ -24,7 +24,7 @@ public class Temp_PlayerController : MonoBehaviour
     void Start() {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        mask = LayerMask.GetMask("Cooker", "Table", "Fridge");
+        mask = LayerMask.GetMask("Cooker", "Table", "Fridge", "TrashCan");
     }
 
     void Update() {
@@ -52,6 +52,9 @@ public class Temp_PlayerController : MonoBehaviour
             
             if (collider.gameObject.layer == 8) {  // cooker
                 collider.GetComponent<Cooker>().prepareCooking();
+            }
+            if (collider.gameObject.layer == 9) { // table
+                collider.GetComponent<Table>().cleanTable();
             }
             if (collider.name == "Fridge") {
                 Debug.Log(collider.name);

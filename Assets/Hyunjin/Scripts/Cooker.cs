@@ -19,6 +19,7 @@ public class Cooker : MonoBehaviour
 
     public Recipe targetRecipe;
     public Recipe resultRecipe;
+    public Sprite trashSprite;
 
     private void Awake() {
         cookingSlider = GetComponentInChildren<Slider>(true);
@@ -68,6 +69,7 @@ public class Cooker : MonoBehaviour
         resultRecipe = new Recipe(targetRecipe);
         if (targetRecipe.toolType != this.toolType) {
             resultRecipe.isTrash = true;
+            resultRecipe.icon = trashSprite;
             Debug.Log("TRASH!!!!!!!!!!!!!!!!!!!!!!!!");
         }
     }
