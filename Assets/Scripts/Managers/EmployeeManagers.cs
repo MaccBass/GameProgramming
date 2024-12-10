@@ -45,10 +45,13 @@ public class EmployeeManager
         if (Managers.Prepare.isCookEmployed)
         {
             CookOrders.Enqueue(order);
+            Debug.Log("주방알바 주문에 " + order.orderItem.itemName + "들어감.");
         }
         if (Managers.Prepare.isWaiterEmployed)
         {
             WaiterOrders.Enqueue(order);
+            Debug.Log("홀알바 주문에 " + order.orderItem.itemName + "들어감.");
+
         }
     }
 }
