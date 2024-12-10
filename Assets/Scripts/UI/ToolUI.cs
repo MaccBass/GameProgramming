@@ -55,7 +55,7 @@ public class ToolUI : MonoBehaviour
 
             // 수량 표시
             Text toolLevel = obj.GetComponentInChildren<Text>();
-            toolLevel.text = "Lv" + tool.level.ToString();
+            toolLevel.text = "";
         }
     }
     void OnLeftClick(Tool tool)

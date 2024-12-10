@@ -53,7 +53,7 @@ public class KitchenUI : MonoBehaviour
             button.onClick.AddListener(() => OnToolLeftClick(tool));
 
             Text level = obj.GetComponentInChildren<Text>();
-            level.text = "Lv" + tool.level.ToString();
+            level.text = "";
         }
     }
 

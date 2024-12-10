@@ -51,6 +51,15 @@ public class InGameManager
         {
             dailyTotalCS += cs;
         }
+        if (Managers.Prepare.isCookEmployed)
+        {
+            wages += 50000;
+        }
+        if (Managers.Prepare.isWaiterEmployed)
+        {
+            wages += 50000;
+        }
+
         Managers.Status.totalMoney += dailyTotalRevenue;
         Managers.Status.playerExp += dailyTotalCS;
         Managers.Status.LevelCheck();

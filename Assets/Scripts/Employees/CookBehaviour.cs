@@ -24,7 +24,7 @@ public class CookBehaviour : MonoBehaviour
 
     private Seeker seeker;
     private Path path;
-    private float threshold = 0.05f;
+    private float threshold = 0.1f;
     int targetToolIndex = -1;
     void Start()
     {
@@ -146,6 +146,10 @@ public class CookBehaviour : MonoBehaviour
             if (Time.time - startTime > food.cookingTime)
             {
                 isCooking = false;
+                foreach (var ingredient in food.ingredients)
+                {
+                    Managers.Inventory.Ingredients[ingredient].quantity--;
+                }
                 holdingItem = new Recipe(food);
             }
         }

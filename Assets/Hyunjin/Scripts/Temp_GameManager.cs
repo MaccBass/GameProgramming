@@ -27,6 +27,7 @@ public class Temp_GameManager : MonoBehaviour
     private bool isGameRunning = true;
 
     void Start() {
+        currentDay = Managers.Status.day;
         remainingTime = closingTime;
         currentDay = Managers.Status.day;
         if (Temp_UIManager.Instance != null) {

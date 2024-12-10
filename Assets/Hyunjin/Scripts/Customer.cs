@@ -79,9 +79,11 @@ public class Customer : MonoBehaviour
             totalPayment += recipe.sellPrice;
             if (recipe.isTrash) // 쓰레기면
                 decreaseCS(1);
+            Debug.Log("돈 더해짐." + recipe.sellPrice);
         }
         else if (servedItem is Drink drink) { // 서빙받은 게 주류라면
             totalPayment += drink.sellPrice;
+            Debug.Log("돈 더해짐." + drink.sellPrice);
         }
     }
 

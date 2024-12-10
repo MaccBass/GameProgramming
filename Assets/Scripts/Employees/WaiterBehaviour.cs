@@ -29,7 +29,7 @@ public class WaiterBehaviour : MonoBehaviour {
 
     private Seeker seeker;
     private Path path;
-    private float threshold = 0.05f;
+    private float threshold = 0.1f;
     int targetTableIndex = -1;
     void Start()
     {
@@ -83,7 +83,7 @@ public class WaiterBehaviour : MonoBehaviour {
         if (Vector3.Distance(transform.position, loc.position) < threshold)
         {
             path = null;
-            holdingItem = null;
+            Temp_OrderManager.Instance.ServeOrder(holdingItem, job.customer);
             ClearJob();
         }
     }
@@ -97,6 +97,16 @@ public class WaiterBehaviour : MonoBehaviour {
         }
         if (targetFridge == FridgeType.FOOD)
         {
+            Recipe food = (Recipe)job.orderItem;
+            if (fridge.FridgeRecipe.Find(f => f.itemName == food.itemName) == null)
+            {
+                return;
+            }
+            if (food.CookCount() <= 0)
+            {
+                Debug.Log(food.itemName + "을 더이상 만들 수 없음.");
+                ClearJob();
+            }
             loc = fridgeLocation;
             seeker.StartPath(transform.position, loc.position);
             if (Vector3.Distance(transform.position, loc.position) < threshold)
@@ -109,12 +119,17 @@ public class WaiterBehaviour : MonoBehaviour {
         }
         else if (targetFridge == FridgeType.DRINK)
         {
+            Drink drink = (Drink)job.orderItem;
+            if (Managers.Prepare.Drinks.Find(d => d.itemName == drink.itemName) == null)
+            {
+                Debug.Log(drink.itemName + " 재고가 없음.");
+                ClearJob();
+            }
             loc = drinkLocation;
             seeker.StartPath(transform.position, loc.position);
             if (Vector3.Distance(transform.position, loc.position) < threshold)
             {
                 path = null;
-                Drink drink = (Drink)job.orderItem;
                 holdingItem = Managers.Prepare.Drinks.Find(d => d.itemName == drink.itemName);
                 ((Drink)holdingItem).quantity--;
             }
