@@ -105,7 +105,7 @@ public class InGameManager
 
         if (DailyCS.ContainsKey(customerType))
         {
-            DailyCS[customerType]++;
+            DailyCS[customerType] += cs;
         }
         else
         {
@@ -114,7 +114,7 @@ public class InGameManager
 
         if (DailyRevenue.ContainsKey(customerType))
         {
-            DailyRevenue[customerType]++;
+            DailyRevenue[customerType] += payment;
         }
         else
         {

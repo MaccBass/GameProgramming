@@ -45,7 +45,10 @@ public class Temp_GameManager : MonoBehaviour
             totalRevenue = 0;
             foreach (var revenue in Managers.InGame.DailyRevenue.Values)
             {
-                totalRevenue += revenue;
+                if (revenue != 0)
+                {
+                    totalRevenue += revenue;
+                }
             }
 
             remainingTime -= Time.deltaTime;
