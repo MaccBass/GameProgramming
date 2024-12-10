@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 0_Chicken
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 7072a83777c0a064ea4ee8085ff8fc62, type: 3}
+  icon: {fileID: 21300000, guid: 46698c1bff9b5ae43aa036f9ef799e2e, type: 3}
   itemName: "\uB2ED\uACE0\uAE30"
   purchasePrice: 800
   ingredientType: 0
-  price: 0
   quantity: 20

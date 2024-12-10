@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 34_Whelk
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: a98ef9d827e1fa54381a524cd89c0ead, type: 3}
+  icon: {fileID: 21300000, guid: ac68181631e630847b29780bc92d46d4, type: 3}
   itemName: "\uACE8\uBC45\uC774"
   purchasePrice: 1500
   ingredientType: 3
-  price: 0
   quantity: 20

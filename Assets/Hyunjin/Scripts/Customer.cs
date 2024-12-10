@@ -79,9 +79,11 @@ public class Customer : MonoBehaviour
             totalPayment += recipe.sellPrice;
             if (recipe.isTrash) // 쓰레기면
                 decreaseCS(1);
+            Debug.Log("돈 더해짐." + recipe.sellPrice);
         }
         else if (servedItem is Drink drink) { // 서빙받은 게 주류라면
             totalPayment += drink.sellPrice;
+            Debug.Log("돈 더해짐." + drink.sellPrice);
         }
     }
 
@@ -128,25 +130,10 @@ public class Customer : MonoBehaviour
 
     private void Leave() {
         // Debug.Log($"Leave : {table.id}");
-        if (Managers.InGame != null)
-        {
-            string customerTypeName = type.typeName;
-            if (Managers.InGame.DailyCount.ContainsKey(customerTypeName))
-            {
-                Managers.InGame.DailyCount[customerTypeName] = Managers.InGame.DailyCount[customerTypeName] + 1;
-            }
-            else
-            {
-                Managers.InGame.DailyCount[customerTypeName] = 1;
-            }
-        }
         // table 상태 변환 필요
         Temp_UIManager.Instance.ShowPaymentSatisfaction(table.transform.position, totalPayment, totalCS);
         table.makeDirty();
-
-        // Managers.InGame.DailyRevenue[type.typeName] += totalPayment;
-        // Managers.InGame.DailyCS[type.typeName] += totalCS;
-        // Managers.InGame.DailyCount[type.typeName]++;
+        Managers.InGame.AddValues(type.typeName, totalPayment, totalCS);
         Destroy(gameObject);
     }
 }

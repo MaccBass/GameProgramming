@@ -22,6 +22,7 @@ public class Temp_PlayerController : MonoBehaviour
     private int mask;
 
     void Start() {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 1.0f);
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         mask = LayerMask.GetMask("Cooker", "Table", "Fridge", "TrashCan");

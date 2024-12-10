@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 1_Pork
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: fc0146c0e1536784cb8557e3814cfe85, type: 3}
+  icon: {fileID: 21300000, guid: a13b9382e8202fe4e8510bb130d200a2, type: 3}
   itemName: "\uB3FC\uC9C0\uACE0\uAE30"
   purchasePrice: 1200
   ingredientType: 0
-  price: 0
   quantity: 20

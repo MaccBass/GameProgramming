@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 40_Peach
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 5fb75ed40ad69544f861621547f37cbd, type: 3}
+  icon: {fileID: 21300000, guid: f0a6f06f6d2ea604380bd40f174b4013, type: 3}
   itemName: "\uBCF5\uC22D\uC544"
   purchasePrice: 1500
   ingredientType: 4
-  price: 0
   quantity: 20

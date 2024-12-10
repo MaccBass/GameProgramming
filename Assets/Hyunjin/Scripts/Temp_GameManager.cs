@@ -38,10 +38,11 @@ public class Temp_GameManager : MonoBehaviour
     private bool isGameRunning = true;
 
     void Start() {
+        currentDay = Managers.Status.day;
         dayEndPanel.SetActive(false);
         dayEndText.text = "";
         remainingTime = closingTime;
-
+        currentDay = Managers.Status.day;
         if (Temp_UIManager.Instance != null) {
             Temp_UIManager.Instance.UpdateDay(currentDay);
             Temp_UIManager.Instance.UpdateDailyRevenue(dailyRevenue);
@@ -56,7 +57,17 @@ public class Temp_GameManager : MonoBehaviour
             if (remainingTime <= 0)
                 Close();
 
+            totalRevenue = 0;
+            foreach (var revenue in Managers.InGame.DailyRevenue.Values)
+            {
+                if (revenue != 0)
+                {
+                    totalRevenue += revenue;
+                }
+            }
+
             remainingTime -= Time.deltaTime;
+            Temp_UIManager.Instance.UpdateDailyRevenue(totalRevenue);
             Temp_UIManager.Instance.UpdateTimeBar(remainingTime / closingTime);
         }
     }
@@ -85,7 +96,7 @@ public class Temp_GameManager : MonoBehaviour
     private void Close() 
     {
         dayEndPanel.SetActive(true);
-        Debug.Log("dayEndPanel Ȱ��ȭ ����: " + dayEndPanel.activeSelf);
+        Debug.Log("dayEndPanel È°¼ºÈ­ »óÅÂ: " + dayEndPanel.activeSelf);
         dayEndText.text = "Day End";
         PlaySound(dayEndClip);
         isGameRunning = false;
