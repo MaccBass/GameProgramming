@@ -24,10 +24,14 @@ public class CookBehaviour : MonoBehaviour
 
     private Seeker seeker;
     private Path path;
-    private float threshold = 0.1f;
+    private float threshold = 0.05f;
     int targetToolIndex = -1;
     void Start()
     {
+        if (!Managers.Prepare.isCookEmployed)
+        {
+            gameObject.SetActive(false);
+        }
         seeker = GetComponent<Seeker>();
         AstarPath.active.logPathResults = Pathfinding.PathLog.None;
         job = null;
@@ -134,7 +138,6 @@ public class CookBehaviour : MonoBehaviour
             Debug.Log("조리기구 위치 도달");
         }
     }
-
     void Cook()
     {
         Debug.Log("조리중..");
