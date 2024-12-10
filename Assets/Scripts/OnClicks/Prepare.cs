@@ -83,6 +83,21 @@ public class Prepare : MonoBehaviour
 
     public void OnClickOpenButton()
     {
+        if (Managers.Prepare.Foods.Count <= 0)
+        {
+            Debug.Log("음식을 1종류 이상 편성해야 함.");
+            return;
+        }/*
+        if (Managers.Prepare.Drinks.Count <= 0)
+        {
+            Debug.Log("주류를 1종류 이상 편성해야 함.");
+            return;
+        }*/
+        if (Managers.Prepare.Tools.Count <= 0)
+        {
+            Debug.Log("도구를 1종류 이상 편성해야 함.");
+            return;
+        }
         SceneManager.LoadScene("Open_Customer");
     }
 }
