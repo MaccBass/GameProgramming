@@ -12375,7 +12375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238806405434533568, guid: 542454e6e7ede79448145e73d7f11c4d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 542454e6e7ede79448145e73d7f11c4d, type: 3}
@@ -12609,6 +12609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tableList: []
   customerTypeList:
+  - {fileID: 11400000, guid: bf1f53c5800e7564aaf7c40a2fe3b824, type: 2}
   - {fileID: 11400000, guid: 08d7af8a50813f846b044c2da2c97aa0, type: 2}
   - {fileID: 11400000, guid: 7088a592e48536140b5e82ff62543e42, type: 2}
   - {fileID: 11400000, guid: 71237a9871149e246968209040817b64, type: 2}
@@ -13652,7 +13653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6406166195849596668, guid: ba9454a8baa9232409da0f52b1cf7b07, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6901881279447111134, guid: ba9454a8baa9232409da0f52b1cf7b07, type: 3}
       propertyPath: id
@@ -16291,7 +16292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238806405434533568, guid: 542454e6e7ede79448145e73d7f11c4d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 542454e6e7ede79448145e73d7f11c4d, type: 3}

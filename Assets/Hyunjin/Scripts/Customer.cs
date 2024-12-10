@@ -33,7 +33,7 @@ public class Customer : MonoBehaviour
 
         for (int i = 0; i < groupSize; i++) { // 손님을 의자에 앉히고 리스트에 추가
             GameObject customerPrefab = type.prefabs[Random.Range(0, type.prefabs.Count)];
-            GameObject customerObj = Instantiate(customerPrefab, this.table.chairs[i].position + new Vector3(0.224f, 0.65f, 0f), Quaternion.identity, this.transform);
+            GameObject customerObj = Instantiate(customerPrefab, this.table.chairs[i].position + new Vector3(0.224f, 0.25f, 0f), Quaternion.identity, this.transform);
             if (i % 2 == 1) { // 홀수 의자일 경우 좌우 반전
                 Vector3 scale = customerObj.transform.localScale;
                 scale.x *= -1;
