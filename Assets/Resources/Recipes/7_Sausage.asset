@@ -15,9 +15,10 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
   itemName: "\uC18C\uC138\uC9C0"
   purchasePrice: 30000
-  toolType: 0
+  toolType: 1
   sellPrice: 9000
   cookingTime: 5
   isObtained: 1
   ingredients:
   - "\uB3FC\uC9C0\uACE0\uAE30"
+  isTrash: 0

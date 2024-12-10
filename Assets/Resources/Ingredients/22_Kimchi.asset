@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 22_Kimchi
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: b31969780c656cc4089c306ffed98f01, type: 3}
+  icon: {fileID: 21300000, guid: d2d0100a269c3974d980c579c2de73e9, type: 3}
   itemName: "\uAE40\uCE58"
   purchasePrice: 300
   ingredientType: 2
-  price: 0
   quantity: 20

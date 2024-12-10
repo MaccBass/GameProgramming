@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862fa179986365045ac0d380d4569bdd, type: 3}
   m_Name: 7_Whiskey
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 04a4e5650df9dc244a41868517fea3a5, type: 3}
+  icon: {fileID: 21300000, guid: 992ddecea15466e49a519ca1aa45fc53, type: 3}
   itemName: "\uC704\uC2A4\uD0A4"
   purchasePrice: 15000
   sellPrice: 39000

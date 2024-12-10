@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 32_Pollock
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 70dad6a7c75b6954ca88f00a50683e48, type: 3}
+  icon: {fileID: 21300000, guid: 7bc7936d76ca268449867afa29056ad0, type: 3}
   itemName: "\uBA85\uD0DC"
   purchasePrice: 2000
   ingredientType: 3
-  price: 0
   quantity: 20

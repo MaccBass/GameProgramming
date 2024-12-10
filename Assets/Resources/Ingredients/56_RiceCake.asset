@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 56_RiceCake
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: eb9d2718d64a2b64bbe3d340228efa55, type: 3}
+  icon: {fileID: 21300000, guid: 7da1addaa5b36684d888d6e16948163b, type: 3}
   itemName: "\uB5A1"
   purchasePrice: 1200
   ingredientType: 5
-  price: 0
   quantity: 20

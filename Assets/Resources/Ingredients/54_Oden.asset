@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 54_Oden
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 266fc0ff724fc8b4ea9968d2daedfc05, type: 3}
+  icon: {fileID: 21300000, guid: 2f6da51a5377a4e4dbbd91b91f96128c, type: 3}
   itemName: "\uC5B4\uBB35"
   purchasePrice: 1000
   ingredientType: 5
-  price: 0
   quantity: 20

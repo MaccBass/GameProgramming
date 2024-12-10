@@ -91,4 +91,34 @@ public class InGameManager
     {
         Init();
     }
+    public void AddValues(string customerType, int payment, int cs)
+    {
+        Debug.Log("AddValues ½ÇÇàµÊ.");
+        if (DailyCount.ContainsKey(customerType))
+        {
+            DailyCount[customerType]++;
+        }
+        else
+        {
+            DailyCount.TryAdd(customerType, 1);
+        }
+
+        if (DailyCS.ContainsKey(customerType))
+        {
+            DailyCS[customerType]++;
+        }
+        else
+        {
+            DailyCS.TryAdd(customerType, cs);
+        }
+
+        if (DailyRevenue.ContainsKey(customerType))
+        {
+            DailyRevenue[customerType]++;
+        }
+        else
+        {
+            DailyRevenue.TryAdd(customerType, payment);
+        }
+    }
 }

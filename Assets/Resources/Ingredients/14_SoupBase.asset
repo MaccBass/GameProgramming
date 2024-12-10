@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f137009f393314c47a79c1b58f5be3c1, type: 3}
   m_Name: 14_SoupBase
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: ae77ef1761e4dbf4a8410b65d5936b6c, type: 3}
+  icon: {fileID: 21300000, guid: ff56c9d06c65aab458675ffcddd3a72d, type: 3}
   itemName: "\uB77C\uBA74\uC2A4\uD504"
   purchasePrice: 450
   ingredientType: 1
-  price: 0
   quantity: 20

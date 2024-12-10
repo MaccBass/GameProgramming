@@ -28,7 +28,7 @@ public class Temp_GameManager : MonoBehaviour
 
     void Start() {
         remainingTime = closingTime;
-
+        currentDay = Managers.Status.day;
         if (Temp_UIManager.Instance != null) {
             Temp_UIManager.Instance.UpdateDay(currentDay);
             Temp_UIManager.Instance.UpdateDailyRevenue(dailyRevenue);
@@ -42,7 +42,14 @@ public class Temp_GameManager : MonoBehaviour
             if (remainingTime <= 0)
                 Close();
 
+            totalRevenue = 0;
+            foreach (var revenue in Managers.InGame.DailyRevenue.Values)
+            {
+                totalRevenue += revenue;
+            }
+
             remainingTime -= Time.deltaTime;
+            Temp_UIManager.Instance.UpdateDailyRevenue(totalRevenue);
             Temp_UIManager.Instance.UpdateTimeBar(remainingTime / closingTime);
         }
     }
