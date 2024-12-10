@@ -14,6 +14,14 @@ public class Temp_OrderManager : MonoBehaviour
     private int nextOrderId = 1;     // 주문 ID 생성기
     private float orderDuration = 50f; // 주문 제한시간
 
+    //종 오디오
+    public AudioSource BellSource;
+    public AudioClip Bellclip;
+
+    //식사 사운드
+    public AudioSource restaurantSource;
+    public AudioClip restaurantClip;
+
     void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -69,6 +77,10 @@ public class Temp_OrderManager : MonoBehaviour
         Order newOrder = new Order(nextOrderId++, table, customer, orderItem, Time.time, orderUI);
         orderList.Add(newOrder);
         Managers.Employee.AddOrder(newOrder);
+
+        //사운드 재생
+        PlaySound(BellSource, Bellclip);
+
     }
 
     public bool ServeOrder(Item servedItem, Customer customer) { // Recipe->Item으로 바꿔야됨
@@ -78,10 +90,31 @@ public class Temp_OrderManager : MonoBehaviour
                     order.status != OrderStatus.SERVED && order.status != OrderStatus.CANCELED) {
                 order.status = OrderStatus.SERVED;
                 customer.RecieveServedOrder(servedItem); // 고객에게 서빙
+
+                //사운드 재생
+                PlaySound(restaurantSource, restaurantClip);
                 return true; // 성공적으로 서빙
             }
         }
         Debug.Log("Serve Order Failed : " + servedItem.itemName);
         return false; // 서빙 실패 (주문 목록에 없거나, 이미 서빙됐거나, 다른 고객의 주문)
+    }
+
+    private void PlaySound(AudioSource source, AudioClip clip)
+    {
+        if (clip != null)
+        {
+            source.clip = clip;
+            source.Play();
+            Invoke("StopSound", 1.0f);
+        }
+    }
+    private void StopBellSound()
+    {
+        BellSource.Stop();
+    }
+    private void StopRestaurantSound()
+    {
+        restaurantSource.Stop();
     }
 }

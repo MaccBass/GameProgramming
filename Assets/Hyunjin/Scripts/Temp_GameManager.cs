@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Temp_GameManager : MonoBehaviour
 {
     public static Temp_GameManager Instance { get; private set; }
+    public string sNextScene;
+
     private void Awake() {
         if (Instance == null) {
             Instance = this;
