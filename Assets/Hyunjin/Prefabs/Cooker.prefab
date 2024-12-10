@@ -401,7 +401,7 @@ SpriteRenderer:
   m_Size: {x: 1.31, y: 0.98}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!61 &5586018414986815980
@@ -447,6 +447,7 @@ MonoBehaviour:
   cookingSlider: {fileID: 0}
   targetRecipe: {fileID: 0}
   resultRecipe: {fileID: 0}
+  trashSprite: {fileID: 21300000, guid: 2a104a94232e2ea46b4e19c130e428fa, type: 3}
 --- !u!1 &6186333225133605405
 GameObject:
   m_ObjectHideFlags: 0

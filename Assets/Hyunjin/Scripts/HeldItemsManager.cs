@@ -67,7 +67,10 @@ public class HeldItemsManager : MonoBehaviour
             // DrinkFridge면 item==Drink일 때 보관
             else if (collider.name == "DrinkFridge" && item is Drink drink) {
                 ReleaseDrink(index);
-            }            
+            }
+            else if (collider.name == "TrashCan") {
+                ThrowAway(index);
+            }       
         }
     }
     
@@ -97,6 +100,11 @@ public class HeldItemsManager : MonoBehaviour
         if (HeldItemList[index].item is Drink drink) {
             DrinkFridge.GetComponent<DrinkFridge>().AddItem(drink);
         }
+        HeldItemList.RemoveAt(index);
+        UpdateUI();
+    }
+    
+    public void ThrowAway(int index) {
         HeldItemList.RemoveAt(index);
         UpdateUI();
     }

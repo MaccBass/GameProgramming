@@ -22,6 +22,7 @@ public class CookerManager : MonoBehaviour
     public List<Recipe> CookerRecipe;
 
     private Cooker currentCooker;
+    private bool selected;
 
     public void Start() {
         foreach (Recipe recipe in Managers.Prepare.Foods)
@@ -45,6 +46,7 @@ public class CookerManager : MonoBehaviour
     }
 
     void OnLeftClick(Recipe recipe) {
+        selected = true;
         currentCooker.startCooking(recipe);
         currentCooker = null;
         hidePopup();
@@ -57,6 +59,9 @@ public class CookerManager : MonoBehaviour
     }
 
     public void hidePopup() {
+        if (!selected)
+            currentCooker.status = CookerStatus.AVAILABLE;
+        selected = false;
         CookerPopup.SetActive(false);
     }
 }

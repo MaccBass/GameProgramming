@@ -42,6 +42,6 @@ public class CustomerManager : MonoBehaviour
         Customer customerGroup = customerGroupObj.AddComponent<Customer>();
         customerGroup.Initialize(chosenType, chosenTable, groupSize, stayDuration, orderInterval);
 
-        chosenTable.status = TableStatus.OCCUPIED;
+        chosenTable.occupy();
     }
 }
