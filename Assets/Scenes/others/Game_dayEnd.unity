@@ -426,7 +426,7 @@ MonoBehaviour:
   bIsLv7RewardAwarded: 0
   bIsLv9RewardAwarded: 0
   bIsInfluSatisfied: 0
-  iLoan: 0
+  iLoan: 1000000
   iPlayerLv: 0
   recipes: []
 --- !u!4 &275110065

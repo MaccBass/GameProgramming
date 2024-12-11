@@ -16,7 +16,8 @@ public class Temp_GameManager : MonoBehaviour
     public AudioSource stageSoundSource;
     public AudioClip dayStartClip;
     public AudioClip dayEndClip;
-    
+
+    public AudioSource backgroundSource;
     
 
     private void Awake() {
@@ -98,6 +99,7 @@ public class Temp_GameManager : MonoBehaviour
         dayEndPanel.SetActive(true);
         Debug.Log("dayEndPanel È°¼ºÈ­ »óÅÂ: " + dayEndPanel.activeSelf);
         dayEndText.text = "Day End";
+        StopBackgroundSound();
         PlaySound(dayEndClip);
         isGameRunning = false;
         Invoke("loadNextScene", 3f);
@@ -118,6 +120,10 @@ public class Temp_GameManager : MonoBehaviour
     private void StopSound()
     {
         stageSoundSource.Stop();
+    }
+    private void StopBackgroundSound()
+    {
+        backgroundSource.Stop();
     }
 
 }
