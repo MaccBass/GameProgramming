@@ -47,7 +47,7 @@ public class NextButtonScript : MonoBehaviour
             SceneManager.LoadScene(sNextScene);
         }
         
-        else if (iDay > 7)
+        else if (iDay >= 7)
         {
             //해피 엔딩
             if(setEnding() == true)

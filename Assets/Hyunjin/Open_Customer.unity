@@ -8949,7 +8949,7 @@ MonoBehaviour:
   currentDay: 0
   totalRevenue: 0
   dailyRevenue: 0
-  closingTime: 5
+  closingTime: 1
   remainingTime: 0
 --- !u!4 &1057058325
 Transform:
@@ -15659,8 +15659,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 739519960}
   m_HandleRect: {fileID: 739519959}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999998
+  m_Value: 0
+  m_Size: 0.9999996
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
