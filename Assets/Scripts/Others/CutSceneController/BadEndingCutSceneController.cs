@@ -116,8 +116,7 @@ public class BadEndingCutSceneController : MonoBehaviour
         
         dialogText.text = "";                       //텍스트 지우기
         skipButton.gameObject.SetActive(false);     //스킵 버튼 숨기기
-        //3초 후 메인으로 이동
-        Invoke("LoadMain", 3.0f);
+        Invoke("LoadMain", 0.5f);
     }
     void QuitGame()
     {

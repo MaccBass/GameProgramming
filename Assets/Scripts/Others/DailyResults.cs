@@ -86,7 +86,7 @@ public class DailyResults : MonoBehaviour
 
 
     private int iTotalMoney;            //현재 총 소지금(기존 돈 + )
-    private int iMoneyToPayLoan = 0;        //현재 대출 상환까지 모아야하는 돈(대출금 - 현재 총 소지금)
+    private int iMoneyToPayLoan;        //현재 대출 상환까지 모아야하는 돈(대출금 - 현재 총 소지금)
 
 
     // Start is called before the first frame update
@@ -164,7 +164,7 @@ public class DailyResults : MonoBehaviour
         //Text 세팅
         setTexts();
     }
-    //수익 계산 함수 - 안 씀
+    //수익 계산 함수(인플루언서 효과 계산)
     private void calIncome()
     {
         if(bIsInfluSatisfied == true)
@@ -173,6 +173,10 @@ public class DailyResults : MonoBehaviour
             iTotalMoney = iTotalMoney + iIncome;
             setEffectText();
             bIsInfluSatisfied = false;
+        }
+        else
+        {
+            EffectText.text = "X";
         }
         
     }
@@ -335,7 +339,6 @@ public class DailyResults : MonoBehaviour
 
     public void giveLvAwards()
     {
-
         if((iPlayerLv >= 3) && (bIsLv3RewardAwarded == false))
         {
             AddTextLine("레벨 3 달성 보상: 라면 레시피");
@@ -394,11 +397,12 @@ public class DailyResults : MonoBehaviour
     
     private void setTotalCostText()
     {
-        TotalCostText.text = $"총 {0}원 지출";
+        TotalCostText.text = $"총 {iTotalCost}원 지출";
     }
 
     private void setEarnedText()
     {
+        GainText.text = "";
         giveLvAwards();
     }
     private void UnlockRecipe(string recipeName)

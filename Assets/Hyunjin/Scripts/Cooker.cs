@@ -17,9 +17,12 @@ public class Cooker : MonoBehaviour
     public Slider cookingSlider;
     private float cookingTimer = 0;
 
+
     public Recipe targetRecipe;
     public Recipe resultRecipe;
     public Sprite trashSprite;
+
+    public float fSoundDuration = 1.0f;
 
     public AudioClip cookingCompleteSound;
     public AudioClip potSound;
@@ -100,7 +103,7 @@ public class Cooker : MonoBehaviour
         {
             audioSource.clip = cookingCompleteSound;
             audioSource.Play();
-            Invoke("StopCompleteMusic", 1f);
+            Invoke("StopCompleteMusic", fSoundDuration);
         }
     }
 
