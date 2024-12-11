@@ -44,10 +44,11 @@ public class NextButtonScript : MonoBehaviour
         {
             Managers.Status.day = iDay + 1;
             //다음 씬으로 이동
+            Managers.InGame.Init();
             SceneManager.LoadScene(sNextScene);
         }
         
-        else if (iDay > 7)
+        else if (iDay >= 7)
         {
             //해피 엔딩
             if(setEnding() == true)
@@ -71,8 +72,11 @@ public class NextButtonScript : MonoBehaviour
     private bool setEnding()
     {
         bool bIsHappyEnding = false;
-        iMoneyToPayLoan = dailyResults.getiMoneyToPayLoan();
-        if (iMoneyToPayLoan > 0)
+        int iMoneyToPayLoan;
+        int iLoan = 1000000;
+
+        iMoneyToPayLoan = iLoan - Managers.Status.totalMoney;
+        if(iMoneyToPayLoan > 0)
         {
             bIsHappyEnding = false;
         }
