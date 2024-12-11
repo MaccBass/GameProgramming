@@ -26,6 +26,9 @@ public class CookBehaviour : MonoBehaviour
     private Path path;
     private float threshold = 0.1f;
     int targetToolIndex = -1;
+    
+    Animator animator;
+    
     void Start()
     {
         if (!Managers.Prepare.isCookEmployed)
@@ -34,6 +37,11 @@ public class CookBehaviour : MonoBehaviour
         }
         seeker = GetComponent<Seeker>();
         AstarPath.active.logPathResults = Pathfinding.PathLog.None;
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError("Animator component not found!");
+        }
         job = null;
     }
 
@@ -77,6 +85,36 @@ public class CookBehaviour : MonoBehaviour
         }
 
     }
+
+    void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            StopCoroutine("FollowPath");
+            StartCoroutine("FollowPath");
+        }
+    }
+
+    IEnumerator FollowPath()
+    {
+        Vector3 lastPosition = transform.position;
+
+        foreach (Vector3 point in path.vectorPath)
+        {
+            while (Vector3.Distance(transform.position, point) > threshold)
+            {
+                Vector3 moveDirection = (point - transform.position).normalized;
+                Vector3 newPosition = transform.position + moveDirection * 0.1f;
+                transform.position = newPosition;
+                AnimateMove(moveDirection); // 이동 방향에 따라 애니메이션 적용
+                Debug.Log($"Moving: X={moveDirection.x}, Y={moveDirection.y}");
+                yield return null;
+            }
+        }
+    }
+
+
     IEnumerator FinishCurrentJob()
     {
         while (isCooking || holdingItem != null)
@@ -89,6 +127,20 @@ public class CookBehaviour : MonoBehaviour
             job = Managers.Employee.CookOrders.Peek();
         }
     }
+
+    void AnimateMove(Vector3 direction)
+    {
+        if (animator != null)
+        {
+            animator.SetFloat("Move X", direction.x);
+            animator.SetFloat("Move Y", direction.y);
+        }
+        else
+        {
+            Debug.LogError("Animator not assigned!");
+        }
+    }
+
     void GetToolLocation()
     {
         if (job != Managers.Employee.CookOrders.Peek()) 
@@ -129,7 +181,7 @@ public class CookBehaviour : MonoBehaviour
             return;
         }
         Transform loc = toolLocations[targetToolIndex];
-        seeker.StartPath(transform.position, loc.position);
+        seeker.StartPath(transform.position, loc.position, OnPathComplete);
         if (Vector3.Distance(transform.position, loc.position) < threshold)
         {
             path = null;
@@ -162,7 +214,7 @@ public class CookBehaviour : MonoBehaviour
     {
         Debug.Log("냉장고로 이동중");
         Transform loc = fridgeLocation;
-        seeker.StartPath(transform.position, loc.position);
+        seeker.StartPath(transform.position, loc.position, OnPathComplete);
         if (Vector3.Distance(transform.position, loc.position) < threshold)
         {
             Debug.Log("냉장고에 도달");
@@ -174,7 +226,7 @@ public class CookBehaviour : MonoBehaviour
     void Idle()
     {
         Transform loc = idleLocation;
-        seeker.StartPath(transform.position, loc.position);
+        seeker.StartPath(transform.position, loc.position, OnPathComplete);
         if (Vector3.Distance(transform.position, loc.position) < threshold / 10)
         {
             path = null;

@@ -15,15 +15,15 @@ public class WaiterBehaviour : MonoBehaviour {
     Item holdingItem = null;
     FridgeType targetFridge = FridgeType.NULL;
 
-    // Á¶¸®µµ±¸ À§Ä¡
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
     public Transform[] tableLocations;
-    // º¸°üÇÔ À§Ä¡
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
     public Transform fridgeLocation;
-    // ÁÖ·ù ³ÃÀå°í À§Ä¡
+    // ï¿½Ö·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
     public Transform drinkLocation;
-    // ±âº» À§Ä¡
+    // ï¿½âº» ï¿½ï¿½Ä¡
     public Transform idleLocation;
-    // À½½Ä ³ÃÀå°í
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
     public Fridge fridge;
     public DrinkFridge drink;
 
@@ -31,6 +31,9 @@ public class WaiterBehaviour : MonoBehaviour {
     private Path path;
     private float threshold = 0.1f;
     int targetTableIndex = -1;
+
+    Animator animator;
+
     void Start()
     {
         if (!Managers.Prepare.isWaiterEmployed)
@@ -39,6 +42,7 @@ public class WaiterBehaviour : MonoBehaviour {
         }
         seeker = GetComponent<Seeker>();
         AstarPath.active.logPathResults = Pathfinding.PathLog.None;
+        animator = GetComponent<Animator>();
         job = null;
     }
 
@@ -47,13 +51,13 @@ public class WaiterBehaviour : MonoBehaviour {
         if (Managers.Employee.WaiterOrders.Count > 0 && job == null)
         {
             job = Managers.Employee.WaiterOrders.Peek();
-            Debug.Log("ÁÖ¹® Å¥¿¡¼­ " + job.orderItem.itemName + " È®ÀÎ");
+            Debug.Log("ï¿½Ö¹ï¿½ Å¥ï¿½ï¿½ï¿½ï¿½ " + job.orderItem.itemName + " È®ï¿½ï¿½");
         }
         if (job == null)
         {
             Idle();
         }
-        // jobÀÌ µé¾î¿ÔÀ» ¶§
+        // jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         if (job != null)
         {
             if (job.status == OrderStatus.SERVED || job.status == OrderStatus.CANCELED)
@@ -75,11 +79,41 @@ public class WaiterBehaviour : MonoBehaviour {
             }
         }
     }
+
+    void OnPathComplete(Path p) {
+        if (!p.error) {
+            path = p;
+            StopCoroutine("FollowPath");
+            StartCoroutine("FollowPath");
+        }
+    }
+
+    IEnumerator FollowPath() {
+        Vector3 lastPosition = transform.position;
+
+        foreach (Vector3 point in path.vectorPath) {
+            while (Vector3.Distance(transform.position, point) > threshold) {
+                Vector3 moveDirection = (point - transform.position).normalized;
+                Vector3 newPosition = transform.position + moveDirection * 0.1f;
+                transform.position = newPosition;
+                AnimateMove(moveDirection); // ì´ë™ ë°©í–¥ì— ë”°ë¼ ì• ë‹ˆë©”ì´ì…˜ ì ìš©
+                yield return null;
+            }
+        }
+        animator.SetFloat("Move X", 0); // ì´ë™ ì •ì§€ ì‹œ ì• ë‹ˆë©”ì´ì…˜ ì •ì§€
+        animator.SetFloat("Move Y", 0);
+    }
+
+    void AnimateMove(Vector3 direction) {
+        animator.SetFloat("Move X", direction.x);
+        animator.SetFloat("Move Y", direction.y);
+    }
+
     void MoveToTable()
     {
         targetTableIndex = job.table.id - 1;
         Transform loc = tableLocations[targetTableIndex];
-        seeker.StartPath(transform.position, loc.position);
+        seeker.StartPath(transform.position, loc.position, OnPathComplete);
         if (Vector3.Distance(transform.position, loc.position) < threshold)
         {
             path = null;
@@ -92,7 +126,7 @@ public class WaiterBehaviour : MonoBehaviour {
         Transform loc = transform;
         if (targetFridge == FridgeType.NULL)
         {
-            Debug.LogError("FridgeTypeÀÌ NULLÀÓ.");
+            Debug.LogError("FridgeTypeï¿½ï¿½ NULLï¿½ï¿½.");
             return;
         }
         if (targetFridge == FridgeType.FOOD)
@@ -104,15 +138,15 @@ public class WaiterBehaviour : MonoBehaviour {
             }
             if (food.CookCount() <= 0)
             {
-                Debug.Log(food.itemName + "À» ´õÀÌ»ó ¸¸µé ¼ö ¾øÀ½.");
+                Debug.Log(food.itemName + "ï¿½ï¿½ ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.");
                 ClearJob();
             }
             loc = fridgeLocation;
-            seeker.StartPath(transform.position, loc.position);
+            seeker.StartPath(transform.position, loc.position, OnPathComplete);
             if (Vector3.Distance(transform.position, loc.position) < threshold)
             {
                 path = null;
-                // ³ÃÀå°íÀÇ ¾ÆÀÌÅÛ »©¿À±â
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 holdingItem = new Recipe((Recipe)job.orderItem);
                 fridge.FridgeRecipe.Remove((Recipe)holdingItem);
             }
@@ -122,11 +156,11 @@ public class WaiterBehaviour : MonoBehaviour {
             Drink drink = (Drink)job.orderItem;
             if (Managers.Prepare.Drinks.Find(d => d.itemName == drink.itemName) == null)
             {
-                Debug.Log(drink.itemName + " Àç°í°¡ ¾øÀ½.");
+                Debug.Log(drink.itemName + " ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.");
                 ClearJob();
             }
             loc = drinkLocation;
-            seeker.StartPath(transform.position, loc.position);
+            seeker.StartPath(transform.position, loc.position, OnPathComplete);
             if (Vector3.Distance(transform.position, loc.position) < threshold)
             {
                 path = null;
@@ -151,12 +185,12 @@ public class WaiterBehaviour : MonoBehaviour {
     void Idle()
     {
         Transform loc = idleLocation;
-        seeker.StartPath(transform.position, loc.position);
+        seeker.StartPath(transform.position, loc.position, OnPathComplete);
         if (Vector3.Distance(transform.position, loc.position) < threshold / 10)
         {
             path = null;
         }
-        Debug.Log("JobÀÌ ¾øÀ¸¹Ç·Î Á¦ÀÚ¸®·Î µ¹¾Æ°¨.");
+        Debug.Log("Jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½.");
     }
     void ClearJob()
     {
