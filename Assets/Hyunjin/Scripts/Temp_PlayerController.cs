@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class Temp_PlayerController : MonoBehaviour
 {
-    public static Temp_PlayerController Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // 중복 인스턴스 제거
+            return;
+        }
+        Instance = this;
+    }
+
+    public static Temp_PlayerController Instance { get; set; }
 
     public float speed = 5.0f;
 

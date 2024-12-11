@@ -57,20 +57,28 @@ public class HeldItemsManager : MonoBehaviour
         if (isSelected) {
             Collider2D collider = Temp_PlayerController.Instance.getRay();
             // 콜라이더가 테이블이면 서빙
-            if (collider.gameObject.layer == 9) {
-                ServeItem(index, collider.gameObject.GetComponentInChildren<Customer>());
+
+            if (collider != null)
+            {
+                if (collider.gameObject.layer == 9)
+                {
+                    ServeItem(index, collider.gameObject.GetComponentInChildren<Customer>());
+                }
+                // Fridge면 item==Recipe일 때 보관
+                else if (collider.name == "Fridge" && item is Recipe recipe)
+                {
+                    ReleaseRecipe(index);
+                }
+                // DrinkFridge면 item==Drink일 때 보관
+                else if (collider.name == "DrinkFridge" && item is Drink drink)
+                {
+                    ReleaseDrink(index);
+                }
+                else if (collider.name == "TrashCan")
+                {
+                    ThrowAway(index);
+                }
             }
-            // Fridge면 item==Recipe일 때 보관
-            else if (collider.name == "Fridge" && item is Recipe recipe) {
-                ReleaseRecipe(index);
-            }
-            // DrinkFridge면 item==Drink일 때 보관
-            else if (collider.name == "DrinkFridge" && item is Drink drink) {
-                ReleaseDrink(index);
-            }
-            else if (collider.name == "TrashCan") {
-                ThrowAway(index);
-            }       
         }
     }
     
