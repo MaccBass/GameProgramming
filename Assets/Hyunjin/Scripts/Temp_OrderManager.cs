@@ -70,6 +70,7 @@ public class Temp_OrderManager : MonoBehaviour
         GameObject orderUI = Instantiate(orderUIPrefab, orderUIBox);
         orderUI.GetComponentInChildren<Text>().text = $"{orderItem.itemName}";
         orderUI.GetComponentsInChildren<Text>()[1].text = $"테이블{table.id}";
+        orderUI.GetComponentsInChildren<Image>()[1].sprite = orderItem.icon;
         Slider timeSlider = orderUI.GetComponentInChildren<Slider>();
         timeSlider.maxValue = 1;
         timeSlider.value = timeSlider.maxValue;
