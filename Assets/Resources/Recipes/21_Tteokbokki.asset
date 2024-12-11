@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
   m_Name: 21_Tteokbokki
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  icon: {fileID: 21300000, guid: 40b0b647fcdb1cf449b0bd1a6ea9e172, type: 3}
   itemName: "\uB5A1\uBCF6\uC774"
   purchasePrice: 30000
   toolType: 2
@@ -22,3 +22,4 @@ MonoBehaviour:
   ingredients:
   - "\uB5A1"
   - "\uACE0\uCD94\uC7A5"
+  isTrash: 0
