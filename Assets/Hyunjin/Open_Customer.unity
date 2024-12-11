@@ -3542,8 +3542,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953777139}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.291, y: 3.428, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.2910004, y: 3.428, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8911,7 +8911,7 @@ MonoBehaviour:
   currentDay: 0
   totalRevenue: 0
   dailyRevenue: 0
-  closingTime: 5
+  closingTime: 30
   remainingTime: 0
 --- !u!4 &1057058325
 Transform:
@@ -12637,7 +12637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1222603797
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12676,8 +12676,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1281304333
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1343318634, guid: 01e9a6c7eb2185c498ff5fe85b08dd8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -12771,7 +12771,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 10
+  maxSpeed: 0.5
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -12788,7 +12788,7 @@ MonoBehaviour:
     maximumInterval: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
+  maxAcceleration: 1
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 2
@@ -13097,7 +13097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1264298530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13141,7 +13141,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 10
+  maxSpeed: 0.5
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -13158,7 +13158,7 @@ MonoBehaviour:
     maximumInterval: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
+  maxAcceleration: 1
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 2
@@ -13233,8 +13233,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1281304333
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 227260885, guid: 18731a9443918344da10919a7bfdf8dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -16456,6 +16456,14 @@ PrefabInstance:
     - target: {fileID: 2499254390703098180, guid: 56034d378426bc840b6b141cdd3e8dca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743757904246164647, guid: 56034d378426bc840b6b141cdd3e8dca, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743757904246164647, guid: 56034d378426bc840b6b141cdd3e8dca, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1281304333
       objectReference: {fileID: 0}
     - target: {fileID: 4138178173675222836, guid: 56034d378426bc840b6b141cdd3e8dca, type: 3}
       propertyPath: m_Name
