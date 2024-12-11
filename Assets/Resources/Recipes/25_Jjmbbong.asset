@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
   m_Name: 25_Jjmbbong
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  icon: {fileID: 21300000, guid: d512a12ba58b4be4db28c3689cdc785f, type: 3}
   itemName: "\uC9EC\uBF55"
   purchasePrice: 30000
   toolType: 2
@@ -24,3 +24,4 @@ MonoBehaviour:
   - "\uC721\uC218"
   - "\uD64D\uD569"
   - "\uB77C\uBA74\uC2A4\uD504"
+  isTrash: 0

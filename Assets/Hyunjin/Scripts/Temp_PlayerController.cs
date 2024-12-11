@@ -5,14 +5,6 @@ using UnityEngine;
 public class Temp_PlayerController : MonoBehaviour
 {
     public static Temp_PlayerController Instance { get; private set; }
-    private void Awake() {
-        if (Instance == null) {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
-    }
 
     public float speed = 5.0f;
 

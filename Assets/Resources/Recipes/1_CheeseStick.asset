@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403642ef3ecb2474f95d952484ee1b3d, type: 3}
   m_Name: 1_CheeseStick
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: d91364ffa41e9d340bc395788b3bcbae, type: 3}
+  icon: {fileID: 21300000, guid: b88012168c5ee664d9248e092b270e40, type: 3}
   itemName: "\uCE58\uC988\uC2A4\uD2F1"
   purchasePrice: 30000
   toolType: 0
@@ -21,3 +21,4 @@ MonoBehaviour:
   isObtained: 1
   ingredients:
   - "\uCE58\uC988"
+  isTrash: 0
