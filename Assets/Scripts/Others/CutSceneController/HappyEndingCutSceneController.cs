@@ -125,8 +125,10 @@ public class HappyEndingCutSceneController : MonoBehaviour
         {
             cutscene.SetActive(false);
         }
-        UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+                Application.Quit();
     }
     void LoadMain()
     {

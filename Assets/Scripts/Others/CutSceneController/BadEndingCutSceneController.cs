@@ -125,8 +125,10 @@ public class BadEndingCutSceneController : MonoBehaviour
             cutscene.SetActive(false);
         }
         //임시: 테스트 모드시 종료
-        UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+                Application.Quit();
     }
     void LoadMain()
     {
