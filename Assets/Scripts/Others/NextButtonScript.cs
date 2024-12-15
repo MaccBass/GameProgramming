@@ -65,8 +65,10 @@ public class NextButtonScript : MonoBehaviour
         {
             Debug.Log("올바르지 않은 day");
             //에러 발생시 앱 강제 종료
-            UnityEditor.EditorApplication.isPlaying = false;
-            Application.Quit();
+            #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+                        Application.Quit();
         }
     }
     private bool setEnding()
